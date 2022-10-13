@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package cat;
+
+option go_package='./pb';
+
+message Cat {
+  int64 catId = 1;
+  string area = 2;
+  string age = 3;
+  int64 campusId = 4;
+  int64 colorId = 5;
+  int64 statusId = 6;
+  int64 popularity = 7;
+  string detail = 8;
+  string name = 9;
+  string avatarUrl = 10;
+  int64 snipEar = 11;
+  string sex = 12;
+  int64 sterilization = 13;
+}
+
+// 根据ID查询猫咪信息
+message CatDetailReq{
+  int64 id = 1;
+}
+
+message CatDetailResp{
+  Cat cat = 1;
+}
+
+// 查询猫咪信息
+message QueryCatReq{
+  int64 campusId = 1;
+  int64 page = 2;
+  int64 size = 3;
+}
+
+message QueryCatResp{
+  repeated Cat catList = 1;
+}
+
+// 上传猫咪信息
+message UploadCatReq {
+  Cat cat = 1;
+}
+
+message UploadCatResp {
+}
+
+service CatCommunity {
+  // 根据ID查询猫咪信息
+  rpc getDetail(CatDetailReq) returns(CatDetailResp);
+  // 查询猫咪信息
+  rpc queryCat(QueryCatReq) returns(QueryCatResp);
+  // 上传或更新猫咪信息
+  rpc uploadCat(UploadCatReq) returns(UploadCatResp);
+}
