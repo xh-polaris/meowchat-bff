@@ -1,0 +1,44 @@
+syntax = "v1"
+
+info(
+	title: "user api"
+)
+
+import "common.api"
+
+type (
+	User {
+		Id             string `json:"id"`
+		CreateAt       string `json:"createAt"`
+		Nickname       string `json:"nickname"`
+		AvatarUrl      string `json:"avatarUrl"`
+		PrivilegeLevel int32  `json:"privilegeLevel"`
+	}
+
+	GetUserDetailReq {
+		Id string `json:"id"`
+	}
+
+	GetUserDetailResp {
+		Status
+		User User `json:"user"`
+	}
+
+	UpdateUserDetailReq {
+		Nickname  string `json:"nickname,optional"`
+		AvatarUrl string `json:"avatarUrl,optional"`
+	}
+
+	UpdateUserDetailResp {
+		Status
+	}
+
+	UpdateUserPrivilegeReq {
+		Id             string `json:"id"`
+		PrivilegeLevel int32  `json:"privilegeLevel"`
+	}
+
+	UpdateUserPrivilegeResp {
+		Status
+	}
+)

@@ -1,0 +1,29 @@
+syntax = "v1"
+
+info(
+    title: "carousel api"
+)
+
+import "common.api"
+
+type (
+    Carousel {
+        Id string `json:"id"`
+        CreateAt string `json:"createAt"`
+        ImgUrl string `json:"imgUrl"`
+        Order int32 `json:"order"`
+        SrcUrl string `json:"srcUrl"`
+        TypeId int32 `json:"typeId"`
+    }
+
+    ListCarouselReq {
+
+    }
+
+    ListCarouselResp {
+        Status
+        CarouselList []Carousel `json:"carouselList"`
+    }
+)
+
+
