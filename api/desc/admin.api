@@ -1,0 +1,35 @@
+syntax = "v1"
+
+info(
+	title: "admin api"
+)
+
+import "common.api"
+
+type (
+	Admin {
+		Id       string `json:"id"`
+		CreateAt string `json:"createAt"`
+		Name     string `json:"name"`
+		Phone    string `json:"phone"`
+		User     UserVO `json:"user"`
+		Wechat   string `json:"wechat"`
+	}
+
+	GetAdminDetailReq {
+		Id string `json:"id"`
+	}
+
+	GetAdminDetailResp {
+		Status
+		Admin Admin `json:"admin"`
+	}
+
+	ListAdminReq {
+	}
+
+	ListAdminResp {
+		Status
+		Admins []Admin `json:"admins"`
+	}
+)

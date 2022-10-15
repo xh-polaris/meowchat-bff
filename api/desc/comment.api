@@ -1,0 +1,33 @@
+syntax = "v1"
+
+info(
+    title: "comment api"
+)
+
+import "common.api"
+
+type (
+    Comment {
+        Id string `json:"id"`
+        CreateAt string `json:"createAt"`
+        Comment string `json:"comment"`
+        User UserVO `json:"user"`
+    }
+
+    ListCommentReq {
+        Id string `json:"id"`
+    }
+
+    ListCommentResp {
+        Status
+        Comments []Comment `json:"comments"`
+    }
+
+    PostCommentReq {
+        Comment string `json:"comment"`
+    }
+
+    PostCommentResp {
+        Status
+    }
+)

@@ -1,0 +1,58 @@
+syntax = "v1"
+
+info(
+	title: "cat community api"
+)
+
+import "user.api"
+import "cat.api"
+import "moment.api"
+import "comment.api"
+import "admin.api"
+import "carousel.api"
+
+@server(
+	jwt: Auth
+	prefix: api
+)
+service cat_community {
+	// user
+	@handler GetUserDetail
+	get /user (GetUserDetailReq) returns (GetUserDetailResp)
+	@handler UpdateUserDetail
+	post /user (UpdateUserDetailReq) returns (UpdateUserDetailResp)
+	@handler UpdateUserPrivilege
+	post /privilege (UpdateUserPrivilegeReq) returns (UpdateUserPrivilegeResp)
+	
+	// admin
+	@handler GetAdminDetail
+	get /admin (GetAdminDetailReq) returns (GetAdminDetailResp)
+	@handler GetAdminList
+	get /admin/list (ListAdminReq) returns (ListAdminResp)
+	
+	// carousel
+	@handler ListCarousel
+	get /carousel/list (ListCarouselReq) returns (ListCarouselResp)
+	
+	// cat
+	@handler GetCatDetail
+	get /cat (GetCatDetailReq) returns (GetCatDetailResp)
+	@handler QueryCatDetail
+	get /cat/query (QueryCatReq) returns (QueryCatResp)
+	@handler UploadCatDetail
+	post /cat (UploadCatReq) returns (UploadCatResp)
+	
+	// comment
+	@handler ListComment
+	get /comment/list (ListCommentReq) returns (ListCommentResp)
+	@handler PostComment
+	post /comment (PostCommentReq) returns (PostCommentResp)
+	
+	// moment
+	@handler GetMomentDetail
+	get /moment (GetMomentDetailReq) returns (GetMomentDetailResp)
+	@handler QueryMomentDetail
+	get /moment/query (QueryMomentReq) returns (QueryMomentResp)
+	@handler UploadMoment
+	post /moment/upload (UploadMomentReq) returns (UploadMomentResp)
+}

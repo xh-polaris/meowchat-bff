@@ -1,0 +1,51 @@
+syntax = "v1"
+
+info(
+    title: "moment api"
+)
+
+import "common.api"
+
+type (
+    Moment {
+        Id string `json:"id"`
+        CreateAt string `json:"createAt"`
+        CatId string `json:"catId"`
+        Photos []string `json:"photos"`
+        Status int32 `json:"status"`
+        Text string `json:"text"`
+        User UserVO `json:"user"`
+        UserLikes int32 `json:"userLikes"`
+    }
+
+    GetMomentDetailReq {
+        Id string `json:"id"`
+    }
+
+    GetMomentDetailResp {
+        Status
+        Moment Moment `json:"moment"`
+    }
+
+    QueryMomentReq {
+        CampusId int32 `json:"campusId"`
+        Page int32 `json:"page"`
+        Size int32 `json:"size"`
+    }
+
+    QueryMomentResp {
+        Status
+        Moments []Moment `json:"moments"`
+    }
+
+    UploadMomentReq {
+        CatId string `json:"catId"`
+        Text string `json:"text"`
+        Photos []string `json:"photos"`
+    }
+
+    UploadMomentResp {
+        Status
+    }
+)
+
