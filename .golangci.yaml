@@ -28,4 +28,4 @@ linters-settings: # please keep this alphabetized
   revive:
     rules:
       - name: var-naming
-        arguments: [["ID"]]
+        arguments: [["ID"], ["URL"], ["RPC"]]
