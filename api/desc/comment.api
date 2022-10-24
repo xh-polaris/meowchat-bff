@@ -5,6 +5,7 @@ info(
 )
 
 import "common.api"
+import "user.api"
 
 type (
     Comment {
@@ -19,7 +20,7 @@ type (
     }
 
     ListCommentResp {
-        Status
+        Status Status `json:"status"`
         Comments []Comment `json:"comments"`
     }
 
@@ -28,6 +29,6 @@ type (
     }
 
     PostCommentResp {
-        Status
+        Status Status `json:"status"`
     }
 )

@@ -8,9 +8,3 @@ type Status {
     Code int `json:"code"`
     Msg string `json:"msg"`
 }
-
-type UserVO {
-    UserId string `json:"userId"`
-    Nickname string `json:"nickname"`
-    AvatarUrl string `json:"avatarUrl"`
-}

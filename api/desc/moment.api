@@ -4,6 +4,7 @@ info(
     title: "moment api"
 )
 
+import "user.api"
 import "common.api"
 
 type (
@@ -23,7 +24,7 @@ type (
     }
 
     GetMomentDetailResp {
-        Status
+        Status Status `json:"status"`
         Moment Moment `json:"moment"`
     }
 
@@ -34,7 +35,7 @@ type (
     }
 
     QueryMomentResp {
-        Status
+        Status Status `json:"status"`
         Moments []Moment `json:"moments"`
     }
 
@@ -45,7 +46,7 @@ type (
     }
 
     UploadMomentResp {
-        Status
+        Status Status `json:"status"`
     }
 )
 

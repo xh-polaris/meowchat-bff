@@ -29,7 +29,7 @@ type (
     }
 
     GetCatDetailResp {
-        Status
+        Status Status `json:"status"`
         Cat Cat `json:"cat"`
     }
 
@@ -40,7 +40,7 @@ type (
     }
 
     QueryCatResp {
-        Status
+        Status Status `json:"status"`
         Cats []Cat `json:"cats"`
     }
 
@@ -49,6 +49,6 @@ type (
     }
 
     UploadCatResp {
-        Status
+        Status Status `json:"status"`
     }
 )

@@ -21,9 +21,7 @@ type (
     }
 
     ListCarouselResp {
-        Status
+        Status Status `json:"status"`
         CarouselList []Carousel `json:"carouselList"`
     }
 )
-
-

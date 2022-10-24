@@ -5,19 +5,19 @@ package cat;
 option go_package='./pb';
 
 message Cat {
-  int64 catId = 1;
-  string area = 2;
-  string age = 3;
-  int64 campusId = 4;
-  int64 colorId = 5;
-  int64 statusId = 6;
-  int64 popularity = 7;
-  string detail = 8;
-  string name = 9;
-  string avatarUrl = 10;
-  int64 snipEar = 11;
-  string sex = 12;
-  int64 sterilization = 13;
+  int64 CatId = 1;
+  string Area = 2;
+  string Age = 3;
+  int64 CampusId = 4;
+  int64 ColorId = 5;
+  int64 StatusId = 6;
+  int64 Popularity = 7;
+  string Detail = 8;
+  string Name = 9;
+  string AvatarUrl = 10;
+  int64 IsSnipped = 11;
+  string Sex = 12;
+  int64 IsSterilized = 13;
 }
 
 // 根据ID查询猫咪信息

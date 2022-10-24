@@ -15,12 +15,18 @@ type (
 		PrivilegeLevel int32  `json:"privilegeLevel"`
 	}
 
+	UserVO {
+		UserId string `json:"userId"`
+		Nickname string `json:"nickname"`
+		AvatarUrl string `json:"avatarUrl"`
+	}
+
 	GetUserDetailReq {
 		Id string `json:"id"`
 	}
 
 	GetUserDetailResp {
-		Status
+		Status Status `json:"status"`
 		User User `json:"user"`
 	}
 
@@ -30,7 +36,7 @@ type (
 	}
 
 	UpdateUserDetailResp {
-		Status
+		Status Status `json:"status"`
 	}
 
 	UpdateUserPrivilegeReq {
@@ -39,6 +45,6 @@ type (
 	}
 
 	UpdateUserPrivilegeResp {
-		Status
+		Status Status `json:"status"`
 	}
 )

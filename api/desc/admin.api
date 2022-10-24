@@ -4,6 +4,7 @@ info(
 	title: "admin api"
 )
 
+import "user.api"
 import "common.api"
 
 type (
@@ -21,7 +22,7 @@ type (
 	}
 
 	GetAdminDetailResp {
-		Status
+		Status Status `json:"status"`
 		Admin Admin `json:"admin"`
 	}
 
@@ -29,7 +30,7 @@ type (
 	}
 
 	ListAdminResp {
-		Status
+		Status Status `json:"status"`
 		Admins []Admin `json:"admins"`
 	}
 )
