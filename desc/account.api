@@ -1,0 +1,41 @@
+syntax = "v1"
+
+import "desc/common.api"
+
+type User {
+    id             string `json:"id"`
+    name           string `json:"name"`
+    avatarUrl      string `json:"avatarUrl"`
+    privilegeLevel int32  `json:"privilegeLevel"`
+}
+
+type SignInReq {
+    authType  string   `json:"authType,options=phone|email|wechat"`
+    authId string   `json:"authId"`
+    password  string   `json:"password,optional"`
+    params   []string `json:"params,optional"`
+}
+
+type SignInResp {
+    Status       Status `json:"status"`
+    user         User   `json:"user"`
+    accessToken  string `json:"accessToken"`
+    accessExpire int64  `json:"accessExpire"`
+}
+
+type SetPasswordReq {
+    password string `json:"password"`
+}
+
+type SetPasswordResp {
+    Status Status `json:"status"`
+}
+
+type SendVerifyCodeReq {
+    authType  string `json:"authType,options=phone|email"`
+    authId string `json:"authId"`
+}
+
+type SendVerifyCodeResp {
+    Status Status `json:"status"`
+}

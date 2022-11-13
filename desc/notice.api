@@ -1,0 +1,37 @@
+syntax = "v1"
+
+info(
+    title: "carousel api"
+)
+
+import "desc/common.api"
+
+type (
+    News {
+        id string `json:"id"`
+        createAt string `json:"createAt"`
+        imageUrl string `json:"imageUrl"`
+        linkUrl string `json:"linkUrl"`
+        linkType int32 `json:"linkType"`
+    }
+
+    Admin {
+        id       string `json:"id"`
+        createAt string `json:"createAt"`
+        name     string `json:"name"`
+        phone    string `json:"phone"`
+        user     UserPreview `json:"user"`
+        wechat   string `json:"wechat"`
+    }
+
+    GetNewsResp {
+        Status
+        news []News `json:"news"`
+    }
+
+    GetAdminsResp {
+        Status
+        Admins []Admin `json:"admins"`
+    }
+
+)

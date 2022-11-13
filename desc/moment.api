@@ -1,0 +1,43 @@
+syntax = "v1"
+
+info(
+    title: "moment api"
+)
+
+import "desc/common.api"
+
+type (
+    Moment {
+
+    }
+
+    MomentPreview {
+        id string `json:"id"`
+        createAt string `json:"createAt"`
+        catId string `json:"catId"`
+        coverUrl string `json:"coverUrl"`
+        title string `json:"title"`
+        user UserPreview `json:"user"`
+        likes int32 `json:"likes"`
+    }
+
+    GetMomentPreviewsReq {
+        communityId string `json:"communityId"`
+    }
+
+    GetMomentPreviewsResp {
+        Status
+        Moments []MomentPreview `json:"moments"`
+    }
+
+    GetMomentDetailReq {
+        id string `json:"id"`
+    }
+
+    GetMomentDetailResp {
+        Status
+        Moment Moment `json:"moment"`
+    }
+
+)
+

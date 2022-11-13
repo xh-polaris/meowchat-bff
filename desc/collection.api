@@ -1,0 +1,53 @@
+syntax = "v1"
+
+info(
+    title: "cat api"
+)
+
+import "desc/common.api"
+
+type (
+    Cat {
+        id string `json:"id"`
+        createAt string `json:"createAt"`
+        age string `json:"age"`
+        communityId string `json:"communityId"`
+        color string `json:"color"`
+        details string `json:"details"`
+        name string `json:"name"`
+        popularity int64 `json:"popularity"`
+        sex string `json:"sex"`
+        status int32 `json:"status"`
+        area string `json:"area"`
+        isSnipped bool `json:"isSnipped"`
+        isSterilized bool `json:"isSterilized"`
+        photos []string `json:"photos"`
+    }
+
+    CatPreview {
+        id string `json:"id"`
+        name string `json:"name"`
+        color string `json:"color"`
+        avatarUrl string `json:"avatarUrl"`
+        isCollected bool `json:"isCollected"`
+    }
+
+    GetCatPreviewsReq {
+        communityId string `json:"communityId"`
+    }
+
+    GetCatPreviewsResp {
+        Status
+        Cats []CatPreview `json:"cats"`
+    }
+
+    GetCatDetailReq {
+        id string `json:"campusId"`
+    }
+
+    GetCatDetailResp {
+        Status
+        cat Cat `json:"cat"`
+    }
+
+)
