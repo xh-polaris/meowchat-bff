@@ -36,8 +36,11 @@ func (l *SignInLogic) SignIn(req *types.SignInReq) (resp *types.SignInResp, err 
 	if err != nil {
 		return
 	}
+
 	auth := l.svcCtx.Config.Auth
-	resp.AccessToken, resp.AccessExpire, err = generateJwtToken(rpcResp.GetUserId(), auth.AccessSecret, auth.AccessExpire)
+	resp = new(types.SignInResp)
+	resp.AccessToken, resp.AccessExpire, err = generateJwtToken(rpcResp.UserId, auth.AccessSecret, auth.AccessExpire)
+	resp.UserId = rpcResp.UserId
 	return
 }
 

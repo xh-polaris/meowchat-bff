@@ -16,8 +16,8 @@ type SignInReq struct {
 }
 
 type SignInResp struct {
-	Status       Status `json:"status"`
-	User         User   `json:"user"`
+	Status
+	UserId       string `json:"userId"`
 	AccessToken  string `json:"accessToken"`
 	AccessExpire int64  `json:"accessExpire"`
 }
@@ -27,7 +27,7 @@ type SetPasswordReq struct {
 }
 
 type SetPasswordResp struct {
-	Status Status `json:"status"`
+	Status
 }
 
 type SendVerifyCodeReq struct {
@@ -36,7 +36,7 @@ type SendVerifyCodeReq struct {
 }
 
 type SendVerifyCodeResp struct {
-	Status Status `json:"status"`
+	Status
 }
 
 type Status struct {
