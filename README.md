@@ -8,7 +8,7 @@
 **Start services**
 
 ```bash
-go run cat_community.go -f etc/cat_community.yaml
+go run cat_community.go -f etc/meowchat.yaml
 ```
 
 Before starting the server, please replace the default config file in `etc` directory.

@@ -50,6 +50,34 @@ type UserPreview struct {
 	AvatarUrl string `json:"avatarUrl"`
 }
 
+type Tag struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type Post struct {
+	Id          string      `json:"id"`
+	CreateAt    int         `json:"createAt"`
+	IsAnonymous bool        `json:"isAnonymous"`
+	Title       string      `json:"title"`
+	Text        string      `json:"text"`
+	CoverUrl    string      `json:"coverUrl"`
+	Tags        []Tag       `json:"tags"`
+	Likes       int64       `json:"likes"`
+	Comments    int64       `json:"comments"`
+	User        UserPreview `json:"user"`
+	Status      int64       `json:"status"`
+}
+
+type GetPostPreviewsReq struct {
+	Page int64 `form:"page"`
+}
+
+type GetPostPreviewsResp struct {
+	Status
+	Posts []Post `json:"posts"`
+}
+
 type Cat struct {
 	Id           string   `json:"id"`
 	CreateAt     string   `json:"createAt"`
@@ -94,16 +122,14 @@ type GetCatDetailResp struct {
 }
 
 type Moment struct {
-}
-
-type MomentPreview struct {
 	Id       string      `json:"id"`
 	CreateAt string      `json:"createAt"`
-	CatId    string      `json:"catId"`
-	CoverUrl string      `json:"coverUrl"`
+	CatId    string      `json:"catId,optional"`
+	Pictures []string    `json:"pictures"`
 	Title    string      `json:"title"`
+	Text     string      `json:"text"`
 	User     UserPreview `json:"user"`
-	Likes    int32       `json:"likes"`
+	Likes    int64       `json:"likes"`
 }
 
 type GetMomentPreviewsReq struct {
@@ -112,7 +138,7 @@ type GetMomentPreviewsReq struct {
 
 type GetMomentPreviewsResp struct {
 	Status
-	Moments []MomentPreview `json:"moments"`
+	Moments []Moment `json:"moments"`
 }
 
 type GetMomentDetailReq struct {

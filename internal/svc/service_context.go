@@ -2,7 +2,7 @@ package svc
 
 import (
 	"github.com/xh-polaris/account-rpc/account"
-	"github.com/xh-polaris/cat-community-api/internal/config"
+	"github.com/xh-polaris/meowchat-bff/internal/config"
 
 	"github.com/zeromicro/go-zero/zrpc"
 )

@@ -4,7 +4,8 @@ info(
 	title: "cat community api"
 )
 
-import "desc/account.api"
+import "desc/auth.api"
+import "desc/post.api"
 import "desc/collection.api"
 import "desc/moment.api"
 import "desc/comment.api"
@@ -14,8 +15,8 @@ import "desc/notice.api"
 	jwt: Auth
 )
 
-service cat_community {
-	// account
+service meowchat {
+	// auth
 	@handler SetPassword
 	post /account/set_password (SetPasswordReq) returns (SetPasswordResp)
 	
@@ -24,6 +25,10 @@ service cat_community {
 	get /notice/get_admins returns (GetAdminsResp)
 	@handler GetNews
 	get /notice/get_news returns (GetNewsResp)
+	
+	// post
+	@handler GetPostPreviews
+	get /post/get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
 	
 	// collection
 	@handler GetCats
@@ -35,12 +40,12 @@ service cat_community {
 	@handler GetMomentPreviews
 	get /moment/get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
 	@handler GetMomentDetail
-	get /moment (GetMomentDetailReq) returns (GetMomentDetailResp)
+	get /moment/get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
 	
 }
 
-service cat_community {
-	// account
+service meowchat {
+	// auth
 	@handler SignIn
 	post /account/sign_in (SignInReq) returns (SignInResp)
 	@handler SendVerifyCode

@@ -5,12 +5,12 @@ info(
 )
 
 type Status {
-    Code int `json:"code"`
-    Msg string `json:"msg"`
+    code int `json:"code"`
+    msg string `json:"msg"`
 }
 
 type UserPreview {
-    UserId string `json:"userId"`
-    Nickname string `json:"nickname"`
-    AvatarUrl string `json:"avatarUrl"`
+    userId string `json:"userId"`
+    nickname string `json:"nickname"`
+    avatarUrl string `json:"avatarUrl"`
 }

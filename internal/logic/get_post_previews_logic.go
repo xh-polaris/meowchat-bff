@@ -9,21 +9,21 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type GetCatsLogic struct {
+type GetPostPreviewsLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewGetCatsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCatsLogic {
-	return &GetCatsLogic{
+func NewGetPostPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetPostPreviewsLogic {
+	return &GetPostPreviewsLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *GetCatsLogic) GetCats() (resp *types.GetCatPreviewsResp, err error) {
+func (l *GetPostPreviewsLogic) GetPostPreviews(req *types.GetPostPreviewsReq) (resp *types.GetPostPreviewsResp, err error) {
 	// todo: add your logic here and delete this line
 
 	return

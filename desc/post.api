@@ -1,0 +1,33 @@
+syntax = "v1"
+
+import "desc/common.api"
+
+type (
+    Tag {
+        id string `json:"id"`
+        name string `json:"name"`
+    }
+
+    Post {
+        id string `json:"id"`
+        createAt int `json:"createAt"`
+        isAnonymous bool `json:"isAnonymous"`
+        title string `json:"title"`
+        text string `json:"text"`
+        coverUrl string `json:"coverUrl"`
+        tags []Tag `json:"tags"`
+        likes int64 `json:"likes"`
+        comments int64 `json:"comments"`
+        user UserPreview `json:"user"`
+        status int64 `json:"status"`
+    }
+
+    GetPostPreviewsReq {
+        page int64 `form:"page"`
+    }
+
+    GetPostPreviewsResp{
+        Status
+        posts []Post `json:"posts"`
+    }
+)

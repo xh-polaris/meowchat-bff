@@ -4,15 +4,15 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/xh-polaris/cat-community-api/internal/config"
-	"github.com/xh-polaris/cat-community-api/internal/handler"
-	"github.com/xh-polaris/cat-community-api/internal/svc"
+	"github.com/xh-polaris/meowchat-bff/internal/config"
+	"github.com/xh-polaris/meowchat-bff/internal/handler"
+	"github.com/xh-polaris/meowchat-bff/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "etc/cat_community.yaml", "the config file")
+var configFile = flag.String("f", "etc/meowchat.yaml", "the config file")
 
 func main() {
 	flag.Parse()

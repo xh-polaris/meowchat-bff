@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/xh-polaris/account-rpc/pb"
-	"github.com/xh-polaris/cat-community-api/internal/svc"
-	"github.com/xh-polaris/cat-community-api/internal/types"
+	"github.com/xh-polaris/meowchat-bff/internal/svc"
+	"github.com/xh-polaris/meowchat-bff/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

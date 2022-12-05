@@ -8,17 +8,14 @@ import "desc/common.api"
 
 type (
     Moment {
-
-    }
-
-    MomentPreview {
         id string `json:"id"`
         createAt string `json:"createAt"`
-        catId string `json:"catId"`
-        coverUrl string `json:"coverUrl"`
+        catId string `json:"catId,optional"`
+        pictures []string `json:"pictures"`
         title string `json:"title"`
+        text string `json:"text"`
         user UserPreview `json:"user"`
-        likes int32 `json:"likes"`
+        likes int64 `json:"likes"`
     }
 
     GetMomentPreviewsReq {
@@ -27,7 +24,7 @@ type (
 
     GetMomentPreviewsResp {
         Status
-        Moments []MomentPreview `json:"moments"`
+        Moments []Moment `json:"moments"`
     }
 
     GetMomentDetailReq {

@@ -4,7 +4,7 @@ package handler
 import (
 	"net/http"
 
-	"github.com/xh-polaris/cat-community-api/internal/svc"
+	"github.com/xh-polaris/meowchat-bff/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )
@@ -29,6 +29,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
+				Path:    "/post/get_post_previews",
+				Handler: GetPostPreviewsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
 				Path:    "/collection/get_cat_previews",
 				Handler: GetCatsHandler(serverCtx),
 			},
@@ -44,7 +49,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/moment",
+				Path:    "/moment/get_moment_detail",
 				Handler: GetMomentDetailHandler(serverCtx),
 			},
 		},

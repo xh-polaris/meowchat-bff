@@ -1,4 +1,4 @@
-module github.com/xh-polaris/cat-community-api
+module github.com/xh-polaris/meowchat-bff
 
 go 1.18
 
