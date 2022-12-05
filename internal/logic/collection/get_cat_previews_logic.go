@@ -1,4 +1,4 @@
-package logic
+package collection
 
 import (
 	"context"
@@ -9,21 +9,21 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type GetMomentPreviewsLogic struct {
+type GetCatPreviewsLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewGetMomentPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetMomentPreviewsLogic {
-	return &GetMomentPreviewsLogic{
+func NewGetCatPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCatPreviewsLogic {
+	return &GetCatPreviewsLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *GetMomentPreviewsLogic) GetMomentPreviews(req *types.GetMomentPreviewsReq) (resp *types.GetMomentPreviewsResp, err error) {
+func (l *GetCatPreviewsLogic) GetCatPreviews() (resp *types.GetCatPreviewsResp, err error) {
 	// todo: add your logic here and delete this line
 
 	return

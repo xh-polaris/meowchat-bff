@@ -1,17 +1,17 @@
-package handler
+package collection
 
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/collection"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func GetNewsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func GetCatPreviewsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		l := logic.NewGetNewsLogic(r.Context(), svcCtx)
-		resp, err := l.GetNews()
+		l := collection.NewGetCatPreviewsLogic(r.Context(), svcCtx)
+		resp, err := l.GetCatPreviews()
 		if err != nil {
 			httpx.Error(w, err)
 		} else {

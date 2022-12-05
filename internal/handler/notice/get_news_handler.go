@@ -1,17 +1,17 @@
-package handler
+package notice
 
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/notice"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func GetAdminsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func GetNewsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		l := logic.NewGetAdminsLogic(r.Context(), svcCtx)
-		resp, err := l.GetAdmins()
+		l := notice.NewGetNewsLogic(r.Context(), svcCtx)
+		resp, err := l.GetNews()
 		if err != nil {
 			httpx.Error(w, err)
 		} else {

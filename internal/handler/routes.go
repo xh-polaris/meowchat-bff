@@ -4,6 +4,12 @@ package handler
 import (
 	"net/http"
 
+	auth "github.com/xh-polaris/meowchat-bff/internal/handler/auth"
+	collection "github.com/xh-polaris/meowchat-bff/internal/handler/collection"
+	comment "github.com/xh-polaris/meowchat-bff/internal/handler/comment"
+	moment "github.com/xh-polaris/meowchat-bff/internal/handler/moment"
+	notice "github.com/xh-polaris/meowchat-bff/internal/handler/notice"
+	post "github.com/xh-polaris/meowchat-bff/internal/handler/post"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -14,43 +20,23 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
+				Path:    "/account/sign_in",
+				Handler: auth.SignInHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/account/send_verify_code",
+				Handler: auth.SendVerifyCodeHandler(serverCtx),
+			},
+		},
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
 				Path:    "/account/set_password",
-				Handler: SetPasswordHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/notice/get_admins",
-				Handler: GetAdminsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/notice/get_news",
-				Handler: GetNewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/post/get_post_previews",
-				Handler: GetPostPreviewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/collection/get_cat_previews",
-				Handler: GetCatsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/collection/get_cat_detail",
-				Handler: GetCatDetailHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/moment/get_moment_previews",
-				Handler: GetMomentPreviewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/moment/get_moment_detail",
-				Handler: GetMomentDetailHandler(serverCtx),
+				Handler: auth.SetPasswordHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
@@ -59,15 +45,105 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				Method:  http.MethodPost,
-				Path:    "/account/sign_in",
-				Handler: SignInHandler(serverCtx),
+				Method:  http.MethodGet,
+				Path:    "/notice/get_admins",
+				Handler: notice.GetAdminsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/notice/get_news",
+				Handler: notice.GetNewsHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/post/get_post_previews",
+				Handler: post.GetPostPreviewsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/post/get_post_detail",
+				Handler: post.GetPostDetailHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/account/send_verify_code",
-				Handler: SendVerifyCodeHandler(serverCtx),
+				Path:    "/post/new_post",
+				Handler: post.NewPostHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/post/delete_post",
+				Handler: post.DeletePostHandler(serverCtx),
 			},
 		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/collection/get_cat_previews",
+				Handler: collection.GetCatPreviewsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/collection/get_cat_detail",
+				Handler: collection.GetCatDetailHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/collection/new_cat",
+				Handler: collection.NewCatHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/moment/get_moment_previews",
+				Handler: moment.GetMomentPreviewsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/moment/get_moment_detail",
+				Handler: moment.GetMomentDetailHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/moment/new_moment",
+				Handler: moment.NewMomentHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/moment/delete_moment",
+				Handler: moment.DeleteMomentHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/comment/get_comments",
+				Handler: comment.GetCommentsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/comment/new_comment",
+				Handler: comment.NewCommentHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 }

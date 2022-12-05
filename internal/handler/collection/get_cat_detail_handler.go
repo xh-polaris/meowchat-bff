@@ -1,9 +1,9 @@
-package handler
+package collection
 
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/collection"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -17,7 +17,7 @@ func GetCatDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := logic.NewGetCatDetailLogic(r.Context(), svcCtx)
+		l := collection.NewGetCatDetailLogic(r.Context(), svcCtx)
 		resp, err := l.GetCatDetail(&req)
 		if err != nil {
 			httpx.Error(w, err)

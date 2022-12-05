@@ -26,8 +26,38 @@ type (
         page int64 `form:"page"`
     }
 
-    GetPostPreviewsResp{
+    GetPostPreviewsResp {
         Status
         posts []Post `json:"posts"`
+    }
+
+    GetPostDetailReq {
+        postId string `form:"postId"`
+    }
+
+    GetPostDetailResp {
+        post Post `json:"post"`
+        Status
+    }
+
+    NewPostReq {
+        id string `json:"id,optional"`
+        isAnonymous bool `json:"isAnonymous"`
+        title string `json:"title"`
+        text string `json:"text"`
+        coverUrl string `json:"coverUrl,optional"`
+        tags []Tag `json:"tags"`
+    }
+
+    NewPostResp {
+        Status
+    }
+
+    DeletePostReq {
+        id string `json:"id"`
+    }
+
+    DeletePostResp {
+        Status
     }
 )

@@ -42,7 +42,7 @@ type (
     }
 
     GetCatDetailReq {
-        id string `json:"campusId"`
+        id string `form:"id"`
     }
 
     GetCatDetailResp {
@@ -50,4 +50,22 @@ type (
         cat Cat `json:"cat"`
     }
 
+    NewCatReq {
+        id string `json:"id,optional"`
+        age string `json:"age"`
+        campusId string `json:"campusId"`
+        color string `json:"color"`
+        details string `json:"details"`
+        name string `json:"name"`
+        popularity int64 `json:"popularity"`
+        sex string `json:"sex"`
+        area string `json:"area"`
+        isSnipped bool `json:"isSnipped"`
+        isSterilized bool `json:"isSterilized"`
+        avatars []string `json:"avatars"`
+    }
+
+    NewCatResp {
+        Status
+    }
 )

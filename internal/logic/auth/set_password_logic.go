@@ -1,9 +1,9 @@
-package logic
+package auth
 
 import (
 	"context"
 
-	"github.com/xh-polaris/account-rpc/pb"
+	"github.com/xh-polaris/auth-rpc/pb"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 
@@ -26,7 +26,7 @@ func NewSetPasswordLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SetPa
 
 func (l *SetPasswordLogic) SetPassword(req *types.SetPasswordReq) (*types.SetPasswordResp, error) {
 	userId := l.ctx.Value("userId").(string)
-	_, err := l.svcCtx.AccountRPC.SetPassword(l.ctx, &pb.SetPasswordReq{
+	_, err := l.svcCtx.AuthRPC.SetPassword(l.ctx, &pb.SetPasswordReq{
 		UserId:   userId,
 		Password: req.Password,
 	})

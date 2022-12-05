@@ -1,9 +1,9 @@
-package logic
+package auth
 
 import (
 	"context"
 
-	"github.com/xh-polaris/account-rpc/pb"
+	"github.com/xh-polaris/auth-rpc/pb"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 
@@ -25,7 +25,7 @@ func NewSendVerifyCodeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Se
 }
 
 func (l *SendVerifyCodeLogic) SendVerifyCode(req *types.SendVerifyCodeReq) (*types.SendVerifyCodeResp, error) {
-	_, err := l.svcCtx.AccountRPC.SendVerifyCode(l.ctx, &pb.SendVerifyCodeReq{
+	_, err := l.svcCtx.AuthRPC.SendVerifyCode(l.ctx, &pb.SendVerifyCodeReq{
 		AuthType: req.AuthType,
 		AuthId:   req.AuthId,
 	})

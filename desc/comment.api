@@ -8,26 +8,33 @@ import "desc/common.api"
 
 type (
     Comment {
-        Id string `json:"id"`
-        CreateAt string `json:"createAt"`
-        Comment string `json:"comment"`
-        User UserPreview `json:"user"`
+        id string `json:"id"`
+        likes int64 `json:"likes"`
+        createAt int64 `json:"createAt"`
+        text string `json:"text"`
+        user UserPreview `json:"user"`
+        comments int64 `json:"comments"`
+        ReplyName string `json:"replyName,optional"`
     }
 
-    ListCommentReq {
-        Id string `json:"id"`
+    NewCommentReq {
+        text string `json:"text"`
+        ownerId string `json:"ownerId"`
+        scope string `json:"scope"`
     }
 
-    ListCommentResp {
+    NewCommentResp {
         Status
-        Comments []Comment `json:"comments"`
     }
 
-    PostCommentReq {
-        Comment string `json:"comment"`
+    GetCommentsReq {
+        scope string `form:"scope"`
+        page int64 `form:"page"`
+        id string `form:"id"`
     }
 
-    PostCommentResp {
+    GetCommentsResp {
         Status
+        comments []Comment `json:"comments"`
     }
 )

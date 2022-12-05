@@ -78,6 +78,36 @@ type GetPostPreviewsResp struct {
 	Posts []Post `json:"posts"`
 }
 
+type GetPostDetailReq struct {
+	PostId string `form:"postId"`
+}
+
+type GetPostDetailResp struct {
+	Post Post `json:"post"`
+	Status
+}
+
+type NewPostReq struct {
+	Id          string `json:"id,optional"`
+	IsAnonymous bool   `json:"isAnonymous"`
+	Title       string `json:"title"`
+	Text        string `json:"text"`
+	CoverUrl    string `json:"coverUrl,optional"`
+	Tags        []Tag  `json:"tags"`
+}
+
+type NewPostResp struct {
+	Status
+}
+
+type DeletePostReq struct {
+	Id string `json:"id"`
+}
+
+type DeletePostResp struct {
+	Status
+}
+
 type Cat struct {
 	Id           string   `json:"id"`
 	CreateAt     string   `json:"createAt"`
@@ -113,12 +143,31 @@ type GetCatPreviewsResp struct {
 }
 
 type GetCatDetailReq struct {
-	Id string `json:"campusId"`
+	Id string `form:"id"`
 }
 
 type GetCatDetailResp struct {
 	Status
 	Cat Cat `json:"cat"`
+}
+
+type NewCatReq struct {
+	Id           string   `json:"id,optional"`
+	Age          string   `json:"age"`
+	CampusId     string   `json:"campusId"`
+	Color        string   `json:"color"`
+	Details      string   `json:"details"`
+	Name         string   `json:"name"`
+	Popularity   int64    `json:"popularity"`
+	Sex          string   `json:"sex"`
+	Area         string   `json:"area"`
+	IsSnipped    bool     `json:"isSnipped"`
+	IsSterilized bool     `json:"isSterilized"`
+	Avatars      []string `json:"avatars"`
+}
+
+type NewCatResp struct {
+	Status
 }
 
 type Moment struct {
@@ -150,28 +199,56 @@ type GetMomentDetailResp struct {
 	Moment Moment `json:"moment"`
 }
 
-type Comment struct {
-	Id       string      `json:"id"`
-	CreateAt string      `json:"createAt"`
-	Comment  string      `json:"comment"`
-	User     UserPreview `json:"user"`
-}
-
-type ListCommentReq struct {
+type DeleteMomentReq struct {
 	Id string `json:"id"`
 }
 
-type ListCommentResp struct {
+type DeleteMomentResp struct {
+	Status
+}
+
+type NewMomentReq struct {
+	Id        string `json:"id,optional"`
+	Title     string `json:"title"`
+	CatId     string `json:"catId,optional"`
+	Text      string `json:"text"`
+	ImageUrls string `json:"imageUrls"`
+}
+
+type NewMomentResp struct {
+	Id string `json:"id"`
+	Status
+}
+
+type Comment struct {
+	Id        string      `json:"id"`
+	Likes     int64       `json:"likes"`
+	CreateAt  int64       `json:"createAt"`
+	Text      string      `json:"text"`
+	User      UserPreview `json:"user"`
+	Comments  int64       `json:"comments"`
+	ReplyName string      `json:"replyName,optional"`
+}
+
+type NewCommentReq struct {
+	Text    string `json:"text"`
+	OwnerId string `json:"ownerId"`
+	Scope   string `json:"scope"`
+}
+
+type NewCommentResp struct {
+	Status
+}
+
+type GetCommentsReq struct {
+	Scope string `form:"scope"`
+	Page  int64  `form:"page"`
+	Id    string `form:"id"`
+}
+
+type GetCommentsResp struct {
 	Status
 	Comments []Comment `json:"comments"`
-}
-
-type PostCommentReq struct {
-	Comment string `json:"comment"`
-}
-
-type PostCommentResp struct {
-	Status
 }
 
 type News struct {

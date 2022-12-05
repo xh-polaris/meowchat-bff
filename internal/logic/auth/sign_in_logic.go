@@ -1,4 +1,4 @@
-package logic
+package auth
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/zeromicro/go-zero/core/logx"
 
-	"github.com/xh-polaris/account-rpc/pb"
+	"github.com/xh-polaris/auth-rpc/pb"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 )
@@ -27,7 +27,7 @@ func NewSignInLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SignInLogi
 }
 
 func (l *SignInLogic) SignIn(req *types.SignInReq) (resp *types.SignInResp, err error) {
-	rpcResp, err := l.svcCtx.AccountRPC.SignIn(l.ctx, &pb.SignInReq{
+	rpcResp, err := l.svcCtx.AuthRPC.SignIn(l.ctx, &pb.SignInReq{
 		AuthType: req.AuthType,
 		AuthId:   req.AuthId,
 		Password: req.Password,

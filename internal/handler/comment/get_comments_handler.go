@@ -1,24 +1,24 @@
-package handler
+package comment
 
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/comment"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func SignInHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func GetCommentsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.SignInReq
+		var req types.GetCommentsReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.Error(w, err)
 			return
 		}
 
-		l := logic.NewSignInLogic(r.Context(), svcCtx)
-		resp, err := l.SignIn(&req)
+		l := comment.NewGetCommentsLogic(r.Context(), svcCtx)
+		resp, err := l.GetComments(&req)
 		if err != nil {
 			httpx.Error(w, err)
 		} else {

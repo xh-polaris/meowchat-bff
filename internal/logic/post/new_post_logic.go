@@ -1,4 +1,4 @@
-package logic
+package post
 
 import (
 	"context"
@@ -9,21 +9,21 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type GetCatDetailLogic struct {
+type NewPostLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewGetCatDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCatDetailLogic {
-	return &GetCatDetailLogic{
+func NewNewPostLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewPostLogic {
+	return &NewPostLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *GetCatDetailLogic) GetCatDetail(req *types.GetCatDetailReq) (resp *types.GetCatDetailResp, err error) {
+func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, err error) {
 	// todo: add your logic here and delete this line
 
 	return

@@ -12,37 +12,8 @@ import "desc/comment.api"
 import "desc/notice.api"
 
 @server(
-	jwt: Auth
+	group: auth
 )
-
-service meowchat {
-	// auth
-	@handler SetPassword
-	post /account/set_password (SetPasswordReq) returns (SetPasswordResp)
-	
-	// notice
-	@handler GetAdmins
-	get /notice/get_admins returns (GetAdminsResp)
-	@handler GetNews
-	get /notice/get_news returns (GetNewsResp)
-	
-	// post
-	@handler GetPostPreviews
-	get /post/get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
-	
-	// collection
-	@handler GetCats
-	get /collection/get_cat_previews returns (GetCatPreviewsResp)
-	@handler GetCatDetail
-	get /collection/get_cat_detail (GetCatDetailReq) returns (GetCatDetailResp)
-	
-	// moment
-	@handler GetMomentPreviews
-	get /moment/get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
-	@handler GetMomentDetail
-	get /moment/get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
-	
-}
 
 service meowchat {
 	// auth
@@ -50,4 +21,90 @@ service meowchat {
 	post /account/sign_in (SignInReq) returns (SignInResp)
 	@handler SendVerifyCode
 	post /account/send_verify_code (SendVerifyCodeReq) returns (SendVerifyCodeResp)
+}
+
+@server(
+	group: auth
+	jwt: Auth
+)
+
+service meowchat {
+	// auth
+	@handler SetPassword
+	post /account/set_password (SetPasswordReq) returns (SetPasswordResp)
+}
+
+@server(
+	group: notice
+	jwt: Auth
+)
+
+service meowchat {
+	// notice
+	@handler GetAdmins
+	get /notice/get_admins returns (GetAdminsResp)
+	@handler GetNews
+	get /notice/get_news returns (GetNewsResp)
+}
+
+@server(
+	group: post
+	jwt: Auth
+)
+
+service meowchat {
+	// post
+	@handler GetPostPreviews
+	get /post/get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
+	@handler GetPostDetail
+	get /post/get_post_detail (GetPostDetailReq) returns (GetPostDetailResp)
+	@handler NewPost
+	post /post/new_post (NewPostReq) returns (NewPostResp)
+	@handler DeletePost
+	post /post/delete_post (DeletePostReq) returns (DeletePostResp)
+}
+
+@server(
+	group: collection
+	jwt: Auth
+)
+
+service meowchat {
+	// collection
+	@handler GetCatPreviews
+	get /collection/get_cat_previews returns (GetCatPreviewsResp)
+	@handler GetCatDetail
+	get /collection/get_cat_detail (GetCatDetailReq) returns (GetCatDetailResp)
+	@handler NewCat
+	post /collection/new_cat (NewCatReq) returns (NewCatResp)
+}
+
+@server(
+	group: moment
+	jwt: Auth
+)
+
+service meowchat {
+	// moment
+	@handler GetMomentPreviews
+	get /moment/get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
+	@handler GetMomentDetail
+	get /moment/get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
+	@handler NewMoment
+	post /moment/new_moment (NewMomentReq) returns (NewMomentResp)
+	@handler DeleteMoment
+	post /moment/delete_moment (DeleteMomentReq) returns (DeleteMomentResp)
+}
+
+@server(
+	group: comment
+	jwt: Auth
+)
+
+service meowchat {
+	// comment
+	@handler GetComments
+	get /comment/get_comments (GetCommentsReq) returns (GetCommentsResp)
+	@handler NewComment
+	post /comment/new_comment (NewCommentReq) returns (NewCommentResp)
 }

@@ -7,6 +7,6 @@ Log:
 Auth:
   AccessSecret: $JWT_SECRET
   AccessExpire: 86400
-AccountRPC:
+AuthRPC:
   Endpoints:
     - $ACCOUNT_RPC_HOST

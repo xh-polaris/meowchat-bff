@@ -24,7 +24,7 @@ type (
 
     GetMomentPreviewsResp {
         Status
-        Moments []Moment `json:"moments"`
+        moments []Moment `json:"moments"`
     }
 
     GetMomentDetailReq {
@@ -33,8 +33,28 @@ type (
 
     GetMomentDetailResp {
         Status
-        Moment Moment `json:"moment"`
+        moment Moment `json:"moment"`
     }
 
+    DeleteMomentReq {
+        id string `json:"id"`
+    }
+
+    DeleteMomentResp {
+        Status
+    }
+
+    NewMomentReq {
+        id string `json:"id,optional"`
+        title string `json:"title"`
+        catId string `json:"catId,optional"`
+        text string `json:"text"`
+        imageUrls string `json:"imageUrls"`
+    }
+
+    NewMomentResp {
+        id string `json:"id"`
+        Status
+    }
 )
 

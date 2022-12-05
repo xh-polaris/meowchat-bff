@@ -15,7 +15,7 @@ ADD go.sum .
 RUN go mod download
 COPY . .
 COPY ./etc /app/etc
-RUN go build -ldflags="-s -w" -o /app/cat-community-api .
+RUN go build -ldflags="-s -w -X google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn" -o /app/meowchat .
 
 
 FROM scratch
@@ -25,7 +25,7 @@ COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/Asia/S
 ENV TZ Asia/Shanghai
 
 WORKDIR /app
-COPY --from=builder /app/cat-community-api /app/cat-community-api
+COPY --from=builder /app/meowchat /app/meowchat
 COPY --from=builder /app/etc /app/etc
 
-CMD ["./cat-community-api", "-f", "etc/cat_community.yaml"]
+CMD ["./meowchat", "-f", "etc/meowchat.yaml"]

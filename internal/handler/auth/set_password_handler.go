@@ -1,24 +1,24 @@
-package handler
+package auth
 
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/auth"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func GetMomentDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func SetPasswordHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.GetMomentDetailReq
+		var req types.SetPasswordReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.Error(w, err)
 			return
 		}
 
-		l := logic.NewGetMomentDetailLogic(r.Context(), svcCtx)
-		resp, err := l.GetMomentDetail(&req)
+		l := auth.NewSetPasswordLogic(r.Context(), svcCtx)
+		resp, err := l.SetPassword(&req)
 		if err != nil {
 			httpx.Error(w, err)
 		} else {
