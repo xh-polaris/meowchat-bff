@@ -15,7 +15,7 @@ ADD go.sum .
 RUN go mod download
 COPY . .
 COPY ./etc /app/etc
-RUN go build -ldflags="-s -w -X google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn" -o /app/meowchat .
+RUN go build -ldflags="-s -w" -o /app/meowchat .
 
 
 FROM scratch
