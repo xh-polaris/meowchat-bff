@@ -110,7 +110,7 @@ type DeletePostResp struct {
 
 type Cat struct {
 	Id           string   `json:"id"`
-	CreateAt     string   `json:"createAt"`
+	CreateAt     int64    `json:"createAt"`
 	Age          string   `json:"age"`
 	CommunityId  string   `json:"communityId"`
 	Color        string   `json:"color"`
@@ -122,7 +122,7 @@ type Cat struct {
 	Area         string   `json:"area"`
 	IsSnipped    bool     `json:"isSnipped"`
 	IsSterilized bool     `json:"isSterilized"`
-	Photos       []string `json:"photos"`
+	Avatars      []string `json:"avatars"`
 }
 
 type CatPreview struct {
@@ -134,7 +134,8 @@ type CatPreview struct {
 }
 
 type GetCatPreviewsReq struct {
-	CommunityId string `json:"communityId"`
+	CommunityId string `form:"communityId"`
+	Page        int64  `form:"page"`
 }
 
 type GetCatPreviewsResp struct {
@@ -143,7 +144,7 @@ type GetCatPreviewsResp struct {
 }
 
 type GetCatDetailReq struct {
-	Id string `form:"id"`
+	CatId string `form:"catId"`
 }
 
 type GetCatDetailResp struct {
@@ -151,10 +152,18 @@ type GetCatDetailResp struct {
 	Cat Cat `json:"cat"`
 }
 
+type DeleteCatReq struct {
+	CatId string `json:"catId"`
+}
+
+type DeleteCatResp struct {
+	Status
+}
+
 type NewCatReq struct {
 	Id           string   `json:"id,optional"`
 	Age          string   `json:"age"`
-	CampusId     string   `json:"campusId"`
+	CommunityId  string   `json:"commnunityId"`
 	Color        string   `json:"color"`
 	Details      string   `json:"details"`
 	Name         string   `json:"name"`
@@ -168,6 +177,7 @@ type NewCatReq struct {
 
 type NewCatResp struct {
 	Status
+	CatId string `json:"catId"`
 }
 
 type Moment struct {

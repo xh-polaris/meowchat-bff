@@ -72,11 +72,13 @@ service meowchat {
 service meowchat {
 	// collection
 	@handler GetCatPreviews
-	get /collection/get_cat_previews returns (GetCatPreviewsResp)
+	get /collection/get_cat_previews (GetCatPreviewsReq) returns (GetCatPreviewsResp)
 	@handler GetCatDetail
 	get /collection/get_cat_detail (GetCatDetailReq) returns (GetCatDetailResp)
 	@handler NewCat
 	post /collection/new_cat (NewCatReq) returns (NewCatResp)
+	@handler DeleteCat
+	post /collection/delete_cat (DeleteCatReq) returns (DeleteCatResp)
 }
 
 @server(

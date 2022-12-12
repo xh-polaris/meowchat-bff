@@ -101,6 +101,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/collection/new_cat",
 				Handler: collection.NewCatHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/collection/delete_cat",
+				Handler: collection.DeleteCatHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)

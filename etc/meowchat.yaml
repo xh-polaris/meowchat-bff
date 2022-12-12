@@ -4,9 +4,16 @@ Port: 8888
 Mode: dev
 Log:
   Encoding: plain
+  Level: debug
 Auth:
   AccessSecret: $JWT_SECRET
   AccessExpire: 86400
 AuthRPC:
   Endpoints:
     - $ACCOUNT_RPC_HOST
+CollectionRPC:
+  Endpoints:
+    - $COLLECTION_RPC_HOST
+MomentRPC:
+  Endpoints:
+    - $MOMENT_RPC_HOST
