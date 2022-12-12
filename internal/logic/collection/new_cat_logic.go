@@ -2,6 +2,8 @@ package collection
 
 import (
 	"context"
+	"github.com/jinzhu/copier"
+	"github.com/xh-polaris/meowchat-collection-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -24,7 +26,25 @@ func NewNewCatLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewCatLogi
 }
 
 func (l *NewCatLogic) NewCat(req *types.NewCatReq) (resp *types.NewCatResp, err error) {
-	// todo: add your logic here and delete this line
+	resp = new(types.NewCatResp)
+	cat := new(pb.Cat)
+	err = copier.Copy(cat, req)
+	if err != nil {
+		return nil, err
+	}
+
+	if req.Id == "" {
+		var data *pb.CreateCatResp
+		data, err = l.svcCtx.CollectionRPC.CreateCat(l.ctx, &pb.CreateCatReq{Cat: cat})
+		resp.CatId = data.CatId
+	} else {
+		_, err = l.svcCtx.CollectionRPC.UpdateCat(l.ctx, &pb.UpdateCatReq{Cat: cat})
+		resp.CatId = cat.Id
+	}
+
+	if err != nil {
+		return nil, err
+	}
 
 	return
 }

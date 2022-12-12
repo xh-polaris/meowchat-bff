@@ -9,7 +9,7 @@ import "desc/common.api"
 type (
     Cat {
         id string `json:"id"`
-        createAt string `json:"createAt"`
+        createAt int64 `json:"createAt"`
         age string `json:"age"`
         communityId string `json:"communityId"`
         color string `json:"color"`
@@ -21,7 +21,7 @@ type (
         area string `json:"area"`
         isSnipped bool `json:"isSnipped"`
         isSterilized bool `json:"isSterilized"`
-        photos []string `json:"photos"`
+        avatars []string `json:"avatars"`
     }
 
     CatPreview {
@@ -33,7 +33,8 @@ type (
     }
 
     GetCatPreviewsReq {
-        communityId string `json:"communityId"`
+        communityId string `form:"communityId"`
+        page int64 `form:"page"`
     }
 
     GetCatPreviewsResp {
@@ -42,7 +43,7 @@ type (
     }
 
     GetCatDetailReq {
-        id string `form:"id"`
+        catId string `form:"catId"`
     }
 
     GetCatDetailResp {
@@ -50,10 +51,18 @@ type (
         cat Cat `json:"cat"`
     }
 
+    DeleteCatReq {
+        catId string `json:"catId"`
+    }
+
+    DeleteCatResp {
+        Status
+    }
+
     NewCatReq {
         id string `json:"id,optional"`
         age string `json:"age"`
-        campusId string `json:"campusId"`
+        communityId string `json:"commnunityId"`
         color string `json:"color"`
         details string `json:"details"`
         name string `json:"name"`
@@ -67,5 +76,6 @@ type (
 
     NewCatResp {
         Status
+        catId string `json:"catId"`
     }
 )
