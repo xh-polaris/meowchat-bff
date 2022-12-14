@@ -27,6 +27,7 @@ func NewSignInLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SignInLogi
 }
 
 func (l *SignInLogic) SignIn(req *types.SignInReq) (resp *types.SignInResp, err error) {
+	resp = new(types.SignInResp)
 	rpcResp, err := l.svcCtx.AuthRPC.SignIn(l.ctx, &pb.SignInReq{
 		AuthType: req.AuthType,
 		AuthId:   req.AuthId,
@@ -38,7 +39,6 @@ func (l *SignInLogic) SignIn(req *types.SignInReq) (resp *types.SignInResp, err 
 	}
 
 	auth := l.svcCtx.Config.Auth
-	resp = new(types.SignInResp)
 	resp.AccessToken, resp.AccessExpire, err = generateJwtToken(rpcResp.UserId, auth.AccessSecret, auth.AccessExpire)
 	resp.UserId = rpcResp.UserId
 	return

@@ -9,17 +9,18 @@ import "desc/common.api"
 type (
     Moment {
         id string `json:"id"`
-        createAt string `json:"createAt"`
+        createAt int64 `json:"createAt"`
         catId string `json:"catId,optional"`
-        pictures []string `json:"pictures"`
+        photos []string `json:"photos"`
         title string `json:"title"`
         text string `json:"text"`
         user UserPreview `json:"user"`
-        likes int64 `json:"likes"`
+        communityId string `json:"communityId"`
     }
 
     GetMomentPreviewsReq {
-        communityId string `json:"communityId"`
+        communityId string `form:"communityId"`
+        page int64 `form:"page"`
     }
 
     GetMomentPreviewsResp {
@@ -28,7 +29,7 @@ type (
     }
 
     GetMomentDetailReq {
-        id string `json:"id"`
+        momentId string `form:"momentId"`
     }
 
     GetMomentDetailResp {
@@ -37,7 +38,7 @@ type (
     }
 
     DeleteMomentReq {
-        id string `json:"id"`
+        momentId string `json:"momentId"`
     }
 
     DeleteMomentResp {
@@ -49,11 +50,12 @@ type (
         title string `json:"title"`
         catId string `json:"catId,optional"`
         text string `json:"text"`
-        imageUrls string `json:"imageUrls"`
+        photos []string `json:"photos"`
+        communityId string `json:"communityId"`
     }
 
     NewMomentResp {
-        id string `json:"id"`
+        momentId string `json:"momentId"`
         Status
     }
 )

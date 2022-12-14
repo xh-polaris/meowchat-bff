@@ -3,12 +3,13 @@ module github.com/xh-polaris/meowchat-bff
 go 1.18
 
 require (
+	github.com/jinzhu/copier v0.3.5
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/xh-polaris/auth-rpc v1.4.0
 	github.com/xh-polaris/meowchat-collection-rpc v1.0.0
 	github.com/xh-polaris/meowchat-moment-rpc v1.0.0
 	github.com/zeromicro/go-zero v1.4.2
-	github.com/jinzhu/copier v0.3.5
+	google.golang.org/grpc v1.51.0
 )
 
 require (
@@ -69,7 +70,6 @@ require (
 	golang.org/x/time v0.0.0-20220411224347-583f2d630306 // indirect
 	google.golang.org/appengine v1.6.6 // indirect
 	google.golang.org/genproto v0.0.0-20220602131408-e326c6e8e9c8 // indirect
-	google.golang.org/grpc v1.51.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
