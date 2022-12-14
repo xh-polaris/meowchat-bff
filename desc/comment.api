@@ -9,12 +9,11 @@ import "desc/common.api"
 type (
     Comment {
         id string `json:"id"`
-        likes int64 `json:"likes"`
         createAt int64 `json:"createAt"`
         text string `json:"text"`
         user UserPreview `json:"user"`
         comments int64 `json:"comments"`
-        ReplyName string `json:"replyName,optional"`
+        ReplyId string `json:"replyName,optional"`
     }
 
     NewCommentReq {

@@ -36,14 +36,16 @@ func (l *NewCatLogic) NewCat(req *types.NewCatReq) (resp *types.NewCatResp, err 
 	if req.Id == "" {
 		var data *pb.CreateCatResp
 		data, err = l.svcCtx.CollectionRPC.CreateCat(l.ctx, &pb.CreateCatReq{Cat: cat})
+		if err != nil {
+			return nil, err
+		}
 		resp.CatId = data.CatId
 	} else {
 		_, err = l.svcCtx.CollectionRPC.UpdateCat(l.ctx, &pb.UpdateCatReq{Cat: cat})
+		if err != nil {
+			return nil, err
+		}
 		resp.CatId = cat.Id
-	}
-
-	if err != nil {
-		return nil, err
 	}
 
 	return

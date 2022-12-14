@@ -2,12 +2,12 @@ package collection
 
 import (
 	"context"
-	"github.com/jinzhu/copier"
-	"github.com/xh-polaris/meowchat-collection-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
+	"github.com/xh-polaris/meowchat-collection-rpc/pb"
 
+	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

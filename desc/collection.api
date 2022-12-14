@@ -62,7 +62,7 @@ type (
     NewCatReq {
         id string `json:"id,optional"`
         age string `json:"age"`
-        communityId string `json:"commnunityId"`
+        communityId string `json:"communityId"`
         color string `json:"color"`
         details string `json:"details"`
         name string `json:"name"`

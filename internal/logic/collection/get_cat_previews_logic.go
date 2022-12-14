@@ -38,7 +38,8 @@ func (l *GetCatPreviewsLogic) GetCatPreviews(req *types.GetCatPreviewsReq) (resp
 		return nil, err
 	}
 
-	err = copier.Copy(resp.Cats, data.Cats)
+	resp.Cats = make([]types.CatPreview, 0, pageSize)
+	err = copier.Copy(&resp.Cats, data.Cats)
 	if err != nil {
 		return nil, err
 	}

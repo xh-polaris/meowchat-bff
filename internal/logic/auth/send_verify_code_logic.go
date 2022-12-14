@@ -24,8 +24,9 @@ func NewSendVerifyCodeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Se
 	}
 }
 
-func (l *SendVerifyCodeLogic) SendVerifyCode(req *types.SendVerifyCodeReq) (*types.SendVerifyCodeResp, error) {
-	_, err := l.svcCtx.AuthRPC.SendVerifyCode(l.ctx, &pb.SendVerifyCodeReq{
+func (l *SendVerifyCodeLogic) SendVerifyCode(req *types.SendVerifyCodeReq) (resp *types.SendVerifyCodeResp, err error) {
+	resp = new(types.SendVerifyCodeResp)
+	_, err = l.svcCtx.AuthRPC.SendVerifyCode(l.ctx, &pb.SendVerifyCodeReq{
 		AuthType: req.AuthType,
 		AuthId:   req.AuthId,
 	})
@@ -33,5 +34,5 @@ func (l *SendVerifyCodeLogic) SendVerifyCode(req *types.SendVerifyCodeReq) (*typ
 		return nil, err
 	}
 
-	return nil, nil
+	return resp, nil
 }
