@@ -9,16 +9,16 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func GetAdminsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func DeleteNewsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.GetAdminsReq
+		var req types.DeleteNewsReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := notice.NewGetAdminsLogic(r.Context(), svcCtx)
-		resp, err := l.GetAdmins(&req)
+		l := notice.NewDeleteNewsLogic(r.Context(), svcCtx)
+		resp, err := l.DeleteNews(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

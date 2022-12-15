@@ -1,7 +1,7 @@
 syntax = "v1"
 
 info(
-    title: "carousel api"
+    title: "notice api"
 )
 
 import "desc/common.api"
@@ -9,19 +9,31 @@ import "desc/common.api"
 type (
     News {
         id string `json:"id"`
-        createAt string `json:"createAt"`
+        createAt int64 `json:"createAt"`
+        communityId string `json:"communityId"`
         imageUrl string `json:"imageUrl"`
         linkUrl string `json:"linkUrl"`
-        linkType int32 `json:"linkType"`
+        Type string `json:"type"`
     }
 
     Admin {
         id       string `json:"id"`
-        createAt string `json:"createAt"`
+        createAt int64 `json:"createAt"`
+        communityId string `json:"communityId"`
         name     string `json:"name"`
         phone    string `json:"phone"`
         user     UserPreview `json:"user"`
         wechat   string `json:"wechat"`
+    }
+
+    Notice {
+        id       string `json:"id"`
+        text     string `json:"text"`
+        createAt int64 `json:"createAt"`
+    }
+
+    GetNewsReq {
+        communityId string `form:"communityId"`
     }
 
     GetNewsResp {
@@ -29,9 +41,61 @@ type (
         news []News `json:"news"`
     }
 
+    GetAdminsReq {
+        communityId string `form:"communityId"`
+    }
+
     GetAdminsResp {
         Status
         Admins []Admin `json:"admins"`
     }
 
+    GetNoticesReq {
+        communityId string `form:"communityId"`
+    }
+
+    GetNoticesResp {
+        Status
+        notices []Notice `json:"notices"`
+    }
+
+    NewNoticeReq {
+        id   string `json:"id,optional"`
+        communityId string `json:"communityId,optional"`
+        text string `json:"text"`
+    }
+
+    NewNoticeResp {
+        Status
+        noticeId string `json:"noticeId"`
+    }
+
+    NewNewsReq {
+        id       string `json:"id,optional"`
+        communityId string `json:"communityId,optional"`
+        imageUrl string `json:"imageUrl"`
+        linkUrl  string `json:"linkUrl"`
+        Type string `json:"type"`
+    }
+
+    NewNewsResp {
+        Status
+        newId string `json:"newId"`
+    }
+
+    DeleteNoticeReq {
+        id string `json:"id"`
+    }
+
+    DeleteNoticeResp {
+        Status
+    }
+
+    DeleteNewsReq {
+        id string `json:"id"`
+    }
+
+    DeleteNewsResp {
+        Status
+    }
 )

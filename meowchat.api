@@ -10,6 +10,7 @@ import "desc/collection.api"
 import "desc/moment.api"
 import "desc/comment.api"
 import "desc/notice.api"
+import "desc/like.api"
 
 @server(
 	group: auth
@@ -42,9 +43,34 @@ service meowchat {
 service meowchat {
 	// notice
 	@handler GetAdmins
-	get /notice/get_admins returns (GetAdminsResp)
+	get /notice/get_admins (GetAdminsReq) returns (GetAdminsResp)
 	@handler GetNews
-	get /notice/get_news returns (GetNewsResp)
+	get /notice/get_news (GetNewsReq) returns (GetNewsResp)
+	@handler GetNotices
+	get /notice/get_notices (GetNoticesReq) returns (GetNoticesResp)
+	@handler NewNews
+	post /notice/new_new (NewNewsReq) returns (NewNewsResp)
+	@handler NewNotice
+	post /notice/new_notice (NewNoticeReq) returns (NewNoticeResp)
+	@handler DeleteNews
+	post /notice/remove_new (DeleteNewsReq) returns (DeleteNewsResp)
+	@handler DeleteNotice
+	post /notice/remove_notice (DeleteNoticeReq) returns (DeleteNoticeResp)
+}
+
+@server(
+	group: like
+	jwt: Auth
+)
+service meowchat {
+	// like
+	@handler DoLike
+	post /like/do_like (DoLikeReq) returns (DoLikeResp)
+	@handler GetUserLiked
+	get /like/get_user_liked (GetUserLikedReq) returns (GetUserLikedResp)
+	@handler GetLikedCount
+	get /like/get_count (GetLikedCountReq) returns (GetLikedCountResp)
+	
 }
 
 @server(

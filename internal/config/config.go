@@ -14,4 +14,6 @@ type Config struct {
 	AuthRPC       zrpc.RpcClientConf
 	CollectionRPC zrpc.RpcClientConf
 	MomentRPC     zrpc.RpcClientConf
+	NoticeRPC     zrpc.RpcClientConf
+	LikeRPC       zrpc.RpcClientConf
 }
