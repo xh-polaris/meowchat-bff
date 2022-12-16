@@ -263,20 +263,32 @@ type GetCommentsResp struct {
 }
 
 type News struct {
-	Id       string `json:"id"`
-	CreateAt string `json:"createAt"`
-	ImageUrl string `json:"imageUrl"`
-	LinkUrl  string `json:"linkUrl"`
-	LinkType int32  `json:"linkType"`
+	Id          string `json:"id"`
+	CreateAt    int64  `json:"createAt"`
+	CommunityId string `json:"communityId"`
+	ImageUrl    string `json:"imageUrl"`
+	LinkUrl     string `json:"linkUrl"`
+	Type        string `json:"type"`
 }
 
 type Admin struct {
-	Id       string      `json:"id"`
-	CreateAt string      `json:"createAt"`
-	Name     string      `json:"name"`
-	Phone    string      `json:"phone"`
-	User     UserPreview `json:"user"`
-	Wechat   string      `json:"wechat"`
+	Id          string      `json:"id"`
+	CreateAt    int64       `json:"createAt"`
+	CommunityId string      `json:"communityId"`
+	Name        string      `json:"name"`
+	Phone       string      `json:"phone"`
+	User        UserPreview `json:"user"`
+	Wechat      string      `json:"wechat"`
+}
+
+type Notice struct {
+	Id       string `json:"id"`
+	Text     string `json:"text"`
+	CreateAt int64  `json:"createAt"`
+}
+
+type GetNewsReq struct {
+	CommunityId string `form:"communityId"`
 }
 
 type GetNewsResp struct {
@@ -284,7 +296,90 @@ type GetNewsResp struct {
 	News []News `json:"news"`
 }
 
+type GetAdminsReq struct {
+	CommunityId string `form:"communityId"`
+}
+
 type GetAdminsResp struct {
 	Status
 	Admins []Admin `json:"admins"`
+}
+
+type GetNoticesReq struct {
+	CommunityId string `form:"communityId"`
+}
+
+type GetNoticesResp struct {
+	Status
+	Notices []Notice `json:"notices"`
+}
+
+type NewNoticeReq struct {
+	Id          string `json:"id,optional"`
+	CommunityId string `json:"communityId,optional"`
+	Text        string `json:"text"`
+}
+
+type NewNoticeResp struct {
+	Status
+	NoticeId string `json:"noticeId"`
+}
+
+type NewNewsReq struct {
+	Id          string `json:"id,optional"`
+	CommunityId string `json:"communityId,optional"`
+	ImageUrl    string `json:"imageUrl"`
+	LinkUrl     string `json:"linkUrl"`
+	Type        string `json:"type"`
+}
+
+type NewNewsResp struct {
+	Status
+	NewId string `json:"newId"`
+}
+
+type DeleteNoticeReq struct {
+	Id string `json:"id"`
+}
+
+type DeleteNoticeResp struct {
+	Status
+}
+
+type DeleteNewsReq struct {
+	Id string `json:"id"`
+}
+
+type DeleteNewsResp struct {
+	Status
+}
+
+type DoLikeReq struct {
+	Liked      bool   `json:"liked"`
+	TargetId   string `json:"targetId"`
+	TargetType int32  `json:"type"`
+}
+
+type DoLikeResp struct {
+	Status
+}
+
+type GetUserLikedReq struct {
+	TargetId   string `form:"targetId"`
+	TargetType int32  `form:"type"`
+}
+
+type GetUserLikedResp struct {
+	Status
+	Liked bool `json:"liked"`
+}
+
+type GetLikedCountReq struct {
+	TargetId   string `form:"targetId"`
+	TargetType int32  `form:"type"`
+}
+
+type GetLikedCountResp struct {
+	Status
+	Count int64 `json:"count"`
 }

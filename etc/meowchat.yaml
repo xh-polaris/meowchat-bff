@@ -17,3 +17,9 @@ CollectionRPC:
 MomentRPC:
   Endpoints:
     - $MOMENT_RPC_HOST
+NoticeRPC:
+  Endpoints:
+    - $NOTICE_RPC_HOST
+LikeRPC:
+  Endpoints:
+    - $LIKE_RPC_HOST

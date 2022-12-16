@@ -1,0 +1,40 @@
+syntax = "v1"
+
+info(
+    title: "like api"
+)
+
+import "desc/common.api"
+
+type (
+
+    DoLikeReq {
+        liked bool `json:"liked"`
+        targetId string `json:"targetId"`
+        targetType int32 `json:"type"`
+    }
+
+    DoLikeResp {
+        Status
+    }
+
+    GetUserLikedReq {
+        targetId string `form:"targetId"`
+        targetType int32 `form:"type"`
+    }
+
+    GetUserLikedResp {
+        Status
+        liked bool `json:"liked"`
+    }
+
+    GetLikedCountReq {
+        targetId string `form:"targetId"`
+        targetType int32 `form:"type"`
+    }
+
+    GetLikedCountResp {
+        Status
+        count int64 `json:"count"`
+    }
+)

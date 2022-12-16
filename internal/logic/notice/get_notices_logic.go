@@ -11,30 +11,30 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type GetAdminsLogic struct {
+type GetNoticesLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewGetAdminsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetAdminsLogic {
-	return &GetAdminsLogic{
+func NewGetNoticesLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetNoticesLogic {
+	return &GetNoticesLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *GetAdminsLogic) GetAdmins(req *types.GetAdminsReq) (resp *types.GetAdminsResp, err error) {
-	resp = new(types.GetAdminsResp)
-	resp.Admins = make([]types.Admin, 0)
+func (l *GetNoticesLogic) GetNotices(req *types.GetNoticesReq) (resp *types.GetNoticesResp, err error) {
+	resp = new(types.GetNoticesResp)
+	resp.Notices = make([]types.Notice, 0)
 
-	data, err := l.svcCtx.NoticeRPC.ListAdmin(l.ctx, &pb.ListAdminReq{CommunityId: req.CommunityId})
+	data, err := l.svcCtx.NoticeRPC.ListNotice(l.ctx, &pb.ListNoticeReq{CommunityId: req.CommunityId})
 	if err != nil {
 		return nil, err
 	}
 
-	err = copier.Copy(&resp.Admins, &data.Admins)
+	err = copier.Copy(&resp.Notices, &data.Notices)
 	if err != nil {
 		return nil, err
 	}
