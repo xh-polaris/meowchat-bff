@@ -2,6 +2,8 @@ package notice
 
 import (
 	"context"
+	"github.com/jinzhu/copier"
+	"github.com/xh-polaris/meowchat-notice-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -23,8 +25,19 @@ func NewGetNewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetNewsLo
 	}
 }
 
-func (l *GetNewsLogic) GetNews() (resp *types.GetNewsResp, err error) {
-	// todo: add your logic here and delete this line
+func (l *GetNewsLogic) GetNews(req *types.GetNewsReq) (resp *types.GetNewsResp, err error) {
+	resp = new(types.GetNewsResp)
+	resp.News = make([]types.News, 0)
+
+	data, err := l.svcCtx.NoticeRPC.ListNews(l.ctx, &pb.ListNewsReq{CommunityId: req.CommunityId})
+	if err != nil {
+		return nil, err
+	}
+
+	err = copier.Copy(&resp.News, &data.News)
+	if err != nil {
+		return nil, err
+	}
 
 	return
 }

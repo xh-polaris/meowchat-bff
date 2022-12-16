@@ -5,7 +5,9 @@ import (
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
+	"github.com/xh-polaris/meowchat-collection-rpc/pb"
 
+	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -24,7 +26,18 @@ func NewGetCatDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetC
 }
 
 func (l *GetCatDetailLogic) GetCatDetail(req *types.GetCatDetailReq) (resp *types.GetCatDetailResp, err error) {
-	// todo: add your logic here and delete this line
+	resp = new(types.GetCatDetailResp)
+	data, err := l.svcCtx.CollectionRPC.RetrieveCat(l.ctx, &pb.RetrieveCatReq{
+		CatId: req.CatId,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	err = copier.Copy(&resp.Cat, data.Cat)
+	if err != nil {
+		return nil, err
+	}
 
 	return
 }

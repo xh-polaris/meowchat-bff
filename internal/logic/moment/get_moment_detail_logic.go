@@ -2,6 +2,8 @@ package moment
 
 import (
 	"context"
+	"github.com/jinzhu/copier"
+	"github.com/xh-polaris/meowchat-moment-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -24,7 +26,15 @@ func NewGetMomentDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *G
 }
 
 func (l *GetMomentDetailLogic) GetMomentDetail(req *types.GetMomentDetailReq) (resp *types.GetMomentDetailResp, err error) {
-	// todo: add your logic here and delete this line
+	resp = new(types.GetMomentDetailResp)
+	data, err := l.svcCtx.MomentRPC.RetrieveMoment(l.ctx, &pb.RetrieveMomentReq{MomentId: req.MomentId})
+	if err != nil {
+		return nil, err
+	}
 
+	err = copier.Copy(&resp.Moment, data.Moment)
+	if err != nil {
+		return nil, err
+	}
 	return
 }

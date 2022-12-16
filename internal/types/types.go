@@ -45,7 +45,7 @@ type Status struct {
 }
 
 type UserPreview struct {
-	UserId    string `json:"userId"`
+	Id        string `json:"id"`
 	Nickname  string `json:"nickname"`
 	AvatarUrl string `json:"avatarUrl"`
 }
@@ -57,7 +57,7 @@ type Tag struct {
 
 type Post struct {
 	Id          string      `json:"id"`
-	CreateAt    int         `json:"createAt"`
+	CreateAt    int64       `json:"createAt"`
 	IsAnonymous bool        `json:"isAnonymous"`
 	Title       string      `json:"title"`
 	Text        string      `json:"text"`
@@ -110,7 +110,7 @@ type DeletePostResp struct {
 
 type Cat struct {
 	Id           string   `json:"id"`
-	CreateAt     string   `json:"createAt"`
+	CreateAt     int64    `json:"createAt"`
 	Age          string   `json:"age"`
 	CommunityId  string   `json:"communityId"`
 	Color        string   `json:"color"`
@@ -122,19 +122,21 @@ type Cat struct {
 	Area         string   `json:"area"`
 	IsSnipped    bool     `json:"isSnipped"`
 	IsSterilized bool     `json:"isSterilized"`
-	Photos       []string `json:"photos"`
+	Avatars      []string `json:"avatars"`
 }
 
 type CatPreview struct {
 	Id          string `json:"id"`
 	Name        string `json:"name"`
+	Area        string `json:"area"`
 	Color       string `json:"color"`
 	AvatarUrl   string `json:"avatarUrl"`
 	IsCollected bool   `json:"isCollected"`
 }
 
 type GetCatPreviewsReq struct {
-	CommunityId string `json:"communityId"`
+	CommunityId string `form:"communityId"`
+	Page        int64  `form:"page"`
 }
 
 type GetCatPreviewsResp struct {
@@ -143,7 +145,7 @@ type GetCatPreviewsResp struct {
 }
 
 type GetCatDetailReq struct {
-	Id string `form:"id"`
+	CatId string `form:"catId"`
 }
 
 type GetCatDetailResp struct {
@@ -151,10 +153,18 @@ type GetCatDetailResp struct {
 	Cat Cat `json:"cat"`
 }
 
+type DeleteCatReq struct {
+	CatId string `json:"catId"`
+}
+
+type DeleteCatResp struct {
+	Status
+}
+
 type NewCatReq struct {
 	Id           string   `json:"id,optional"`
 	Age          string   `json:"age"`
-	CampusId     string   `json:"campusId"`
+	CommunityId  string   `json:"communityId"`
 	Color        string   `json:"color"`
 	Details      string   `json:"details"`
 	Name         string   `json:"name"`
@@ -168,21 +178,23 @@ type NewCatReq struct {
 
 type NewCatResp struct {
 	Status
+	CatId string `json:"catId"`
 }
 
 type Moment struct {
-	Id       string      `json:"id"`
-	CreateAt string      `json:"createAt"`
-	CatId    string      `json:"catId,optional"`
-	Pictures []string    `json:"pictures"`
-	Title    string      `json:"title"`
-	Text     string      `json:"text"`
-	User     UserPreview `json:"user"`
-	Likes    int64       `json:"likes"`
+	Id          string      `json:"id"`
+	CreateAt    int64       `json:"createAt"`
+	CatId       string      `json:"catId,optional"`
+	Photos      []string    `json:"photos"`
+	Title       string      `json:"title"`
+	Text        string      `json:"text"`
+	User        UserPreview `json:"user"`
+	CommunityId string      `json:"communityId"`
 }
 
 type GetMomentPreviewsReq struct {
-	CommunityId string `json:"communityId"`
+	CommunityId string `form:"communityId"`
+	Page        int64  `form:"page"`
 }
 
 type GetMomentPreviewsResp struct {
@@ -191,7 +203,7 @@ type GetMomentPreviewsResp struct {
 }
 
 type GetMomentDetailReq struct {
-	Id string `json:"id"`
+	MomentId string `form:"momentId"`
 }
 
 type GetMomentDetailResp struct {
@@ -200,7 +212,7 @@ type GetMomentDetailResp struct {
 }
 
 type DeleteMomentReq struct {
-	Id string `json:"id"`
+	MomentId string `json:"momentId"`
 }
 
 type DeleteMomentResp struct {
@@ -208,26 +220,26 @@ type DeleteMomentResp struct {
 }
 
 type NewMomentReq struct {
-	Id        string `json:"id,optional"`
-	Title     string `json:"title"`
-	CatId     string `json:"catId,optional"`
-	Text      string `json:"text"`
-	ImageUrls string `json:"imageUrls"`
+	Id          string   `json:"id,optional"`
+	Title       string   `json:"title"`
+	CatId       string   `json:"catId,optional"`
+	Text        string   `json:"text"`
+	Photos      []string `json:"photos"`
+	CommunityId string   `json:"communityId"`
 }
 
 type NewMomentResp struct {
-	Id string `json:"id"`
+	MomentId string `json:"momentId"`
 	Status
 }
 
 type Comment struct {
-	Id        string      `json:"id"`
-	Likes     int64       `json:"likes"`
-	CreateAt  int64       `json:"createAt"`
-	Text      string      `json:"text"`
-	User      UserPreview `json:"user"`
-	Comments  int64       `json:"comments"`
-	ReplyName string      `json:"replyName,optional"`
+	Id       string      `json:"id"`
+	CreateAt int64       `json:"createAt"`
+	Text     string      `json:"text"`
+	User     UserPreview `json:"user"`
+	Comments int64       `json:"comments"`
+	ReplyId  string      `json:"replyName,optional"`
 }
 
 type NewCommentReq struct {
@@ -252,20 +264,32 @@ type GetCommentsResp struct {
 }
 
 type News struct {
-	Id       string `json:"id"`
-	CreateAt string `json:"createAt"`
-	ImageUrl string `json:"imageUrl"`
-	LinkUrl  string `json:"linkUrl"`
-	LinkType int32  `json:"linkType"`
+	Id          string `json:"id"`
+	CreateAt    int64  `json:"createAt"`
+	CommunityId string `json:"communityId"`
+	ImageUrl    string `json:"imageUrl"`
+	LinkUrl     string `json:"linkUrl"`
+	Type        string `json:"type"`
 }
 
 type Admin struct {
-	Id       string      `json:"id"`
-	CreateAt string      `json:"createAt"`
-	Name     string      `json:"name"`
-	Phone    string      `json:"phone"`
-	User     UserPreview `json:"user"`
-	Wechat   string      `json:"wechat"`
+	Id          string      `json:"id"`
+	CreateAt    int64       `json:"createAt"`
+	CommunityId string      `json:"communityId"`
+	Name        string      `json:"name"`
+	Phone       string      `json:"phone"`
+	User        UserPreview `json:"user"`
+	Wechat      string      `json:"wechat"`
+}
+
+type Notice struct {
+	Id       string `json:"id"`
+	Text     string `json:"text"`
+	CreateAt int64  `json:"createAt"`
+}
+
+type GetNewsReq struct {
+	CommunityId string `form:"communityId"`
 }
 
 type GetNewsResp struct {
@@ -273,7 +297,90 @@ type GetNewsResp struct {
 	News []News `json:"news"`
 }
 
+type GetAdminsReq struct {
+	CommunityId string `form:"communityId"`
+}
+
 type GetAdminsResp struct {
 	Status
 	Admins []Admin `json:"admins"`
+}
+
+type GetNoticesReq struct {
+	CommunityId string `form:"communityId"`
+}
+
+type GetNoticesResp struct {
+	Status
+	Notices []Notice `json:"notices"`
+}
+
+type NewNoticeReq struct {
+	Id          string `json:"id,optional"`
+	CommunityId string `json:"communityId,optional"`
+	Text        string `json:"text"`
+}
+
+type NewNoticeResp struct {
+	Status
+	NoticeId string `json:"noticeId"`
+}
+
+type NewNewsReq struct {
+	Id          string `json:"id,optional"`
+	CommunityId string `json:"communityId,optional"`
+	ImageUrl    string `json:"imageUrl"`
+	LinkUrl     string `json:"linkUrl"`
+	Type        string `json:"type"`
+}
+
+type NewNewsResp struct {
+	Status
+	NewId string `json:"newId"`
+}
+
+type DeleteNoticeReq struct {
+	Id string `json:"id"`
+}
+
+type DeleteNoticeResp struct {
+	Status
+}
+
+type DeleteNewsReq struct {
+	Id string `json:"id"`
+}
+
+type DeleteNewsResp struct {
+	Status
+}
+
+type DoLikeReq struct {
+	Liked      bool   `json:"liked"`
+	TargetId   string `json:"targetId"`
+	TargetType int32  `json:"type"`
+}
+
+type DoLikeResp struct {
+	Status
+}
+
+type GetUserLikedReq struct {
+	TargetId   string `form:"targetId"`
+	TargetType int32  `form:"type"`
+}
+
+type GetUserLikedResp struct {
+	Status
+	Liked bool `json:"liked"`
+}
+
+type GetLikedCountReq struct {
+	TargetId   string `form:"targetId"`
+	TargetType int32  `form:"type"`
+}
+
+type GetLikedCountResp struct {
+	Status
+	Count int64 `json:"count"`
 }

@@ -7,6 +7,7 @@ import (
 	auth "github.com/xh-polaris/meowchat-bff/internal/handler/auth"
 	collection "github.com/xh-polaris/meowchat-bff/internal/handler/collection"
 	comment "github.com/xh-polaris/meowchat-bff/internal/handler/comment"
+	like "github.com/xh-polaris/meowchat-bff/internal/handler/like"
 	moment "github.com/xh-polaris/meowchat-bff/internal/handler/moment"
 	notice "github.com/xh-polaris/meowchat-bff/internal/handler/notice"
 	post "github.com/xh-polaris/meowchat-bff/internal/handler/post"
@@ -54,6 +55,52 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/notice/get_news",
 				Handler: notice.GetNewsHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/notice/get_notices",
+				Handler: notice.GetNoticesHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/new_new",
+				Handler: notice.NewNewsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/new_notice",
+				Handler: notice.NewNoticeHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/remove_new",
+				Handler: notice.DeleteNewsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/remove_notice",
+				Handler: notice.DeleteNoticeHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/like/do_like",
+				Handler: like.DoLikeHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/like/get_user_liked",
+				Handler: like.GetUserLikedHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/like/get_count",
+				Handler: like.GetLikedCountHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
@@ -100,6 +147,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/collection/new_cat",
 				Handler: collection.NewCatHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/collection/delete_cat",
+				Handler: collection.DeleteCatHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

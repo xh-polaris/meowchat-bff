@@ -10,7 +10,7 @@ type Status {
 }
 
 type UserPreview {
-    userId string `json:"userId"`
+    id string `json:"id"`
     nickname string `json:"nickname"`
     avatarUrl string `json:"avatarUrl"`
 }

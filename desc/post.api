@@ -10,7 +10,7 @@ type (
 
     Post {
         id string `json:"id"`
-        createAt int `json:"createAt"`
+        createAt int64 `json:"createAt"`
         isAnonymous bool `json:"isAnonymous"`
         title string `json:"title"`
         text string `json:"text"`
