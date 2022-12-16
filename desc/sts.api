@@ -1,0 +1,20 @@
+syntax = "v1"
+
+info(
+    title: "sts api"
+)
+
+import "desc/common.api"
+
+type (
+    ApplyTokenReq {
+        path string `form:"path"`
+    }
+
+    ApplyTokenResp {
+        Status
+        secretId string `json:"secretId"`
+        secretKey string `json:"secretKey"`
+        sessionToekn string `json:"sessionToekn"`
+    }
+)

@@ -1,0 +1,26 @@
+syntax = "v1"
+
+info(
+    title: "user api"
+)
+
+import "desc/common.api"
+
+type (
+    GetUserInfoReq {
+    }
+
+    GetUserInfoResp {
+        Status
+        user UserPreview `json:"user"`
+    }
+
+    UpdateUserInfoReq {
+        avatarUrl string `json:"avatarUrl,optional"`
+        nickname string `json:"nickname,optional"`
+    }
+
+    UpdateUserInfoResp {
+        Status
+    }
+)

@@ -2,10 +2,9 @@
 package types
 
 type User struct {
-	Id             string `json:"id"`
-	Name           string `json:"name"`
-	AvatarUrl      string `json:"avatarUrl"`
-	PrivilegeLevel int32  `json:"privilegeLevel"`
+	Id        string `json:"id"`
+	Name      string `json:"name"`
+	AvatarUrl string `json:"avatarUrl"`
 }
 
 type SignInReq struct {
@@ -383,4 +382,32 @@ type GetLikedCountReq struct {
 type GetLikedCountResp struct {
 	Status
 	Count int64 `json:"count"`
+}
+
+type GetUserInfoReq struct {
+}
+
+type GetUserInfoResp struct {
+	Status
+	User UserPreview `json:"user"`
+}
+
+type UpdateUserInfoReq struct {
+	AvatarUrl string `json:"avatarUrl,optional"`
+	Nickname  string `json:"nickname,optional"`
+}
+
+type UpdateUserInfoResp struct {
+	Status
+}
+
+type ApplyTokenReq struct {
+	Path string `form:"path"`
+}
+
+type ApplyTokenResp struct {
+	Status
+	SecretId     string `json:"secretId"`
+	SecretKey    string `json:"secretKey"`
+	SessionToekn string `json:"sessionToekn"`
 }

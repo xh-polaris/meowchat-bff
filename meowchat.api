@@ -11,6 +11,8 @@ import "desc/moment.api"
 import "desc/comment.api"
 import "desc/notice.api"
 import "desc/like.api"
+import "desc/user.api"
+import "desc/sts.api"
 
 @server(
 	group: auth
@@ -135,4 +137,28 @@ service meowchat {
 	get /comment/get_comments (GetCommentsReq) returns (GetCommentsResp)
 	@handler NewComment
 	post /comment/new_comment (NewCommentReq) returns (NewCommentResp)
+}
+
+@server(
+	group: user
+	jwt: Auth
+)
+
+service meowchat {
+	// user
+	@handler GetUserInfo
+	get /user/get_user_info (GetUserInfoReq) returns (GetUserInfoResp)
+	@handler UpdateUserInfo
+	post /user/update_user_info (UpdateUserInfoReq) returns (UpdateUserInfoResp)
+}
+
+@server(
+	group: sts
+	jwt: Auth
+)
+
+service meowchat {
+	// sts
+	@handler ApplyToken
+	post /sts/apply_token (ApplyTokenReq) returns (ApplyTokenResp)
 }

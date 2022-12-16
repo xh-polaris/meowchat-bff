@@ -6,7 +6,6 @@ type User {
     id             string `json:"id"`
     name           string `json:"name"`
     avatarUrl      string `json:"avatarUrl"`
-    privilegeLevel int32  `json:"privilegeLevel"`
 }
 
 type SignInReq {

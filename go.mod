@@ -5,11 +5,13 @@ go 1.18
 require (
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/jinzhu/copier v0.3.5
-	github.com/xh-polaris/auth-rpc v1.4.0
-	github.com/xh-polaris/meowchat-collection-rpc v1.0.0
+	github.com/xh-polaris/auth-rpc v1.4.1
+	github.com/xh-polaris/meowchat-collection-rpc v1.0.1
 	github.com/xh-polaris/meowchat-like-rpc v1.0.1
-	github.com/xh-polaris/meowchat-moment-rpc v1.0.0
-	github.com/xh-polaris/meowchat-notice-rpc v1.0.1
+	github.com/xh-polaris/meowchat-moment-rpc v1.0.1
+	github.com/xh-polaris/meowchat-notice-rpc v1.1.0
+	github.com/xh-polaris/meowchat-user-rpc v1.0.1
+	github.com/xh-polaris/sts-rpc v1.1.1
 	github.com/zeromicro/go-zero v1.4.3
 	google.golang.org/grpc v1.51.0
 )
@@ -44,8 +46,8 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/openzipkin/zipkin-go v0.4.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
-	github.com/prometheus/client_golang v1.13.0 // indirect
-	github.com/prometheus/client_model v0.2.0 // indirect
+	github.com/prometheus/client_golang v1.14.0 // indirect
+	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect

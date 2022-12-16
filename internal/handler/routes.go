@@ -11,6 +11,8 @@ import (
 	moment "github.com/xh-polaris/meowchat-bff/internal/handler/moment"
 	notice "github.com/xh-polaris/meowchat-bff/internal/handler/notice"
 	post "github.com/xh-polaris/meowchat-bff/internal/handler/post"
+	sts "github.com/xh-polaris/meowchat-bff/internal/handler/sts"
+	user "github.com/xh-polaris/meowchat-bff/internal/handler/user"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -194,6 +196,33 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/comment/new_comment",
 				Handler: comment.NewCommentHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/user/get_user_info",
+				Handler: user.GetUserInfoHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/user/update_user_info",
+				Handler: user.UpdateUserInfoHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/sts/apply_token",
+				Handler: sts.ApplyTokenHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

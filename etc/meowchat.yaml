@@ -23,3 +23,9 @@ NoticeRPC:
 LikeRPC:
   Endpoints:
     - $LIKE_RPC_HOST
+UserRPC:
+  Endpoints:
+    - $LIKE_RPC_HOST
+StsRPC:
+  Endpoints:
+    - $LIKE_RPC_HOST

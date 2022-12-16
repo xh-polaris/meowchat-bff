@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/jinzhu/copier"
 	"github.com/xh-polaris/meowchat-moment-rpc/pb"
+	pb2 "github.com/xh-polaris/meowchat-user-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -42,6 +43,19 @@ func (l *GetMomentPreviewsLogic) GetMomentPreviews(req *types.GetMomentPreviewsR
 	err = copier.Copy(&resp.Moments, data.Moments)
 	if err != nil {
 		return nil, err
+	}
+
+	for i := 0; i < len(data.Moments); i++ {
+		user, err := l.svcCtx.UserRPC.GetUser(l.ctx, &pb2.GetUserReq{UserId: data.Moments[i].UserId})
+		if err != nil {
+			return nil, err
+		}
+
+		resp.Moments[i].User = types.UserPreview{
+			Id:        user.UserId,
+			Nickname:  user.Nickname,
+			AvatarUrl: user.AvatarUrl,
+		}
 	}
 	return
 }
