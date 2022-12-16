@@ -27,6 +27,7 @@ type (
     CatPreview {
         id string `json:"id"`
         name string `json:"name"`
+        area string `json:"area"`
         color string `json:"color"`
         avatarUrl string `json:"avatarUrl"`
         isCollected bool `json:"isCollected"`

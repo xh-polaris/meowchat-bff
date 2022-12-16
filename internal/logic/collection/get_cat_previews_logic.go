@@ -40,6 +40,11 @@ func (l *GetCatPreviewsLogic) GetCatPreviews(req *types.GetCatPreviewsReq) (resp
 
 	resp.Cats = make([]types.CatPreview, 0, pageSize)
 	err = copier.Copy(&resp.Cats, data.Cats)
+	for i := 0; i < len(resp.Cats); i++ {
+		if len(data.Cats[i].Avatars) > 0 {
+			resp.Cats[i].AvatarUrl = data.Cats[i].Avatars[0]
+		}
+	}
 	if err != nil {
 		return nil, err
 	}

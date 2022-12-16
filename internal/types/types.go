@@ -128,6 +128,7 @@ type Cat struct {
 type CatPreview struct {
 	Id          string `json:"id"`
 	Name        string `json:"name"`
+	Area        string `json:"area"`
 	Color       string `json:"color"`
 	AvatarUrl   string `json:"avatarUrl"`
 	IsCollected bool   `json:"isCollected"`
