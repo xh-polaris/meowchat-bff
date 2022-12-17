@@ -355,9 +355,8 @@ type DeleteNewsResp struct {
 }
 
 type DoLikeReq struct {
-	Liked      bool   `json:"liked"`
 	TargetId   string `json:"targetId"`
-	TargetType int32  `json:"type"`
+	TargetType int64  `json:"type"`
 }
 
 type DoLikeResp struct {
@@ -366,7 +365,7 @@ type DoLikeResp struct {
 
 type GetUserLikedReq struct {
 	TargetId   string `form:"targetId"`
-	TargetType int32  `form:"type"`
+	TargetType int64  `form:"type"`
 }
 
 type GetUserLikedResp struct {
@@ -376,7 +375,7 @@ type GetUserLikedResp struct {
 
 type GetLikedCountReq struct {
 	TargetId   string `form:"targetId"`
-	TargetType int32  `form:"type"`
+	TargetType int64  `form:"type"`
 }
 
 type GetLikedCountResp struct {

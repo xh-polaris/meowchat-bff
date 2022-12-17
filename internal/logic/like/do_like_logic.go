@@ -33,7 +33,6 @@ func (l *DoLikeLogic) DoLike(req *types.DoLikeReq) (resp *types.DoLikeResp, err 
 		UserId:       userId,
 		TargetId:     req.TargetId,
 		Type:         req.TargetType,
-		Liked:        req.Liked,
 		AssociatedId: "",
 	})
 

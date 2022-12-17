@@ -9,9 +9,8 @@ import "desc/common.api"
 type (
 
     DoLikeReq {
-        liked bool `json:"liked"`
         targetId string `json:"targetId"`
-        targetType int32 `json:"type"`
+        targetType int64 `json:"type"`
     }
 
     DoLikeResp {
@@ -20,7 +19,7 @@ type (
 
     GetUserLikedReq {
         targetId string `form:"targetId"`
-        targetType int32 `form:"type"`
+        targetType int64 `form:"type"`
     }
 
     GetUserLikedResp {
@@ -30,7 +29,7 @@ type (
 
     GetLikedCountReq {
         targetId string `form:"targetId"`
-        targetType int32 `form:"type"`
+        targetType int64 `form:"type"`
     }
 
     GetLikedCountResp {
