@@ -408,5 +408,5 @@ type ApplyTokenResp struct {
 	Status
 	SecretId     string `json:"secretId"`
 	SecretKey    string `json:"secretKey"`
-	SessionToekn string `json:"sessionToekn"`
+	SessionToken string `json:"sessionToken"`
 }
