@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/jinzhu/copier v0.3.5
-	github.com/xh-polaris/auth-rpc v1.4.1
+	github.com/xh-polaris/auth-rpc v1.4.2
 	github.com/xh-polaris/meowchat-collection-rpc v1.0.1
 	github.com/xh-polaris/meowchat-like-rpc v1.1.0
 	github.com/xh-polaris/meowchat-moment-rpc v1.0.1
