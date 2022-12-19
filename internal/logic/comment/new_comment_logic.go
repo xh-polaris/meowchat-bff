@@ -2,6 +2,7 @@ package comment
 
 import (
 	"context"
+	"github.com/xh-polaris/meowchat-comment-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -24,7 +25,29 @@ func NewNewCommentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewCom
 }
 
 func (l *NewCommentLogic) NewComment(req *types.NewCommentReq) (resp *types.NewCommentResp, err error) {
-	// todo: add your logic here and delete this line
+	resp = new(types.NewCommentResp)
+	userId := l.ctx.Value("userId").(string)
+
+	// 获取回复用户id
+	replyToId := ""
+	if req.Scope == "comment" {
+		replyTo, err := l.svcCtx.CommentRPC.RetrieveCommentById(l.ctx, &pb.RetrieveCommentByIdRequest{Id: req.Id})
+		if err != nil {
+			return nil, err
+		}
+		replyToId = replyTo.Comment.AuthorId
+	}
+
+	_, err = l.svcCtx.CommentRPC.CreateComment(l.ctx, &pb.CreateCommentRequest{
+		Text:     req.Text,
+		AuthorId: userId,
+		ReplyTo:  replyToId,
+		Type:     req.Scope,
+		ParentId: req.Id,
+	})
+	if err != nil {
+		return nil, err
+	}
 
 	return
 }

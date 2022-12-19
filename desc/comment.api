@@ -13,12 +13,12 @@ type (
         text string `json:"text"`
         user UserPreview `json:"user"`
         comments int64 `json:"comments"`
-        ReplyId string `json:"replyName,optional"`
+        ReplyName string `json:"replyName,optional"`
     }
 
     NewCommentReq {
         text string `json:"text"`
-        ownerId string `json:"ownerId"`
+        id string `json:"id"`
         scope string `json:"scope"`
     }
 

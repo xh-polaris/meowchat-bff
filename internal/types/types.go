@@ -50,7 +50,7 @@ type UserPreview struct {
 }
 
 type Tag struct {
-	Id   string `json:"id"`
+	Id   string `json:"id,optional"`
 	Name string `json:"name"`
 }
 
@@ -233,18 +233,18 @@ type NewMomentResp struct {
 }
 
 type Comment struct {
-	Id       string      `json:"id"`
-	CreateAt int64       `json:"createAt"`
-	Text     string      `json:"text"`
-	User     UserPreview `json:"user"`
-	Comments int64       `json:"comments"`
-	ReplyId  string      `json:"replyName,optional"`
+	Id        string      `json:"id"`
+	CreateAt  int64       `json:"createAt"`
+	Text      string      `json:"text"`
+	User      UserPreview `json:"user"`
+	Comments  int64       `json:"comments"`
+	ReplyName string      `json:"replyName,optional"`
 }
 
 type NewCommentReq struct {
-	Text    string `json:"text"`
-	OwnerId string `json:"ownerId"`
-	Scope   string `json:"scope"`
+	Text  string `json:"text"`
+	Id    string `json:"id"`
+	Scope string `json:"scope"`
 }
 
 type NewCommentResp struct {

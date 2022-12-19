@@ -7,14 +7,18 @@ require (
 	github.com/jinzhu/copier v0.3.5
 	github.com/xh-polaris/auth-rpc v1.4.1
 	github.com/xh-polaris/meowchat-collection-rpc v1.0.1
+	github.com/xh-polaris/meowchat-comment-rpc v1.0.0
 	github.com/xh-polaris/meowchat-like-rpc v1.1.0
 	github.com/xh-polaris/meowchat-moment-rpc v1.0.1
 	github.com/xh-polaris/meowchat-notice-rpc v1.1.0
+	github.com/xh-polaris/meowchat-post-rpc v0.0.0-20221206021642-4233c1fe9cf3
 	github.com/xh-polaris/meowchat-user-rpc v1.0.1
 	github.com/xh-polaris/sts-rpc v1.1.1
 	github.com/zeromicro/go-zero v1.4.3
 	google.golang.org/grpc v1.51.0
 )
+
+replace github.com/xh-polaris/meowchat-post-rpc => ../meowchat-post-rpc
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect

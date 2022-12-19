@@ -2,6 +2,7 @@ package post
 
 import (
 	"context"
+	"github.com/xh-polaris/meowchat-post-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -24,7 +25,23 @@ func NewGetPostPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *G
 }
 
 func (l *GetPostPreviewsLogic) GetPostPreviews(req *types.GetPostPreviewsReq) (resp *types.GetPostPreviewsResp, err error) {
-	// todo: add your logic here and delete this line
+	resp = new(types.GetPostPreviewsResp)
+	const Size = 10
+
+	data, err := l.svcCtx.PostRPC.ListPost(l.ctx, &pb.ListPostReq{
+		OrderBy: "updateAt desc",
+		Skip:    (req.Page - 1) * Size,
+		Limit:   Size,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	resp.Posts = make([]types.Post, len(data.GetPosts()))
+	for i, val := range data.GetPosts() {
+		respPost, _ := toRespPost(l.ctx, l.svcCtx, val)
+		resp.Posts[i] = respPost
+	}
 
 	return
 }

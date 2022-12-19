@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/xh-polaris/meowchat-bff/internal/config"
+	"github.com/xh-polaris/meowchat-bff/internal/errorx"
 	"github.com/xh-polaris/meowchat-bff/internal/handler"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -37,9 +38,15 @@ func main() {
 				Code: int(s.Code()),
 				Msg:  s.Message(),
 			}
+		} else {
+			switch e := err.(type) {
+			case *errorx.CodeError:
+				return e.Code, e.Data()
+			default:
+				logx.Error(err.Error())
+				return http.StatusInternalServerError, err.Error()
+			}
 		}
-		logx.Error(err.Error())
-		return http.StatusInternalServerError, err.Error()
 	})
 
 	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)

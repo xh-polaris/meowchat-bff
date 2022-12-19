@@ -29,3 +29,9 @@ UserRPC:
 StsRPC:
   Endpoints:
     - $LIKE_RPC_HOST
+CommentRPC:
+  Endpoints:
+    - $COMMENT_RPC_HOST
+PostRPC:
+  Endpoints:
+    - $POST_RPC_HOST

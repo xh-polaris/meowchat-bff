@@ -18,4 +18,6 @@ type Config struct {
 	LikeRPC       zrpc.RpcClientConf
 	UserRPC       zrpc.RpcClientConf
 	StsRPC        zrpc.RpcClientConf
+	CommentRPC    zrpc.RpcClientConf
+	PostRPC       zrpc.RpcClientConf
 }

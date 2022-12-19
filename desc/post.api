@@ -4,7 +4,7 @@ import "desc/common.api"
 
 type (
     Tag {
-        id string `json:"id"`
+        id string `json:"id,optional"`
         name string `json:"name"`
     }
 
