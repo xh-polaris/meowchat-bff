@@ -810,8 +810,8 @@ github.com/xh-polaris/meowchat-collection-rpc v1.0.1 h1:Gyq37Gr8ZmuYy3NHvsMCeqDS
 github.com/xh-polaris/meowchat-collection-rpc v1.0.1/go.mod h1:vkcGGznVR/y0EwrKdqRHIh7NnRJtJCGH16xieNgL76Q=
 github.com/xh-polaris/meowchat-like-rpc v1.1.0 h1:JDMYGP+52uQNfQy2kiefxtpTZOwC9KUxV6MX4Vv4HR0=
 github.com/xh-polaris/meowchat-like-rpc v1.1.0/go.mod h1:1AVOoAh4kIV9JzNVI/jGXUyxGzMimNSnao1mK0ZdH0w=
-github.com/xh-polaris/meowchat-moment-rpc v1.0.1 h1:gkSrbQxz3dd4nuU0F2XNq4+QUeY/4QuJPr5RAdvA15Q=
-github.com/xh-polaris/meowchat-moment-rpc v1.0.1/go.mod h1:EG/lnX2fwjUM4irQMqn9jTTJ7Mt5teFDn2PoGREt0x4=
+github.com/xh-polaris/meowchat-moment-rpc v1.0.2 h1:ThBnY0z4aepNvIO4LsMeOQlZQh28tpk7N/6OEYZlmfs=
+github.com/xh-polaris/meowchat-moment-rpc v1.0.2/go.mod h1:EG/lnX2fwjUM4irQMqn9jTTJ7Mt5teFDn2PoGREt0x4=
 github.com/xh-polaris/meowchat-notice-rpc v1.1.0 h1:ZDkqQZ8yOYYUFMGWxsiRYxkTo8bBc816xv8NL/xovrY=
 github.com/xh-polaris/meowchat-notice-rpc v1.1.0/go.mod h1:jzdodgjxh+sj3IswSdxpfbyeo5YAMHx0iKQAu7PFl8U=
 github.com/xh-polaris/meowchat-user-rpc v1.0.1 h1:MEZSZlIONr4ET9LFZpJNN7BLYQwI1HYHvyEjv+pgoZM=
