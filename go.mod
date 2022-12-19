@@ -10,7 +10,7 @@ require (
 	github.com/xh-polaris/meowchat-like-rpc v1.1.0
 	github.com/xh-polaris/meowchat-moment-rpc v1.0.1
 	github.com/xh-polaris/meowchat-notice-rpc v1.1.0
-	github.com/xh-polaris/meowchat-user-rpc v1.0.1
+	github.com/xh-polaris/meowchat-user-rpc v1.0.2
 	github.com/xh-polaris/sts-rpc v1.1.1
 	github.com/zeromicro/go-zero v1.4.3
 	google.golang.org/grpc v1.51.0
