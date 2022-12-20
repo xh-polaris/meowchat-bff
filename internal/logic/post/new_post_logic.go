@@ -30,22 +30,18 @@ func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, 
 	resp = new(types.NewPostResp)
 	userId := l.ctx.Value("userId").(string)
 
-	tags := make([]string, 0, len(req.Tags))
-	for _, val := range req.Tags {
-		tags = append(tags, val.Name)
-	}
-
 	if req.Id == "" {
-		_, err = l.svcCtx.PostRPC.CreatePost(l.ctx, &pb.CreatePostReq{
+		res, err := l.svcCtx.PostRPC.CreatePost(l.ctx, &pb.CreatePostReq{
 			Title:    req.Title,
 			Text:     req.Text,
 			CoverUrl: req.CoverUrl,
-			Tags:     tags,
+			Tags:     req.Tags,
 			UserId:   userId,
 		})
 		if err != nil {
 			return nil, err
 		}
+		resp.PostId = res.PostId
 	} else {
 		oldPost, err := l.svcCtx.PostRPC.RetrievePost(l.ctx, &pb.RetrievePostReq{
 			PostId: req.Id,
@@ -62,11 +58,12 @@ func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, 
 			Title:    req.Title,
 			Text:     req.Text,
 			CoverUrl: req.CoverUrl,
-			Tags:     tags,
+			Tags:     req.Tags,
 		})
 		if err != nil {
 			return nil, err
 		}
+		resp.PostId = req.Id
 	}
 
 	return

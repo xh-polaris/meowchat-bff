@@ -3,11 +3,6 @@ syntax = "v1"
 import "desc/common.api"
 
 type (
-    Tag {
-        id string `json:"id,optional"`
-        name string `json:"name"`
-    }
-
     Post {
         id string `json:"id"`
         createAt int64 `json:"createAt"`
@@ -15,11 +10,10 @@ type (
         title string `json:"title"`
         text string `json:"text"`
         coverUrl string `json:"coverUrl"`
-        tags []Tag `json:"tags"`
+        tags []string `json:"tags"`
         likes int64 `json:"likes"`
         comments int64 `json:"comments"`
         user UserPreview `json:"user"`
-        status int64 `json:"status"`
     }
 
     GetPostPreviewsReq {
@@ -46,10 +40,11 @@ type (
         title string `json:"title"`
         text string `json:"text"`
         coverUrl string `json:"coverUrl,optional"`
-        tags []Tag `json:"tags"`
+        tags []string `json:"tags"`
     }
 
     NewPostResp {
+        postId string `json:"postId"`
         Status
     }
 

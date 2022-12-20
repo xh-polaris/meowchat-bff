@@ -3,18 +3,19 @@ package main
 import (
 	"flag"
 	"fmt"
+	"net/http"
+
 	"github.com/xh-polaris/meowchat-bff/internal/config"
 	"github.com/xh-polaris/meowchat-bff/internal/errorx"
 	"github.com/xh-polaris/meowchat-bff/internal/handler"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/rest/httpx"
-	"google.golang.org/grpc/status"
-	"net/http"
 
 	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/rest"
+	"github.com/zeromicro/go-zero/rest/httpx"
+	"google.golang.org/grpc/status"
 )
 
 var configFile = flag.String("f", "etc/meowchat.yaml", "the config file")

@@ -36,13 +36,7 @@ func toRespPost(ctx context.Context, svcCtx *svc.ServiceContext, post *pb.Post) 
 	}
 
 	// Tag
-	respTags := make([]types.Tag, 0)
-	for _, tag := range post.Tags {
-		respTags = append(respTags, types.Tag{
-			Name: tag,
-		})
-	}
-	resp.Tags = respTags
+	resp.Tags = post.Tags
 
 	// user preview
 	user, err := svcCtx.UserRPC.GetUser(ctx, &userpb.GetUserReq{UserId: post.UserId})

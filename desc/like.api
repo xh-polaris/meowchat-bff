@@ -10,7 +10,7 @@ type (
 
     DoLikeReq {
         targetId string `json:"targetId"`
-        targetType int64 `json:"type"`
+        targetType int64 `json:"targetType"`
     }
 
     DoLikeResp {
@@ -19,7 +19,7 @@ type (
 
     GetUserLikedReq {
         targetId string `form:"targetId"`
-        targetType int64 `form:"type"`
+        targetType int64 `form:"targetType"`
     }
 
     GetUserLikedResp {
@@ -29,7 +29,7 @@ type (
 
     GetLikedCountReq {
         targetId string `form:"targetId"`
-        targetType int64 `form:"type"`
+        targetType int64 `form:"targetType"`
     }
 
     GetLikedCountResp {

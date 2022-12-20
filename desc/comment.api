@@ -18,7 +18,7 @@ type (
 
     NewCommentReq {
         text string `json:"text"`
-        id string `json:"id"`
+        id string `json:"id,optional"`
         scope string `json:"scope"`
     }
 

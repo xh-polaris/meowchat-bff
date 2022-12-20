@@ -49,11 +49,6 @@ type UserPreview struct {
 	AvatarUrl string `json:"avatarUrl"`
 }
 
-type Tag struct {
-	Id   string `json:"id,optional"`
-	Name string `json:"name"`
-}
-
 type Post struct {
 	Id          string      `json:"id"`
 	CreateAt    int64       `json:"createAt"`
@@ -61,11 +56,10 @@ type Post struct {
 	Title       string      `json:"title"`
 	Text        string      `json:"text"`
 	CoverUrl    string      `json:"coverUrl"`
-	Tags        []Tag       `json:"tags"`
+	Tags        []string    `json:"tags"`
 	Likes       int64       `json:"likes"`
 	Comments    int64       `json:"comments"`
 	User        UserPreview `json:"user"`
-	Status      int64       `json:"status"`
 }
 
 type GetPostPreviewsReq struct {
@@ -87,15 +81,16 @@ type GetPostDetailResp struct {
 }
 
 type NewPostReq struct {
-	Id          string `json:"id,optional"`
-	IsAnonymous bool   `json:"isAnonymous"`
-	Title       string `json:"title"`
-	Text        string `json:"text"`
-	CoverUrl    string `json:"coverUrl,optional"`
-	Tags        []Tag  `json:"tags"`
+	Id          string   `json:"id,optional"`
+	IsAnonymous bool     `json:"isAnonymous"`
+	Title       string   `json:"title"`
+	Text        string   `json:"text"`
+	CoverUrl    string   `json:"coverUrl,optional"`
+	Tags        []string `json:"tags"`
 }
 
 type NewPostResp struct {
+	PostId string `json:"postId"`
 	Status
 }
 
@@ -275,7 +270,7 @@ type Comment struct {
 
 type NewCommentReq struct {
 	Text  string `json:"text"`
-	Id    string `json:"id"`
+	Id    string `json:"id,optional"`
 	Scope string `json:"scope"`
 }
 
@@ -388,7 +383,7 @@ type DeleteNewsResp struct {
 
 type DoLikeReq struct {
 	TargetId   string `json:"targetId"`
-	TargetType int64  `json:"type"`
+	TargetType int64  `json:"targetType"`
 }
 
 type DoLikeResp struct {
@@ -397,7 +392,7 @@ type DoLikeResp struct {
 
 type GetUserLikedReq struct {
 	TargetId   string `form:"targetId"`
-	TargetType int64  `form:"type"`
+	TargetType int64  `form:"targetType"`
 }
 
 type GetUserLikedResp struct {
@@ -407,7 +402,7 @@ type GetUserLikedResp struct {
 
 type GetLikedCountReq struct {
 	TargetId   string `form:"targetId"`
-	TargetType int64  `form:"type"`
+	TargetType int64  `form:"targetType"`
 }
 
 type GetLikedCountResp struct {
