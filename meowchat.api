@@ -110,7 +110,7 @@ service meowchat {
 	@handler DeleteCat
 	post /collection/delete_cat (DeleteCatReq) returns (DeleteCatResp)
 	@handler SearchCat
-	get /post/search_cat (SearchCatReq) returns (SearchCatResp)
+	get /collection/search_cat (SearchCatReq) returns (SearchCatResp)
 }
 
 @server(
@@ -129,7 +129,7 @@ service meowchat {
 	@handler DeleteMoment
 	post /moment/delete_moment (DeleteMomentReq) returns (DeleteMomentResp)
 	@handler SearchMoment
-	get /post/search_moment (SearchMomentReq) returns (SearchMomentResp)
+	get /moment/search_moment (SearchMomentReq) returns (SearchMomentResp)
 }
 
 @server(

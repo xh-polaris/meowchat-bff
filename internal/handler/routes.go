@@ -162,7 +162,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/post/search_cat",
+				Path:    "/collection/search_cat",
 				Handler: collection.SearchCatHandler(serverCtx),
 			},
 		},
@@ -193,7 +193,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/post/search_moment",
+				Path:    "/moment/search_moment",
 				Handler: moment.SearchMomentHandler(serverCtx),
 			},
 		},
