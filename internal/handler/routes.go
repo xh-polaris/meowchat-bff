@@ -129,6 +129,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/post/delete_post",
 				Handler: post.DeletePostHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/post/search_post",
+				Handler: post.SearchPostHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
@@ -155,6 +160,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/collection/delete_cat",
 				Handler: collection.DeleteCatHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/post/search_cat",
+				Handler: collection.SearchCatHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
@@ -180,6 +190,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/moment/delete_moment",
 				Handler: moment.DeleteMomentHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/post/search_moment",
+				Handler: moment.SearchMomentHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

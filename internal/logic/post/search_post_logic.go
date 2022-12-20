@@ -10,28 +10,27 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-const pageSize = 10
-
-type GetPostPreviewsLogic struct {
+type SearchPostLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewGetPostPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetPostPreviewsLogic {
-	return &GetPostPreviewsLogic{
+func NewSearchPostLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SearchPostLogic {
+	return &SearchPostLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *GetPostPreviewsLogic) GetPostPreviews(req *types.GetPostPreviewsReq) (resp *types.GetPostPreviewsResp, err error) {
-	resp = new(types.GetPostPreviewsResp)
+func (l *SearchPostLogic) SearchPost(req *types.SearchPostReq) (resp *types.SearchPostResp, err error) {
+	resp = new(types.SearchPostResp)
 
-	data, err := l.svcCtx.PostRPC.ListPost(l.ctx, &pb.ListPostReq{
-		Skip:  req.Page * pageSize,
-		Count: pageSize,
+	data, err := l.svcCtx.PostRPC.SearchPost(l.ctx, &pb.SearchPostReq{
+		Keyword: req.Keyword,
+		Skip:    req.Page * pageSize,
+		Count:   pageSize,
 	})
 	if err != nil {
 		return nil, err

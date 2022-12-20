@@ -60,4 +60,14 @@ type (
     DeletePostResp {
         Status
     }
+
+    SearchPostReq {
+        keyword string `form:"keyword"`
+        page int64 `form:"page"`
+    }
+
+    SearchPostResp {
+        Status
+        posts []Post `json:"posts"`
+    }
 )

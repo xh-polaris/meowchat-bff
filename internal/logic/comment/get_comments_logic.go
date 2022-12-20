@@ -11,6 +11,8 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
+const pageSize = 10
+
 type GetCommentsLogic struct {
 	logx.Logger
 	ctx    context.Context
@@ -27,13 +29,12 @@ func NewGetCommentsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCo
 
 func (l *GetCommentsLogic) GetComments(req *types.GetCommentsReq) (resp *types.GetCommentsResp, err error) {
 	resp = new(types.GetCommentsResp)
-	const Size = 10
 
 	data, err := l.svcCtx.CommentRPC.ListCommentByParent(l.ctx, &pb.ListCommentByParentRequest{
 		ParentId: req.Id,
 		Type:     req.Scope,
-		Skip:     (req.Page - 1) * Size,
-		Limit:    Size,
+		Skip:     req.Page * pageSize,
+		Limit:    pageSize,
 	})
 	if err != nil {
 		return nil, err
@@ -48,6 +49,9 @@ func (l *GetCommentsLogic) GetComments(req *types.GetCommentsReq) (resp *types.G
 		user, err := l.svcCtx.UserRPC.GetUser(l.ctx, &userpb.GetUserReq{
 			UserId: comment.AuthorId,
 		})
+		if err != nil {
+			return nil, err
+		}
 		if user != nil && err == nil {
 			author.Nickname = user.Nickname
 			author.AvatarUrl = user.AvatarUrl

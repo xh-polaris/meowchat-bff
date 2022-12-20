@@ -10,7 +10,7 @@ Auth:
   AccessExpire: 86400
 AuthRPC:
   Endpoints:
-    - $ACCOUNT_RPC_HOST
+    - $AUTH_RPC_HOST
 CollectionRPC:
   Endpoints:
     - $COLLECTION_RPC_HOST
@@ -25,10 +25,10 @@ LikeRPC:
     - $LIKE_RPC_HOST
 UserRPC:
   Endpoints:
-    - $LIKE_RPC_HOST
+    - $USER_RPC_HOST
 StsRPC:
   Endpoints:
-    - $LIKE_RPC_HOST
+    - $STS_RPC_HOST
 CommentRPC:
   Endpoints:
     - $COMMENT_RPC_HOST

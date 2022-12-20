@@ -81,7 +81,7 @@ func toRespPost(ctx context.Context, svcCtx *svc.ServiceContext, post *pb.Post) 
 func (l *GetPostDetailLogic) GetPostDetail(req *types.GetPostDetailReq) (resp *types.GetPostDetailResp, err error) {
 	resp = new(types.GetPostDetailResp)
 
-	data, err := l.svcCtx.PostRPC.RetrievePost(l.ctx, &pb.RetrievePostReq{Id: req.PostId})
+	data, err := l.svcCtx.PostRPC.RetrievePost(l.ctx, &pb.RetrievePostReq{PostId: req.PostId})
 	if err != nil {
 		return nil, err
 	}

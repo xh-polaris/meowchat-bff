@@ -11,28 +11,27 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-const pageSize int64 = 10
-
-type GetCatPreviewsLogic struct {
+type SearchCatLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewGetCatPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCatPreviewsLogic {
-	return &GetCatPreviewsLogic{
+func NewSearchCatLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SearchCatLogic {
+	return &SearchCatLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *GetCatPreviewsLogic) GetCatPreviews(req *types.GetCatPreviewsReq) (resp *types.GetCatPreviewsResp, err error) {
-	resp = new(types.GetCatPreviewsResp)
-	data, err := l.svcCtx.CollectionRPC.ListCat(l.ctx, &pb.ListCatReq{
+func (l *SearchCatLogic) SearchCat(req *types.SearchCatReq) (resp *types.SearchCatResp, err error) {
+	resp = new(types.SearchCatResp)
+	data, err := l.svcCtx.CollectionRPC.SearchCat(l.ctx, &pb.SearchCatReq{
 		CommunityId: req.CommunityId,
 		Count:       pageSize,
 		Skip:        req.Page * pageSize,
+		Keyword:     req.Keyword,
 	})
 	if err != nil {
 		return nil, err

@@ -107,6 +107,16 @@ type DeletePostResp struct {
 	Status
 }
 
+type SearchPostReq struct {
+	Keyword string `form:"keyword"`
+	Page    int64  `form:"page"`
+}
+
+type SearchPostResp struct {
+	Status
+	Posts []Post `json:"posts"`
+}
+
 type Cat struct {
 	Id           string   `json:"id"`
 	CreateAt     int64    `json:"createAt"`
@@ -180,6 +190,17 @@ type NewCatResp struct {
 	CatId string `json:"catId"`
 }
 
+type SearchCatReq struct {
+	CommunityId string `form:"communityId"`
+	Keyword     string `form:"keyword"`
+	Page        int64  `form:"page"`
+}
+
+type SearchCatResp struct {
+	Status
+	Cats []CatPreview `json:"cats"`
+}
+
 type Moment struct {
 	Id          string      `json:"id"`
 	CreateAt    int64       `json:"createAt"`
@@ -230,6 +251,17 @@ type NewMomentReq struct {
 type NewMomentResp struct {
 	MomentId string `json:"momentId"`
 	Status
+}
+
+type SearchMomentReq struct {
+	CommunityId string `form:"communityId"`
+	Keyword     string `form:"keyword"`
+	Page        int64  `form:"page"`
+}
+
+type SearchMomentResp struct {
+	Status
+	Moments []Moment `json:"moments"`
 }
 
 type Comment struct {

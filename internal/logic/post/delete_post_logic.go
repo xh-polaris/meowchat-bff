@@ -31,7 +31,7 @@ func (l *DeletePostLogic) DeletePost(req *types.DeletePostReq) (resp *types.Dele
 	userId := l.ctx.Value("userId").(string)
 
 	post, err := l.svcCtx.PostRPC.RetrievePost(l.ctx, &pb.RetrievePostReq{
-		Id: req.Id,
+		PostId: req.Id,
 	})
 	if err != nil {
 		return nil, err

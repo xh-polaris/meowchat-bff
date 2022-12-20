@@ -58,5 +58,16 @@ type (
         momentId string `json:"momentId"`
         Status
     }
+
+    SearchMomentReq {
+        communityId string `form:"communityId"`
+        keyword string `form:"keyword"`
+        page int64 `form:"page"`
+    }
+
+    SearchMomentResp {
+        Status
+        moments []Moment `json:"moments"`
+    }
 )
 
