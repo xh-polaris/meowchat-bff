@@ -2,12 +2,12 @@ package post
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-bff/internal/errorx"
-	"github.com/xh-polaris/meowchat-post-rpc/pb"
 	"net/http"
 
+	"github.com/xh-polaris/meowchat-bff/internal/errorx"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
+	"github.com/xh-polaris/meowchat-post-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -37,20 +37,18 @@ func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, 
 
 	if req.Id == "" {
 		_, err = l.svcCtx.PostRPC.CreatePost(l.ctx, &pb.CreatePostReq{
-			IsAnonymous: req.IsAnonymous,
-			Title:       req.Title,
-			Text:        req.Text,
-			CoverUrl:    req.CoverUrl,
-			Tags:        tags,
-			UserId:      userId,
-			Status:      0,
+			Title:    req.Title,
+			Text:     req.Text,
+			CoverUrl: req.CoverUrl,
+			Tags:     tags,
+			UserId:   userId,
 		})
 		if err != nil {
 			return nil, err
 		}
 	} else {
 		oldPost, err := l.svcCtx.PostRPC.RetrievePost(l.ctx, &pb.RetrievePostReq{
-			Id: req.Id,
+			PostId: req.Id,
 		})
 		if err != nil {
 			return nil, err
@@ -60,13 +58,11 @@ func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, 
 		}
 
 		_, err = l.svcCtx.PostRPC.UpdatePost(l.ctx, &pb.UpdatePostReq{
-			Id:          req.Id,
-			IsAnonymous: req.IsAnonymous,
-			Title:       req.Title,
-			Text:        req.Text,
-			CoverUrl:    req.CoverUrl,
-			Tags:        tags,
-			Status:      oldPost.Post.Status,
+			Id:       req.Id,
+			Title:    req.Title,
+			Text:     req.Text,
+			CoverUrl: req.CoverUrl,
+			Tags:     tags,
 		})
 		if err != nil {
 			return nil, err

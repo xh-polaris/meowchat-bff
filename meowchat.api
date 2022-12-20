@@ -21,9 +21,9 @@ import "desc/sts.api"
 service meowchat {
 	// auth
 	@handler SignIn
-	post /account/sign_in (SignInReq) returns (SignInResp)
+	post /auth/sign_in (SignInReq) returns (SignInResp)
 	@handler SendVerifyCode
-	post /account/send_verify_code (SendVerifyCodeReq) returns (SendVerifyCodeResp)
+	post /auth/send_verify_code (SendVerifyCodeReq) returns (SendVerifyCodeResp)
 }
 
 @server(
@@ -34,7 +34,7 @@ service meowchat {
 service meowchat {
 	// auth
 	@handler SetPassword
-	post /account/set_password (SetPasswordReq) returns (SetPasswordResp)
+	post /auth/set_password (SetPasswordReq) returns (SetPasswordResp)
 }
 
 @server(
@@ -110,7 +110,7 @@ service meowchat {
 	@handler DeleteCat
 	post /collection/delete_cat (DeleteCatReq) returns (DeleteCatResp)
 	@handler SearchCat
-	get /post/search_cat (SearchCatReq) returns (SearchCatResp)
+	get /collection/search_cat (SearchCatReq) returns (SearchCatResp)
 }
 
 @server(
@@ -129,7 +129,7 @@ service meowchat {
 	@handler DeleteMoment
 	post /moment/delete_moment (DeleteMomentReq) returns (DeleteMomentResp)
 	@handler SearchMoment
-	get /post/search_moment (SearchMomentReq) returns (SearchMomentResp)
+	get /moment/search_moment (SearchMomentReq) returns (SearchMomentResp)
 }
 
 @server(

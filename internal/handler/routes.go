@@ -23,12 +23,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/account/sign_in",
+				Path:    "/auth/sign_in",
 				Handler: auth.SignInHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/account/send_verify_code",
+				Path:    "/auth/send_verify_code",
 				Handler: auth.SendVerifyCodeHandler(serverCtx),
 			},
 		},
@@ -38,7 +38,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/account/set_password",
+				Path:    "/auth/set_password",
 				Handler: auth.SetPasswordHandler(serverCtx),
 			},
 		},
@@ -162,7 +162,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/post/search_cat",
+				Path:    "/collection/search_cat",
 				Handler: collection.SearchCatHandler(serverCtx),
 			},
 		},
@@ -193,7 +193,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/post/search_moment",
+				Path:    "/moment/search_moment",
 				Handler: moment.SearchMomentHandler(serverCtx),
 			},
 		},
