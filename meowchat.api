@@ -51,11 +51,11 @@ service meowchat {
 	@handler GetNotices
 	get /notice/get_notices (GetNoticesReq) returns (GetNoticesResp)
 	@handler NewNews
-	post /notice/new_new (NewNewsReq) returns (NewNewsResp)
+	post /notice/new_news (NewNewsReq) returns (NewNewsResp)
 	@handler NewNotice
 	post /notice/new_notice (NewNoticeReq) returns (NewNoticeResp)
 	@handler DeleteNews
-	post /notice/remove_new (DeleteNewsReq) returns (DeleteNewsResp)
+	post /notice/remove_news (DeleteNewsReq) returns (DeleteNewsResp)
 	@handler DeleteNotice
 	post /notice/remove_notice (DeleteNoticeReq) returns (DeleteNoticeResp)
 }

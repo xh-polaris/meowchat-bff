@@ -64,7 +64,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/notice/new_new",
+				Path:    "/notice/new_news",
 				Handler: notice.NewNewsHandler(serverCtx),
 			},
 			{
@@ -74,7 +74,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/notice/remove_new",
+				Path:    "/notice/remove_news",
 				Handler: notice.DeleteNewsHandler(serverCtx),
 			},
 			{
