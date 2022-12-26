@@ -8,7 +8,7 @@ import "desc/common.api"
 
 type (
     ApplyTokenReq {
-        path string `form:"path"`
+        path string `json:"path"`
     }
 
     ApplyTokenResp {

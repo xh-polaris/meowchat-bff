@@ -428,7 +428,7 @@ type UpdateUserInfoResp struct {
 }
 
 type ApplyTokenReq struct {
-	Path string `form:"path"`
+	Path string `json:"path"`
 }
 
 type ApplyTokenResp struct {
