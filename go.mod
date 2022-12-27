@@ -15,6 +15,8 @@ require (
 	github.com/xh-polaris/meowchat-user-rpc v1.0.3
 	github.com/xh-polaris/sts-rpc v1.1.1
 	github.com/zeromicro/go-zero v1.4.3
+	go.opentelemetry.io/contrib/propagators/b3 v1.11.0
+	go.opentelemetry.io/otel v1.11.0
 	google.golang.org/grpc v1.51.0
 )
 
@@ -56,7 +58,6 @@ require (
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.5 // indirect
-	go.opentelemetry.io/otel v1.11.0 // indirect
 	go.opentelemetry.io/otel/exporters/jaeger v1.11.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/internal/retry v1.11.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.11.0 // indirect
