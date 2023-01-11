@@ -16,5 +16,7 @@ type (
         secretId string `json:"secretId"`
         secretKey string `json:"secretKey"`
         sessionToken string `json:"sessionToken"`
+        expiredTime int64 `json:"expiredTime"`
+        startTime int64 `json:"startTime"`
     }
 )

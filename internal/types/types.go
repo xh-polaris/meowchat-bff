@@ -436,4 +436,6 @@ type ApplyTokenResp struct {
 	SecretId     string `json:"secretId"`
 	SecretKey    string `json:"secretKey"`
 	SessionToken string `json:"sessionToken"`
+	ExpiredTime  int64  `json:"expiredTime"`
+	StartTime    int64  `json:"startTime"`
 }
