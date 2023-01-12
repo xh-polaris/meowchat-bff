@@ -35,7 +35,7 @@ func (l *SearchPostLogic) SearchPost(req *types.SearchPostReq) (resp *types.Sear
 	if err != nil {
 		return nil, err
 	}
-
+	resp.Total = data.Total
 	resp.Posts = make([]types.Post, len(data.GetPosts()))
 	for i, val := range data.GetPosts() {
 		respPost, _ := toRespPost(l.ctx, l.svcCtx, val)

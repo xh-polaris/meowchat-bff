@@ -35,5 +35,6 @@ type (
     GetCommentsResp {
         Status
         comments []Comment `json:"comments"`
+        total int64 `json:"total"`
     }
 )

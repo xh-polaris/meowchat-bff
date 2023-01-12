@@ -26,6 +26,7 @@ type (
     GetMomentPreviewsResp {
         Status
         moments []Moment `json:"moments"`
+        total int64 `json:"total"`
     }
 
     GetMomentDetailReq {
@@ -68,6 +69,7 @@ type (
     SearchMomentResp {
         Status
         moments []Moment `json:"moments"`
+        total int64 `json:"total"`
     }
 )
 

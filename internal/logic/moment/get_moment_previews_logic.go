@@ -38,7 +38,7 @@ func (l *GetMomentPreviewsLogic) GetMomentPreviews(req *types.GetMomentPreviewsR
 	if err != nil {
 		return nil, err
 	}
-
+	resp.Total = data.Total
 	resp.Moments = make([]types.Moment, 0, pageSize)
 	err = copier.Copy(&resp.Moments, data.Moments)
 	if err != nil {

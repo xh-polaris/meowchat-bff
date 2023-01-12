@@ -69,6 +69,7 @@ type GetPostPreviewsReq struct {
 type GetPostPreviewsResp struct {
 	Status
 	Posts []Post `json:"posts"`
+	Total int64  `json:"total"`
 }
 
 type GetPostDetailReq struct {
@@ -110,6 +111,7 @@ type SearchPostReq struct {
 type SearchPostResp struct {
 	Status
 	Posts []Post `json:"posts"`
+	Total int64  `json:"total"`
 }
 
 type Cat struct {
@@ -145,7 +147,8 @@ type GetCatPreviewsReq struct {
 
 type GetCatPreviewsResp struct {
 	Status
-	Cats []CatPreview `json:"cats"`
+	Cats  []CatPreview `json:"cats"`
+	Total int64        `json:"total"`
 }
 
 type GetCatDetailReq struct {
@@ -193,7 +196,8 @@ type SearchCatReq struct {
 
 type SearchCatResp struct {
 	Status
-	Cats []CatPreview `json:"cats"`
+	Cats  []CatPreview `json:"cats"`
+	Total int64        `json:"total"`
 }
 
 type Moment struct {
@@ -215,6 +219,7 @@ type GetMomentPreviewsReq struct {
 type GetMomentPreviewsResp struct {
 	Status
 	Moments []Moment `json:"moments"`
+	Total   int64    `json:"total"`
 }
 
 type GetMomentDetailReq struct {
@@ -257,6 +262,7 @@ type SearchMomentReq struct {
 type SearchMomentResp struct {
 	Status
 	Moments []Moment `json:"moments"`
+	Total   int64    `json:"total"`
 }
 
 type Comment struct {
@@ -287,6 +293,7 @@ type GetCommentsReq struct {
 type GetCommentsResp struct {
 	Status
 	Comments []Comment `json:"comments"`
+	Total    int64     `json:"total"`
 }
 
 type News struct {

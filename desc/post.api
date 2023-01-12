@@ -23,6 +23,7 @@ type (
     GetPostPreviewsResp {
         Status
         posts []Post `json:"posts"`
+        total int64 `json:"total"`
     }
 
     GetPostDetailReq {
@@ -64,5 +65,6 @@ type (
     SearchPostResp {
         Status
         posts []Post `json:"posts"`
+        total int64 `json:"total"`
     }
 )

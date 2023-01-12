@@ -40,7 +40,8 @@ type (
 
     GetCatPreviewsResp {
         Status
-        Cats []CatPreview `json:"cats"`
+        cats []CatPreview `json:"cats"`
+        total int64 `json:"total"`
     }
 
     GetCatDetailReq {
@@ -89,5 +90,6 @@ type (
     SearchCatResp {
         Status
         cats []CatPreview `json:"cats"`
+        total int64 `json:"total"`
     }
 )

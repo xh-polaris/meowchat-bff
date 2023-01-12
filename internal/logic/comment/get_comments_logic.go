@@ -39,7 +39,7 @@ func (l *GetCommentsLogic) GetComments(req *types.GetCommentsReq) (resp *types.G
 	if err != nil {
 		return nil, err
 	}
-
+	resp.Total = data.Total
 	resp.Comments = make([]types.Comment, len(data.Comments))
 	for i, comment := range data.Comments {
 		// 评论作者信息
