@@ -30,6 +30,9 @@ func (l *ApplySignedUrlLogic) ApplySignedUrl(req *types.ApplySignedUrlReq) (resp
 	resp = new(types.ApplySignedUrlResp)
 	userId := l.ctx.Value("userId").(string)
 	data, err := l.svcCtx.StsRPC.GenCosSts(l.ctx, &pb.GenCosStsReq{UserId: userId, Path: "*"})
+	if err != nil {
+		return nil, err
+	}
 	resp.SessionToken = data.SessionToken
 	if req.Prefix != "" {
 		req.Prefix += "/"
