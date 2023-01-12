@@ -17,7 +17,7 @@ require (
 	github.com/xh-polaris/sts-rpc v1.2.1
 	github.com/zeromicro/go-zero v1.4.3
 	go.opentelemetry.io/contrib/propagators/b3 v1.11.0
-	go.opentelemetry.io/otel v1.11.0
+	go.opentelemetry.io/otel v1.11.2
 	google.golang.org/grpc v1.51.0
 )
 
@@ -64,7 +64,7 @@ require (
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.0 // indirect
 	go.opentelemetry.io/otel/exporters/zipkin v1.11.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.11.0 // indirect
-	go.opentelemetry.io/otel/trace v1.11.0 // indirect
+	go.opentelemetry.io/otel/trace v1.11.2 // indirect
 	go.opentelemetry.io/proto/otlp v0.19.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/automaxprocs v1.5.1 // indirect
