@@ -9,16 +9,16 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func ApplyTokenHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func ApplySignedUrlHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.ApplyTokenReq
+		var req types.ApplySignedUrlReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.Error(w, err)
 			return
 		}
 
-		l := sts.NewApplyTokenLogic(r.Context(), svcCtx)
-		resp, err := l.ApplyToken(&req)
+		l := sts.NewApplySignedUrlLogic(r.Context(), svcCtx)
+		resp, err := l.ApplySignedUrl(&req)
 		if err != nil {
 			httpx.Error(w, err)
 		} else {

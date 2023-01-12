@@ -427,15 +427,13 @@ type UpdateUserInfoResp struct {
 	Status
 }
 
-type ApplyTokenReq struct {
-	Path string `json:"path"`
+type ApplySignedUrlReq struct {
+	Prefix string `json:"prefix,optional"`
+	Suffix string `json:"suffix,optional"`
 }
 
-type ApplyTokenResp struct {
+type ApplySignedUrlResp struct {
 	Status
-	SecretId     string `json:"secretId"`
-	SecretKey    string `json:"secretKey"`
+	Url          string `json:"url"`
 	SessionToken string `json:"sessionToken"`
-	ExpiredTime  int64  `json:"expiredTime"`
-	StartTime    int64  `json:"startTime"`
 }

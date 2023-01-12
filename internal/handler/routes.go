@@ -236,8 +236,8 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/sts/apply_token",
-				Handler: sts.ApplyTokenHandler(serverCtx),
+				Path:    "/sts/apply_signed_url",
+				Handler: sts.ApplySignedUrlHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

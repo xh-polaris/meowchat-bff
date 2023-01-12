@@ -7,16 +7,14 @@ info(
 import "desc/common.api"
 
 type (
-    ApplyTokenReq {
-        path string `json:"path"`
+    ApplySignedUrlReq {
+        prefix string `json:"prefix,optional"`
+        suffix string `json:"suffix,optional"`
     }
 
-    ApplyTokenResp {
+    ApplySignedUrlResp {
         Status
-        secretId string `json:"secretId"`
-        secretKey string `json:"secretKey"`
+        url string `json:"url"`
         sessionToken string `json:"sessionToken"`
-        expiredTime int64 `json:"expiredTime"`
-        startTime int64 `json:"startTime"`
     }
 )

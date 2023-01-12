@@ -165,6 +165,6 @@ service meowchat {
 
 service meowchat {
 	// sts
-	@handler ApplyToken
-	post /sts/apply_token (ApplyTokenReq) returns (ApplyTokenResp)
+	@handler ApplySignedUrl
+	post /sts/apply_signed_url (ApplySignedUrlReq) returns (ApplySignedUrlResp)
 }
