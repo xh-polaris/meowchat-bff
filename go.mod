@@ -6,7 +6,7 @@ require (
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/google/uuid v1.3.0
 	github.com/jinzhu/copier v0.3.5
-	github.com/xh-polaris/auth-rpc v1.4.2
+	github.com/xh-polaris/auth-rpc v1.4.3
 	github.com/xh-polaris/meowchat-collection-rpc v1.0.5
 	github.com/xh-polaris/meowchat-comment-rpc v1.0.2
 	github.com/xh-polaris/meowchat-like-rpc v1.1.2
