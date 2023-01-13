@@ -804,8 +804,8 @@ github.com/xdg-go/scram v1.0.2/go.mod h1:1WAq6h33pAW+iRreB34OORO2Nf7qel3VV3fjBj+
 github.com/xdg-go/scram v1.1.1/go.mod h1:RaEWvsqvNKKvBPvcKeFjrG2cJqOkHTiyTpzz23ni57g=
 github.com/xdg-go/stringprep v1.0.2/go.mod h1:8F9zXuvzgwmyT5DUm4GUfZGDdT3W+LCvS6+da4O5kxM=
 github.com/xdg-go/stringprep v1.0.3/go.mod h1:W3f5j4i+9rC0kuIEJL0ky1VpHXQU3ocBgklLGvcBnW8=
-github.com/xh-polaris/auth-rpc v1.4.2 h1:PNs+SwLgvy7NhyaU89TxlNwtmjVP7rgdjgM/KyZ0PmA=
-github.com/xh-polaris/auth-rpc v1.4.2/go.mod h1:1V4XFGcwMC7q2/gliqvps+dCF+71YDGyzeMzdQp6Kqc=
+github.com/xh-polaris/auth-rpc v1.4.3 h1:5HCk4tLF+jrmfxzCoFFxZ8Fh7ploVyA2ZzMaBBBmQQ4=
+github.com/xh-polaris/auth-rpc v1.4.3/go.mod h1:1V4XFGcwMC7q2/gliqvps+dCF+71YDGyzeMzdQp6Kqc=
 github.com/xh-polaris/meowchat-collection-rpc v1.0.5 h1:hcyT3hYC86SbtqWgQ1Hd4pU3mH0w5mptq9Oyqqv/iwY=
 github.com/xh-polaris/meowchat-collection-rpc v1.0.5/go.mod h1:54J8o/zxwuJjWPUXacNPkUf9m8VlKy76Wq3dBZyrwSY=
 github.com/xh-polaris/meowchat-comment-rpc v1.0.2 h1:4wHTffmozfVYAUqsIROdPGwREixT+HbjLSl3NEYBGhI=
