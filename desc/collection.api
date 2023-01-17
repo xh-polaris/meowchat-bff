@@ -68,7 +68,6 @@ type (
         color string `json:"color"`
         details string `json:"details"`
         name string `json:"name"`
-        popularity int64 `json:"popularity"`
         sex string `json:"sex"`
         area string `json:"area"`
         isSnipped bool `json:"isSnipped"`

@@ -175,7 +175,6 @@ type NewCatReq struct {
 	Color        string   `json:"color"`
 	Details      string   `json:"details"`
 	Name         string   `json:"name"`
-	Popularity   int64    `json:"popularity"`
 	Sex          string   `json:"sex"`
 	Area         string   `json:"area"`
 	IsSnipped    bool     `json:"isSnipped"`
