@@ -39,14 +39,12 @@ func (l *GetMomentDetailLogic) GetMomentDetail(req *types.GetMomentDetailReq) (r
 	}
 
 	user, err := l.svcCtx.UserRPC.GetUser(l.ctx, &pb2.GetUserReq{UserId: data.Moment.UserId})
-	if err != nil {
-		return nil, err
-	}
-
-	resp.Moment.User = types.UserPreview{
-		Id:        user.UserId,
-		Nickname:  user.Nickname,
-		AvatarUrl: user.AvatarUrl,
+	if err == nil {
+		resp.Moment.User = types.UserPreview{
+			Id:        user.UserId,
+			Nickname:  user.Nickname,
+			AvatarUrl: user.AvatarUrl,
+		}
 	}
 	return
 }

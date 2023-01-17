@@ -12,7 +12,7 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-var pageSize int64 = 20
+var pageSize int64 = 10
 
 type GetMomentPreviewsLogic struct {
 	logx.Logger
@@ -47,14 +47,12 @@ func (l *GetMomentPreviewsLogic) GetMomentPreviews(req *types.GetMomentPreviewsR
 
 	for i := 0; i < len(data.Moments); i++ {
 		user, err := l.svcCtx.UserRPC.GetUser(l.ctx, &pb2.GetUserReq{UserId: data.Moments[i].UserId})
-		if err != nil {
-			return nil, err
-		}
-
-		resp.Moments[i].User = types.UserPreview{
-			Id:        user.UserId,
-			Nickname:  user.Nickname,
-			AvatarUrl: user.AvatarUrl,
+		if err == nil {
+			resp.Moments[i].User = types.UserPreview{
+				Id:        user.UserId,
+				Nickname:  user.Nickname,
+				AvatarUrl: user.AvatarUrl,
+			}
 		}
 	}
 	return
