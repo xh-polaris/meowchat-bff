@@ -2,7 +2,7 @@ package notice
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-notice-rpc/pb"
+	"github.com/xh-polaris/meowchat-system-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -28,7 +28,10 @@ func (l *NewNewsLogic) NewNews(req *types.NewNewsReq) (resp *types.NewNewsResp, 
 	resp = new(types.NewNewsResp)
 
 	if req.Id == "" {
-		data, err := l.svcCtx.NoticeRPC.CreateNews(l.ctx, &pb.CreateNewsReq{
+		if err = checkCommunityPermission(l.ctx, l.svcCtx, req.CommunityId); err != nil {
+			return
+		}
+		data, err := l.svcCtx.SystemRPC.CreateNews(l.ctx, &pb.CreateNewsReq{
 			CommunityId: req.CommunityId,
 			ImageUrl:    req.ImageUrl,
 			LinkUrl:     req.LinkUrl,
@@ -37,9 +40,12 @@ func (l *NewNewsLogic) NewNews(req *types.NewNewsReq) (resp *types.NewNewsResp, 
 		if err != nil {
 			return nil, err
 		}
-		resp.NewId = data.Id
+		resp.NewId = data.GetId()
 	} else {
-		_, err = l.svcCtx.NoticeRPC.UpdateNews(l.ctx, &pb.UpdateNewsReq{
+		if err = checkNewsPermission(l.ctx, l.svcCtx, req.Id); err != nil {
+			return
+		}
+		_, err = l.svcCtx.SystemRPC.UpdateNews(l.ctx, &pb.UpdateNewsReq{
 			Id:       req.Id,
 			ImageUrl: req.ImageUrl,
 			LinkUrl:  req.LinkUrl,

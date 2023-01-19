@@ -3,7 +3,7 @@ package notice
 import (
 	"context"
 	"github.com/jinzhu/copier"
-	"github.com/xh-polaris/meowchat-notice-rpc/pb"
+	"github.com/xh-polaris/meowchat-system-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -29,7 +29,7 @@ func (l *GetNoticesLogic) GetNotices(req *types.GetNoticesReq) (resp *types.GetN
 	resp = new(types.GetNoticesResp)
 	resp.Notices = make([]types.Notice, 0)
 
-	data, err := l.svcCtx.NoticeRPC.ListNotice(l.ctx, &pb.ListNoticeReq{CommunityId: req.CommunityId})
+	data, err := l.svcCtx.SystemRPC.ListNotice(l.ctx, &pb.ListNoticeReq{CommunityId: req.CommunityId})
 	if err != nil {
 		return nil, err
 	}

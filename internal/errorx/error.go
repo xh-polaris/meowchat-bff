@@ -20,6 +20,10 @@ func NewDefaultError(msg string) error {
 	return NewCodeError(defaultCode, msg)
 }
 
+func NewForbiddenError(msg string) error {
+	return NewCodeError(403, msg)
+}
+
 func (e *CodeError) Error() string {
 	return e.Msg
 }
