@@ -80,7 +80,7 @@ func (l *GetPostDetailLogic) GetPostDetail(req *types.GetPostDetailReq) (resp *t
 		return nil, err
 	}
 
-	respPost, _ := toRespPost(l.ctx, l.svcCtx, data.GetPost())
+	respPost, _ := toRespPost(l.ctx, l.svcCtx, data.Post)
 	resp.Post = respPost
 
 	return

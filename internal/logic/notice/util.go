@@ -22,7 +22,7 @@ func checkNewsPermission(ctx context.Context, svcCtx *svc.ServiceContext, newsId
 	if err != nil {
 		return err
 	}
-	communityId := news.GetNews().GetCommunityId()
+	communityId := news.News.CommunityId
 	return checkCommunityPermission(ctx, svcCtx, communityId)
 }
 
@@ -39,7 +39,7 @@ func checkNoticePermission(ctx context.Context, svcCtx *svc.ServiceContext, noti
 	if err != nil {
 		return err
 	}
-	communityId := notice.GetNotice().GetCommunityId()
+	communityId := notice.Notice.CommunityId
 	return checkCommunityPermission(ctx, svcCtx, communityId)
 }
 
@@ -51,7 +51,7 @@ func checkNoticePermission(ctx context.Context, svcCtx *svc.ServiceContext, noti
 //  @return error 如果没有权限则返回error
 func checkCommunityPermission(ctx context.Context, svcCtx *svc.ServiceContext, communityId string) error {
 	userId := ctx.Value("userId").(string)
-	contains, err := svcCtx.SystemRPC.ContainsRole(ctx, &pb.ContainsRoleReq{
+	resp, err := svcCtx.SystemRPC.ContainsRole(ctx, &pb.ContainsRoleReq{
 		UserId: userId,
 		Role: &pb.Role{
 			Type:        constant.RoleCommunityAdmin,
@@ -59,7 +59,7 @@ func checkCommunityPermission(ctx context.Context, svcCtx *svc.ServiceContext, c
 		},
 		AllowSuperAdmin: true,
 	})
-	if err != nil || !contains.GetContains() {
+	if err != nil || !resp.Contains {
 		return errorx.NewForbiddenError("您没有权限进行此操作")
 	}
 	return nil
