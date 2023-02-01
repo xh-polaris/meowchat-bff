@@ -1,4 +1,4 @@
-package notice
+package system
 
 import (
 	"net/http"

@@ -3,7 +3,7 @@ package notice
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic/notice"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/system"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -17,7 +17,7 @@ func DeleteNewsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := notice.NewDeleteNewsLogic(r.Context(), svcCtx)
+		l := system.NewDeleteNewsLogic(r.Context(), svcCtx)
 		resp, err := l.DeleteNews(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)

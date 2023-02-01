@@ -387,6 +387,39 @@ type DeleteNewsResp struct {
 	Status
 }
 
+type Community struct {
+	Id       string `json:"id"`
+	Name     string `json:"name"`
+	ParentId string `json:"parentId"`
+}
+
+type ListCommunityReq struct {
+}
+
+type ListCommunityResp struct {
+	Communities []Community `json:"communities"`
+	Status
+}
+
+type NewCommunityReq struct {
+	Id       string `json:"id"`
+	Name     string `json:"name""`
+	ParentId string `json:"parentId"`
+}
+
+type NewCommunityResp struct {
+	NewId string `json:"newId"`
+	Status
+}
+
+type DeleteCommunityReq struct {
+	Id string `json:"id"`
+}
+
+type DeleteCommunityResp struct {
+	Status
+}
+
 type DoLikeReq struct {
 	TargetId   string `json:"targetId"`
 	TargetType int64  `json:"targetType"`

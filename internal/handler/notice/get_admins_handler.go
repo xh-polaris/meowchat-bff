@@ -3,7 +3,7 @@ package notice
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic/notice"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/system"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -17,7 +17,7 @@ func GetAdminsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := notice.NewGetAdminsLogic(r.Context(), svcCtx)
+		l := system.NewGetAdminsLogic(r.Context(), svcCtx)
 		resp, err := l.GetAdmins(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)

@@ -1,4 +1,4 @@
-package notice
+package system
 
 import (
 	"net/http"
@@ -9,16 +9,16 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func NewNoticeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func DeleteNewsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.NewNoticeReq
+		var req types.DeleteNewsReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := system.NewNewNoticeLogic(r.Context(), svcCtx)
-		resp, err := l.NewNotice(&req)
+		l := system.NewDeleteNewsLogic(r.Context(), svcCtx)
+		resp, err := l.DeleteNews(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

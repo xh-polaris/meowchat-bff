@@ -1,4 +1,4 @@
-package notice
+package system
 
 import (
 	"net/http"
@@ -9,16 +9,16 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func NewNoticeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func ListCommunityHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.NewNoticeReq
+		var req types.ListCommunityReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := system.NewNewNoticeLogic(r.Context(), svcCtx)
-		resp, err := l.NewNotice(&req)
+		l := system.NewListCommunityLogic(r.Context(), svcCtx)
+		resp, err := l.ListCommunity(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

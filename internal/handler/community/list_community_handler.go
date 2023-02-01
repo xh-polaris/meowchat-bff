@@ -1,24 +1,24 @@
-package notice
+package community
 
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic/system"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/community"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func NewNoticeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func ListCommunityHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.NewNoticeReq
+		var req types.ListCommunityReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := system.NewNewNoticeLogic(r.Context(), svcCtx)
-		resp, err := l.NewNotice(&req)
+		l := community.NewListCommunityLogic(r.Context(), svcCtx)
+		resp, err := l.ListCommunity(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

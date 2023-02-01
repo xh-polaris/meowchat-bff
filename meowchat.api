@@ -9,7 +9,7 @@ import "desc/post.api"
 import "desc/collection.api"
 import "desc/moment.api"
 import "desc/comment.api"
-import "desc/notice.api"
+import "desc/system.api"
 import "desc/like.api"
 import "desc/user.api"
 import "desc/sts.api"
@@ -38,26 +38,36 @@ service meowchat {
 }
 
 @server(
-	group: notice
+	group: system
 	jwt: Auth
 )
 
 service meowchat {
-	// notice
+	// system
+	// admin
 	@handler GetAdmins
 	get /notice/get_admins (GetAdminsReq) returns (GetAdminsResp)
+	// news
 	@handler GetNews
 	get /notice/get_news (GetNewsReq) returns (GetNewsResp)
-	@handler GetNotices
-	get /notice/get_notices (GetNoticesReq) returns (GetNoticesResp)
 	@handler NewNews
 	post /notice/new_news (NewNewsReq) returns (NewNewsResp)
-	@handler NewNotice
-	post /notice/new_notice (NewNoticeReq) returns (NewNoticeResp)
 	@handler DeleteNews
 	post /notice/remove_news (DeleteNewsReq) returns (DeleteNewsResp)
+	// system
+	@handler GetNotices
+	get /notice/get_notices (GetNoticesReq) returns (GetNoticesResp)
+	@handler NewNotice
+	post /notice/new_notice (NewNoticeReq) returns (NewNoticeResp)
 	@handler DeleteNotice
 	post /notice/remove_notice (DeleteNoticeReq) returns (DeleteNoticeResp)
+	// community
+	@handler ListCommunity
+	get /community/list_community (ListCommunityReq) returns (ListCommunityResp)
+	@handler NewCommunity
+	post /community/new_community (NewCommunityReq) returns (NewCommunityResp)
+	@handler DeleteCommunity
+	post /community/delete_community (DeleteCommunityReq) returns (DeleteCommunityResp)
 }
 
 @server(
