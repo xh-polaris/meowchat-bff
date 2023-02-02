@@ -18,11 +18,11 @@ type (
 
     Admin {
         id       string `json:"id"`
-        createAt int64 `json:"createAt"`
+        title string `json:"title"`
         communityId string `json:"communityId"`
         name     string `json:"name"`
         phone    string `json:"phone"`
-        user     UserPreview `json:"user"`
+        avatarUrl     string `json:"avatarUrl"`
         wechat   string `json:"wechat"`
     }
 
@@ -50,6 +50,29 @@ type (
         Admins []Admin `json:"admins"`
     }
 
+    DeleteAdminReq {
+        id string `json:"id"`
+    }
+
+    DeleteAdminResp {
+        Status
+    }
+
+    NewAdminReq {
+        id       string `json:"id,optional"`
+        title string `json:"title"`
+        communityId string `json:"communityId"`
+        name     string `json:"name"`
+        phone    string `json:"phone"`
+        avatarUrl     string `json:"avatarUrl"`
+        wechat   string `json:"wechat"`
+    }
+
+    NewAdminResp {
+        Status
+        id string `json:"id"`
+    }
+
     GetNoticesReq {
         communityId string `form:"communityId"`
     }
@@ -67,7 +90,7 @@ type (
 
     NewNoticeResp {
         Status
-        noticeId string `json:"noticeId"`
+        id string `json:"id"`
     }
 
     NewNewsReq {
@@ -80,7 +103,7 @@ type (
 
     NewNewsResp {
         Status
-        newId string `json:"newId"`
+        id string `json:"id"`
     }
 
     DeleteNoticeReq {
@@ -123,7 +146,7 @@ type (
     }
 
     NewCommunityResp {
-        newId string `json:"newId"`
+        id string `json:"id"`
         Status
     }
 

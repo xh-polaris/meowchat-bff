@@ -49,8 +49,9 @@ func (l *NewCommunityLogic) NewCommunity(req *types.NewCommunityReq) (resp *type
 		if err != nil {
 			return nil, err
 		}
-		resp.NewId = data.Id
+		resp.Id = data.Id
 	} else {
+		resp.Id = req.Id
 		_, err = l.svcCtx.SystemRPC.UpdateCommunity(l.ctx, &pb.UpdateCommunityReq{
 			Id:       req.Id,
 			Name:     req.Name,

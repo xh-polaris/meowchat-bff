@@ -40,8 +40,9 @@ func (l *NewNewsLogic) NewNews(req *types.NewNewsReq) (resp *types.NewNewsResp, 
 		if err != nil {
 			return nil, err
 		}
-		resp.NewId = data.Id
+		resp.Id = data.Id
 	} else {
+		resp.Id = req.Id
 		if err = checkNewsPermission(l.ctx, l.svcCtx, req.Id); err != nil {
 			return
 		}

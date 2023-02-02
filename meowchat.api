@@ -16,25 +16,27 @@ import "desc/sts.api"
 
 @server(
 	group: auth
+	prefix: auth
 )
 
 service meowchat {
 	// auth
 	@handler SignIn
-	post /auth/sign_in (SignInReq) returns (SignInResp)
+	post /sign_in (SignInReq) returns (SignInResp)
 	@handler SendVerifyCode
-	post /auth/send_verify_code (SendVerifyCodeReq) returns (SendVerifyCodeResp)
+	post /send_verify_code (SendVerifyCodeReq) returns (SendVerifyCodeResp)
 }
 
 @server(
 	group: auth
+	prefix: auth
 	jwt: Auth
 )
 
 service meowchat {
 	// auth
 	@handler SetPassword
-	post /auth/set_password (SetPasswordReq) returns (SetPasswordResp)
+	post /set_password (SetPasswordReq) returns (SetPasswordResp)
 }
 
 @server(
@@ -47,6 +49,10 @@ service meowchat {
 	// admin
 	@handler GetAdmins
 	get /notice/get_admins (GetAdminsReq) returns (GetAdminsResp)
+	@handler NewAdmin
+	post /notice/new_admin (NewAdminReq) returns (NewAdminResp)
+	@handler DeleteAdmin
+	post /notice/delete_admin (DeleteAdminReq) returns (DeleteAdminResp)
 	// news
 	@handler GetNews
 	get /notice/get_news (GetNewsReq) returns (GetNewsResp)
@@ -72,109 +78,116 @@ service meowchat {
 
 @server(
 	group: like
+	prefix: like
 	jwt: Auth
 )
 service meowchat {
 	// like
 	@handler DoLike
-	post /like/do_like (DoLikeReq) returns (DoLikeResp)
+	post /do_like (DoLikeReq) returns (DoLikeResp)
 	@handler GetUserLiked
-	get /like/get_user_liked (GetUserLikedReq) returns (GetUserLikedResp)
+	get /get_user_liked (GetUserLikedReq) returns (GetUserLikedResp)
 	@handler GetLikedCount
-	get /like/get_count (GetLikedCountReq) returns (GetLikedCountResp)
+	get /get_count (GetLikedCountReq) returns (GetLikedCountResp)
 	
 }
 
 @server(
 	group: post
+	prefix: post
 	jwt: Auth
 )
 
 service meowchat {
 	// post
 	@handler GetPostPreviews
-	get /post/get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
+	get /get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
 	@handler GetPostDetail
-	get /post/get_post_detail (GetPostDetailReq) returns (GetPostDetailResp)
+	get /get_post_detail (GetPostDetailReq) returns (GetPostDetailResp)
 	@handler NewPost
-	post /post/new_post (NewPostReq) returns (NewPostResp)
+	post /new_post (NewPostReq) returns (NewPostResp)
 	@handler DeletePost
-	post /post/delete_post (DeletePostReq) returns (DeletePostResp)
+	post /delete_post (DeletePostReq) returns (DeletePostResp)
 	@handler SearchPost
-	get /post/search_post (SearchPostReq) returns (SearchPostResp)
+	get /search_post (SearchPostReq) returns (SearchPostResp)
 }
 
 @server(
 	group: collection
+	prefix: collection
 	jwt: Auth
 )
 
 service meowchat {
 	// collection
 	@handler GetCatPreviews
-	get /collection/get_cat_previews (GetCatPreviewsReq) returns (GetCatPreviewsResp)
+	get /get_cat_previews (GetCatPreviewsReq) returns (GetCatPreviewsResp)
 	@handler GetCatDetail
-	get /collection/get_cat_detail (GetCatDetailReq) returns (GetCatDetailResp)
+	get /get_cat_detail (GetCatDetailReq) returns (GetCatDetailResp)
 	@handler NewCat
-	post /collection/new_cat (NewCatReq) returns (NewCatResp)
+	post /new_cat (NewCatReq) returns (NewCatResp)
 	@handler DeleteCat
-	post /collection/delete_cat (DeleteCatReq) returns (DeleteCatResp)
+	post /delete_cat (DeleteCatReq) returns (DeleteCatResp)
 	@handler SearchCat
-	get /collection/search_cat (SearchCatReq) returns (SearchCatResp)
+	get /search_cat (SearchCatReq) returns (SearchCatResp)
 }
 
 @server(
 	group: moment
+	prefix: moment
 	jwt: Auth
 )
 
 service meowchat {
 	// moment
 	@handler GetMomentPreviews
-	get /moment/get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
+	get /get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
 	@handler GetMomentDetail
-	get /moment/get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
+	get /get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
 	@handler NewMoment
-	post /moment/new_moment (NewMomentReq) returns (NewMomentResp)
+	post /new_moment (NewMomentReq) returns (NewMomentResp)
 	@handler DeleteMoment
-	post /moment/delete_moment (DeleteMomentReq) returns (DeleteMomentResp)
+	post /delete_moment (DeleteMomentReq) returns (DeleteMomentResp)
 	@handler SearchMoment
-	get /moment/search_moment (SearchMomentReq) returns (SearchMomentResp)
+	get /search_moment (SearchMomentReq) returns (SearchMomentResp)
 }
 
 @server(
 	group: comment
+	prefix: comment
 	jwt: Auth
 )
 
 service meowchat {
 	// comment
 	@handler GetComments
-	get /comment/get_comments (GetCommentsReq) returns (GetCommentsResp)
+	get /get_comments (GetCommentsReq) returns (GetCommentsResp)
 	@handler NewComment
-	post /comment/new_comment (NewCommentReq) returns (NewCommentResp)
+	post /new_comment (NewCommentReq) returns (NewCommentResp)
 }
 
 @server(
 	group: user
+	prefix: user
 	jwt: Auth
 )
 
 service meowchat {
 	// user
 	@handler GetUserInfo
-	get /user/get_user_info (GetUserInfoReq) returns (GetUserInfoResp)
+	get /get_user_info (GetUserInfoReq) returns (GetUserInfoResp)
 	@handler UpdateUserInfo
-	post /user/update_user_info (UpdateUserInfoReq) returns (UpdateUserInfoResp)
+	post /update_user_info (UpdateUserInfoReq) returns (UpdateUserInfoResp)
 }
 
 @server(
 	group: sts
+	prefix: sts
 	jwt: Auth
 )
 
 service meowchat {
 	// sts
 	@handler ApplySignedUrl
-	post /sts/apply_signed_url (ApplySignedUrlReq) returns (ApplySignedUrlResp)
+	post /apply_signed_url (ApplySignedUrlReq) returns (ApplySignedUrlResp)
 }

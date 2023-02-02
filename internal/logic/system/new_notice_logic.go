@@ -38,8 +38,9 @@ func (l *NewNoticeLogic) NewNotice(req *types.NewNoticeReq) (resp *types.NewNoti
 		if err != nil {
 			return nil, err
 		}
-		resp.NoticeId = data.Id
+		resp.Id = data.Id
 	} else {
+		resp.Id = req.Id
 		if err = checkNoticePermission(l.ctx, l.svcCtx, req.Id); err != nil {
 			return
 		}

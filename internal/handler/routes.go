@@ -23,26 +23,28 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/auth/sign_in",
+				Path:    "/sign_in",
 				Handler: auth.SignInHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/auth/send_verify_code",
+				Path:    "/send_verify_code",
 				Handler: auth.SendVerifyCodeHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/auth"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/auth/set_password",
+				Path:    "/set_password",
 				Handler: auth.SetPasswordHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/auth"),
 	)
 
 	server.AddRoutes(
@@ -51,6 +53,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodGet,
 				Path:    "/notice/get_admins",
 				Handler: system.GetAdminsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/new_admin",
+				Handler: system.NewAdminHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/delete_admin",
+				Handler: system.DeleteAdminHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
@@ -105,156 +117,163 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/like/do_like",
+				Path:    "/do_like",
 				Handler: like.DoLikeHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/like/get_user_liked",
+				Path:    "/get_user_liked",
 				Handler: like.GetUserLikedHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/like/get_count",
+				Path:    "/get_count",
 				Handler: like.GetLikedCountHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/like"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/post/get_post_previews",
+				Path:    "/get_post_previews",
 				Handler: post.GetPostPreviewsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/post/get_post_detail",
+				Path:    "/get_post_detail",
 				Handler: post.GetPostDetailHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/post/new_post",
+				Path:    "/new_post",
 				Handler: post.NewPostHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/post/delete_post",
+				Path:    "/delete_post",
 				Handler: post.DeletePostHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/post/search_post",
+				Path:    "/search_post",
 				Handler: post.SearchPostHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/post"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/collection/get_cat_previews",
+				Path:    "/get_cat_previews",
 				Handler: collection.GetCatPreviewsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/collection/get_cat_detail",
+				Path:    "/get_cat_detail",
 				Handler: collection.GetCatDetailHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/collection/new_cat",
+				Path:    "/new_cat",
 				Handler: collection.NewCatHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/collection/delete_cat",
+				Path:    "/delete_cat",
 				Handler: collection.DeleteCatHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/collection/search_cat",
+				Path:    "/search_cat",
 				Handler: collection.SearchCatHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/collection"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/moment/get_moment_previews",
+				Path:    "/get_moment_previews",
 				Handler: moment.GetMomentPreviewsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/moment/get_moment_detail",
+				Path:    "/get_moment_detail",
 				Handler: moment.GetMomentDetailHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/moment/new_moment",
+				Path:    "/new_moment",
 				Handler: moment.NewMomentHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/moment/delete_moment",
+				Path:    "/delete_moment",
 				Handler: moment.DeleteMomentHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/moment/search_moment",
+				Path:    "/search_moment",
 				Handler: moment.SearchMomentHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/moment"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/comment/get_comments",
+				Path:    "/get_comments",
 				Handler: comment.GetCommentsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/comment/new_comment",
+				Path:    "/new_comment",
 				Handler: comment.NewCommentHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/comment"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/user/get_user_info",
+				Path:    "/get_user_info",
 				Handler: user.GetUserInfoHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/user/update_user_info",
+				Path:    "/update_user_info",
 				Handler: user.UpdateUserInfoHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/user"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/sts/apply_signed_url",
+				Path:    "/apply_signed_url",
 				Handler: sts.ApplySignedUrlHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/sts"),
 	)
 }

@@ -305,13 +305,13 @@ type News struct {
 }
 
 type Admin struct {
-	Id          string      `json:"id"`
-	CreateAt    int64       `json:"createAt"`
-	CommunityId string      `json:"communityId"`
-	Name        string      `json:"name"`
-	Phone       string      `json:"phone"`
-	User        UserPreview `json:"user"`
-	Wechat      string      `json:"wechat"`
+	Id          string `json:"id"`
+	Title       string `json:"title"`
+	CommunityId string `json:"communityId"`
+	Name        string `json:"name"`
+	Phone       string `json:"phone"`
+	AvatarUrl   string `json:"avatarUrl"`
+	Wechat      string `json:"wechat"`
 }
 
 type Notice struct {
@@ -338,6 +338,29 @@ type GetAdminsResp struct {
 	Admins []Admin `json:"admins"`
 }
 
+type DeleteAdminReq struct {
+	Id string `json:"id"`
+}
+
+type DeleteAdminResp struct {
+	Status
+}
+
+type NewAdminReq struct {
+	Id          string `json:"id,optional"`
+	Title       string `json:"title"`
+	CommunityId string `json:"communityId"`
+	Name        string `json:"name"`
+	Phone       string `json:"phone"`
+	AvatarUrl   string `json:"avatarUrl"`
+	Wechat      string `json:"wechat"`
+}
+
+type NewAdminResp struct {
+	Status
+	Id string `json:"id"`
+}
+
 type GetNoticesReq struct {
 	CommunityId string `form:"communityId"`
 }
@@ -355,7 +378,7 @@ type NewNoticeReq struct {
 
 type NewNoticeResp struct {
 	Status
-	NoticeId string `json:"noticeId"`
+	Id string `json:"id"`
 }
 
 type NewNewsReq struct {
@@ -368,7 +391,7 @@ type NewNewsReq struct {
 
 type NewNewsResp struct {
 	Status
-	NewId string `json:"newId"`
+	Id string `json:"id"`
 }
 
 type DeleteNoticeReq struct {
@@ -402,13 +425,13 @@ type ListCommunityResp struct {
 }
 
 type NewCommunityReq struct {
-	Id       string `json:"id"`
+	Id       string `json:"id,optional"`
 	Name     string `json:"name""`
-	ParentId string `json:"parentId"`
+	ParentId string `json:"parentId,optional"`
 }
 
 type NewCommunityResp struct {
-	NewId string `json:"newId"`
+	Id string `json:"id"`
 	Status
 }
 
