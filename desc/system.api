@@ -1,7 +1,7 @@
 syntax = "v1"
 
 info(
-    title: "notice api"
+    title: "system api"
 )
 
 import "desc/common.api"
@@ -96,6 +96,42 @@ type (
     }
 
     DeleteNewsResp {
+        Status
+    }
+
+    // Community
+
+    Community {
+        id string `json:"id"`
+        name string `json:"name"`
+        parentId string `json:"parentId"`
+    }
+
+    ListCommunityReq {
+
+    }
+
+    ListCommunityResp {
+        communities []Community `json:"communities"`
+        Status
+    }
+
+    NewCommunityReq {
+        id string `json:"id,optional"`
+        name string `json:"name""`
+        parentId string `json:"parentId,optional"`
+    }
+
+    NewCommunityResp {
+        newId string `json:"newId"`
+        Status
+    }
+
+    DeleteCommunityReq {
+        id string `json:"id"`
+    }
+
+    DeleteCommunityResp {
         Status
     }
 )

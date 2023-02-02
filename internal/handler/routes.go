@@ -9,9 +9,9 @@ import (
 	comment "github.com/xh-polaris/meowchat-bff/internal/handler/comment"
 	like "github.com/xh-polaris/meowchat-bff/internal/handler/like"
 	moment "github.com/xh-polaris/meowchat-bff/internal/handler/moment"
-	notice "github.com/xh-polaris/meowchat-bff/internal/handler/notice"
 	post "github.com/xh-polaris/meowchat-bff/internal/handler/post"
 	sts "github.com/xh-polaris/meowchat-bff/internal/handler/sts"
+	system "github.com/xh-polaris/meowchat-bff/internal/handler/system"
 	user "github.com/xh-polaris/meowchat-bff/internal/handler/user"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 
@@ -50,37 +50,52 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			{
 				Method:  http.MethodGet,
 				Path:    "/notice/get_admins",
-				Handler: notice.GetAdminsHandler(serverCtx),
+				Handler: system.GetAdminsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/notice/get_news",
-				Handler: notice.GetNewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/notice/get_notices",
-				Handler: notice.GetNoticesHandler(serverCtx),
+				Handler: system.GetNewsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/notice/new_news",
-				Handler: notice.NewNewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/notice/new_notice",
-				Handler: notice.NewNoticeHandler(serverCtx),
+				Handler: system.NewNewsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/notice/remove_news",
-				Handler: notice.DeleteNewsHandler(serverCtx),
+				Handler: system.DeleteNewsHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/notice/get_notices",
+				Handler: system.GetNoticesHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/new_notice",
+				Handler: system.NewNoticeHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/notice/remove_notice",
-				Handler: notice.DeleteNoticeHandler(serverCtx),
+				Handler: system.DeleteNoticeHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/community/list_community",
+				Handler: system.ListCommunityHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/community/new_community",
+				Handler: system.NewCommunityHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/community/delete_community",
+				Handler: system.DeleteCommunityHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

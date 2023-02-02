@@ -37,8 +37,8 @@ func (l *GetPostPreviewsLogic) GetPostPreviews(req *types.GetPostPreviewsReq) (r
 		return nil, err
 	}
 	resp.Total = data.Total
-	resp.Posts = make([]types.Post, len(data.GetPosts()))
-	for i, val := range data.GetPosts() {
+	resp.Posts = make([]types.Post, len(data.Posts))
+	for i, val := range data.Posts {
 		respPost, _ := toRespPost(l.ctx, l.svcCtx, val)
 		resp.Posts[i] = respPost
 	}

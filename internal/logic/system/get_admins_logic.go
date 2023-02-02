@@ -1,9 +1,9 @@
-package notice
+package system
 
 import (
 	"context"
 	"github.com/jinzhu/copier"
-	"github.com/xh-polaris/meowchat-notice-rpc/pb"
+	"github.com/xh-polaris/meowchat-system-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -29,7 +29,7 @@ func (l *GetAdminsLogic) GetAdmins(req *types.GetAdminsReq) (resp *types.GetAdmi
 	resp = new(types.GetAdminsResp)
 	resp.Admins = make([]types.Admin, 0)
 
-	data, err := l.svcCtx.NoticeRPC.ListAdmin(l.ctx, &pb.ListAdminReq{CommunityId: req.CommunityId})
+	data, err := l.svcCtx.SystemRPC.ListAdmin(l.ctx, &pb.ListAdminReq{CommunityId: req.CommunityId})
 	if err != nil {
 		return nil, err
 	}

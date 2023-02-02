@@ -1,8 +1,8 @@
-package notice
+package system
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-notice-rpc/pb"
+	"github.com/xh-polaris/meowchat-system-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
@@ -27,7 +27,11 @@ func NewDeleteNewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Delete
 func (l *DeleteNewsLogic) DeleteNews(req *types.DeleteNewsReq) (resp *types.DeleteNewsResp, err error) {
 	resp = new(types.DeleteNewsResp)
 
-	_, err = l.svcCtx.NoticeRPC.DeleteNews(l.ctx, &pb.DeleteNewsReq{Id: req.Id})
+	if err = checkNewsPermission(l.ctx, l.svcCtx, req.Id); err != nil {
+		return
+	}
+
+	_, err = l.svcCtx.SystemRPC.DeleteNews(l.ctx, &pb.DeleteNewsReq{Id: req.Id})
 	if err != nil {
 		return nil, err
 	}
