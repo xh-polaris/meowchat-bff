@@ -131,7 +131,7 @@ type (
     }
 
     ListCommunityReq {
-        parentId string `form:"parentId"`
+        parentId string `form:"parentId,optional"`
     }
 
     ListCommunityResp {
