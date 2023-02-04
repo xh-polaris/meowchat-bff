@@ -127,7 +127,7 @@ type (
     Community {
         id string `json:"id"`
         name string `json:"name"`
-        parentId string `json:"parentId"`
+        parentId string `json:"parentId,omitempty"`
     }
 
     ListCommunityReq {

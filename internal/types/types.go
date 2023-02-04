@@ -413,7 +413,7 @@ type DeleteNewsResp struct {
 type Community struct {
 	Id       string `json:"id"`
 	Name     string `json:"name"`
-	ParentId string `json:"parentId"`
+	ParentId string `json:"parentId,omitempty"`
 }
 
 type ListCommunityReq struct {
