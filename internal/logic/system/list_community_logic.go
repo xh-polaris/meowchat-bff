@@ -27,12 +27,12 @@ func NewListCommunityLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Lis
 
 func (l *ListCommunityLogic) ListCommunity(req *types.ListCommunityReq) (resp *types.ListCommunityResp, err error) {
 	resp = new(types.ListCommunityResp)
-	resp.Communities = make([]types.Community, 0)
 
-	data, err := l.svcCtx.SystemRPC.ListCommunity(l.ctx, &pb.ListCommunityReq{Size: -1})
+	data, err := l.svcCtx.SystemRPC.ListCommunity(l.ctx, &pb.ListCommunityReq{ParentId: req.ParentId, Size: -1})
 	if err != nil {
 		return nil, err
 	}
+	resp.Communities = make([]types.Community, len(data.Communities))
 
 	err = copier.Copy(&resp.Communities, &data.Communities)
 	if err != nil {

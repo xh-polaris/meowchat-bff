@@ -417,6 +417,7 @@ type Community struct {
 }
 
 type ListCommunityReq struct {
+	ParentId string `form:"parentId"`
 }
 
 type ListCommunityResp struct {
