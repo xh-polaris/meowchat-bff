@@ -102,6 +102,8 @@ service meowchat {
 	// post
 	@handler GetPostPreviews
 	get /get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
+	@handler GetOwnPostPreviews
+	get /get_own_post_previews (GetOwnPostPreviewsReq) returns (GetOwnPostPreviewsResp)
 	@handler GetPostDetail
 	get /get_post_detail (GetPostDetailReq) returns (GetPostDetailResp)
 	@handler NewPost
@@ -142,6 +144,8 @@ service meowchat {
 	// moment
 	@handler GetMomentPreviews
 	get /get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
+	@handler GetOwnMomentPreviews
+	get /get_own_moment_previews (GetOwnMomentPreviewsReq) returns (GetOwnMomentPreviewsResp)
 	@handler GetMomentDetail
 	get /get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
 	@handler NewMoment

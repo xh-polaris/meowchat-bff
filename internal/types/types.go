@@ -72,6 +72,16 @@ type GetPostPreviewsResp struct {
 	Total int64  `json:"total"`
 }
 
+type GetOwnPostPreviewsReq struct {
+	Page int64 `form:"page"`
+}
+
+type GetOwnPostPreviewsResp struct {
+	Status
+	Posts []Post `json:"posts"`
+	Total int64  `json:"total"`
+}
+
 type GetPostDetailReq struct {
 	PostId string `form:"postId"`
 }
@@ -216,6 +226,16 @@ type GetMomentPreviewsReq struct {
 }
 
 type GetMomentPreviewsResp struct {
+	Status
+	Moments []Moment `json:"moments"`
+	Total   int64    `json:"total"`
+}
+
+type GetOwnMomentPreviewsReq struct {
+	Page int64 `form:"page"`
+}
+
+type GetOwnMomentPreviewsResp struct {
 	Status
 	Moments []Moment `json:"moments"`
 	Total   int64    `json:"total"`

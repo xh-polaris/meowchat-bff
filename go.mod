@@ -10,12 +10,12 @@ require (
 	github.com/xh-polaris/meowchat-collection-rpc v1.0.5
 	github.com/xh-polaris/meowchat-comment-rpc v1.0.2
 	github.com/xh-polaris/meowchat-like-rpc v1.1.2
-	github.com/xh-polaris/meowchat-moment-rpc v1.0.8
-	github.com/xh-polaris/meowchat-post-rpc v1.0.4
+	github.com/xh-polaris/meowchat-moment-rpc v1.0.10
+	github.com/xh-polaris/meowchat-post-rpc v1.1.0
 	github.com/xh-polaris/meowchat-system-rpc v1.2.0
 	github.com/xh-polaris/meowchat-user-rpc v1.0.3
 	github.com/xh-polaris/sts-rpc v1.2.1
-	github.com/zeromicro/go-zero v1.4.3
+	github.com/zeromicro/go-zero v1.4.4
 	go.opentelemetry.io/contrib/propagators/b3 v1.11.0
 	go.opentelemetry.io/otel v1.11.0
 	google.golang.org/grpc v1.51.0
@@ -62,6 +62,7 @@ require (
 	go.opentelemetry.io/otel/exporters/otlp/internal/retry v1.11.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.11.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.10.0 // indirect
 	go.opentelemetry.io/otel/exporters/zipkin v1.11.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.11.0 // indirect
 	go.opentelemetry.io/otel/trace v1.11.0 // indirect

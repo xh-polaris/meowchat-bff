@@ -26,6 +26,16 @@ type (
         total int64 `json:"total"`
     }
 
+    GetOwnPostPreviewsReq {
+        page int64 `form:"page"`
+    }
+
+    GetOwnPostPreviewsResp {
+        Status
+        posts []Post `json:"posts"`
+        total int64 `json:"total"`
+    }
+
     GetPostDetailReq {
         postId string `form:"postId"`
     }

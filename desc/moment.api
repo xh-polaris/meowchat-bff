@@ -29,6 +29,16 @@ type (
         total int64 `json:"total"`
     }
 
+    GetOwnMomentPreviewsReq {
+        page int64 `form:"page"`
+    }
+
+    GetOwnMomentPreviewsResp {
+        Status
+        moments []Moment `json:"moments"`
+        total int64 `json:"total"`
+    }
+
     GetMomentDetailReq {
         momentId string `form:"momentId"`
     }
