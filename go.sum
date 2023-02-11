@@ -819,8 +819,8 @@ github.com/xh-polaris/meowchat-system-rpc v1.2.0 h1:ymYYGUaQ6yLXLFKGkZ6MJh/or4bH
 github.com/xh-polaris/meowchat-system-rpc v1.2.0/go.mod h1:FqozLawfF2Uj91bcyOpMBEkk0Xe2P43gZ33xl3hlslE=
 github.com/xh-polaris/meowchat-user-rpc v1.0.3 h1:kYMjsT2yHlHgYjttq/CBXcbpkQ+lQW2M9W5Z8fQuXCY=
 github.com/xh-polaris/meowchat-user-rpc v1.0.3/go.mod h1:KZQQKyfPI8Hx0rWD9dSf34C76uqEyfCk85WAZStqLv0=
-github.com/xh-polaris/sts-rpc v1.2.1 h1:8u3W5XvA4DB+6IF7MnpjERiTZD15xCKqrTyJvOU2CgI=
-github.com/xh-polaris/sts-rpc v1.2.1/go.mod h1:aRJAZnDnggQDmTKYJqJa0WwsDVDkuo3Zup9JbZ+DloU=
+github.com/xh-polaris/sts-rpc v1.3.1 h1:8zc7jJp9uaWk1KRt40NeVfDuq9HUVoArxG+sGhNKKuM=
+github.com/xh-polaris/sts-rpc v1.3.1/go.mod h1:aRJAZnDnggQDmTKYJqJa0WwsDVDkuo3Zup9JbZ+DloU=
 github.com/youmark/pkcs8 v0.0.0-20181117223130-1be2e3e5546d/go.mod h1:rHwXgn7JulP+udvsHwJoVG1YGAP6VLg4y9I5dyZdqmA=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
