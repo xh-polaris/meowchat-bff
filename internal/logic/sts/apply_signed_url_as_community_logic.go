@@ -12,24 +12,23 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type ApplySignedUrlLogic struct {
+type ApplySignedUrlAsCommunityLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewApplySignedUrlLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ApplySignedUrlLogic {
-	return &ApplySignedUrlLogic{
+func NewApplySignedUrlAsCommunityLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ApplySignedUrlAsCommunityLogic {
+	return &ApplySignedUrlAsCommunityLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *ApplySignedUrlLogic) ApplySignedUrl(req *types.ApplySignedUrlReq) (resp *types.ApplySignedUrlResp, err error) {
-	resp = new(types.ApplySignedUrlResp)
-	userId := l.ctx.Value("userId").(string)
-	data, err := l.svcCtx.StsRPC.GenCosSts(l.ctx, &pb.GenCosStsReq{Path: userId + "/*"})
+func (l *ApplySignedUrlAsCommunityLogic) ApplySignedUrlAsCommunity(req *types.ApplySignedUrlAsCommunityReq) (resp *types.ApplySignedUrlAsCommunityResp, err error) {
+	resp = new(types.ApplySignedUrlAsCommunityResp)
+	data, err := l.svcCtx.StsRPC.GenCosSts(l.ctx, &pb.GenCosStsReq{Path: req.CommunityId + "/*"})
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +40,7 @@ func (l *ApplySignedUrlLogic) ApplySignedUrl(req *types.ApplySignedUrlReq) (resp
 		SecretId:  data.SecretId,
 		SecretKey: data.SecretKey,
 		Method:    http.MethodPut,
-		Path:      "users/" + userId + "/" + req.Prefix + uuid.New().String() + req.Suffix,
+		Path:      "communities/" + req.CommunityId + "/" + req.Prefix + uuid.New().String() + req.Suffix,
 	})
 	resp.Url = data2.SignedUrl
 	return

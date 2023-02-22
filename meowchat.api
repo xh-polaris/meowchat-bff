@@ -194,4 +194,6 @@ service meowchat {
 	// sts
 	@handler ApplySignedUrl
 	post /apply_signed_url (ApplySignedUrlReq) returns (ApplySignedUrlResp)
+	@handler ApplySignedUrlAsCommunity
+	post /apply_signed_url_as_community (ApplySignedUrlAsCommunityReq) returns (ApplySignedUrlAsCommunityResp)
 }

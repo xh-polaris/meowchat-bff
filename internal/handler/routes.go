@@ -282,6 +282,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/apply_signed_url",
 				Handler: sts.ApplySignedUrlHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/apply_signed_url_as_community",
+				Handler: sts.ApplySignedUrlAsCommunityHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/sts"),

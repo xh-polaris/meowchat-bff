@@ -520,3 +520,15 @@ type ApplySignedUrlResp struct {
 	Url          string `json:"url"`
 	SessionToken string `json:"sessionToken"`
 }
+
+type ApplySignedUrlAsCommunityReq struct {
+	CommunityId string `json:"communityId"`
+	Prefix      string `json:"prefix,optional"`
+	Suffix      string `json:"suffix,optional"`
+}
+
+type ApplySignedUrlAsCommunityResp struct {
+	Status
+	Url          string `json:"url"`
+	SessionToken string `json:"sessionToken"`
+}
