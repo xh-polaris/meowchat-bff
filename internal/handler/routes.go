@@ -109,6 +109,21 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/community/delete_community",
 				Handler: system.DeleteCommunityHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/role/get_user_roles",
+				Handler: system.GetUserRolesHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/role/update_community_admin",
+				Handler: system.UpdateCommunityAdminHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/role/update_super_admin",
+				Handler: system.UpdateSuperAdminHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)

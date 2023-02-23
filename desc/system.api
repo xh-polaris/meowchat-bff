@@ -157,4 +157,36 @@ type (
     DeleteCommunityResp {
         Status
     }
+
+    GetUserRolesReq {
+    }
+
+    Role {
+        roleType string `json:"roleType"`
+        communityId string `json:"communityId,omitempty"`
+    }
+
+    GetUserRolesResp {
+        roles []Role `json:"roles"`
+        Status
+    }
+
+    UpdateCommunityAdminReq {
+        userId string `json:"userId"`
+        communityId string `json:"communityId"`
+        isRemove bool `json:"isRemove,default=false"`
+    }
+
+    UpdateCommunityAdminResp {
+        Status
+    }
+
+    UpdateSuperAdminReq {
+        userId string `json:"userId"`
+        isRemove bool `json:"isRemove,default=false"`
+    }
+
+    UpdateSuperAdminResp {
+        Status
+    }
 )

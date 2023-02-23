@@ -464,6 +464,38 @@ type DeleteCommunityResp struct {
 	Status
 }
 
+type GetUserRolesReq struct {
+}
+
+type Role struct {
+	RoleType    string `json:"roleType"`
+	CommunityId string `json:"communityId,omitempty"`
+}
+
+type GetUserRolesResp struct {
+	Roles []Role `json:"roles"`
+	Status
+}
+
+type UpdateCommunityAdminReq struct {
+	UserId      string `json:"userId"`
+	CommunityId string `json:"communityId"`
+	IsRemove    bool   `json:"isRemove,default=false"`
+}
+
+type UpdateCommunityAdminResp struct {
+	Status
+}
+
+type UpdateSuperAdminReq struct {
+	UserId   string `json:"userId"`
+	IsRemove bool   `json:"isRemove,default=false"`
+}
+
+type UpdateSuperAdminResp struct {
+	Status
+}
+
 type DoLikeReq struct {
 	TargetId   string `json:"targetId"`
 	TargetType int64  `json:"targetType"`

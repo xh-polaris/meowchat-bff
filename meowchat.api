@@ -74,6 +74,13 @@ service meowchat {
 	post /community/new_community (NewCommunityReq) returns (NewCommunityResp)
 	@handler DeleteCommunity
 	post /community/delete_community (DeleteCommunityReq) returns (DeleteCommunityResp)
+	// role
+	@handler GetUserRoles
+	get /role/get_user_roles (GetUserRolesReq) returns (GetUserRolesResp)
+	@handler UpdateCommunityAdmin
+	post /role/update_community_admin (UpdateCommunityAdminReq) returns (UpdateCommunityAdminResp)
+	@handler UpdateSuperAdmin
+	post /role/update_super_admin (UpdateSuperAdminReq) returns (UpdateSuperAdminResp)
 }
 
 @server(
