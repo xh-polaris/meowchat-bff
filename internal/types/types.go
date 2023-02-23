@@ -50,16 +50,15 @@ type UserPreview struct {
 }
 
 type Post struct {
-	Id          string      `json:"id"`
-	CreateAt    int64       `json:"createAt"`
-	IsAnonymous bool        `json:"isAnonymous"`
-	Title       string      `json:"title"`
-	Text        string      `json:"text"`
-	CoverUrl    string      `json:"coverUrl"`
-	Tags        []string    `json:"tags"`
-	Likes       int64       `json:"likes"`
-	Comments    int64       `json:"comments"`
-	User        UserPreview `json:"user"`
+	Id       string      `json:"id"`
+	CreateAt int64       `json:"createAt"`
+	Title    string      `json:"title"`
+	Text     string      `json:"text"`
+	CoverUrl string      `json:"coverUrl"`
+	Tags     []string    `json:"tags"`
+	Likes    int64       `json:"likes"`
+	Comments int64       `json:"comments"`
+	User     UserPreview `json:"user"`
 }
 
 type GetPostPreviewsReq struct {
@@ -92,12 +91,11 @@ type GetPostDetailResp struct {
 }
 
 type NewPostReq struct {
-	Id          string   `json:"id,optional"`
-	IsAnonymous bool     `json:"isAnonymous"`
-	Title       string   `json:"title"`
-	Text        string   `json:"text"`
-	CoverUrl    string   `json:"coverUrl,optional"`
-	Tags        []string `json:"tags"`
+	Id       string   `json:"id,optional"`
+	Title    string   `json:"title"`
+	Text     string   `json:"text"`
+	CoverUrl string   `json:"coverUrl,optional"`
+	Tags     []string `json:"tags"`
 }
 
 type NewPostResp struct {

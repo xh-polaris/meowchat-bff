@@ -6,7 +6,6 @@ type (
     Post {
         id string `json:"id"`
         createAt int64 `json:"createAt"`
-        isAnonymous bool `json:"isAnonymous"`
         title string `json:"title"`
         text string `json:"text"`
         coverUrl string `json:"coverUrl"`
@@ -47,7 +46,6 @@ type (
 
     NewPostReq {
         id string `json:"id,optional"`
-        isAnonymous bool `json:"isAnonymous"`
         title string `json:"title"`
         text string `json:"text"`
         coverUrl string `json:"coverUrl,optional"`
