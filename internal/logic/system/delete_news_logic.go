@@ -27,10 +27,6 @@ func NewDeleteNewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Delete
 func (l *DeleteNewsLogic) DeleteNews(req *types.DeleteNewsReq) (resp *types.DeleteNewsResp, err error) {
 	resp = new(types.DeleteNewsResp)
 
-	if err = checkNewsPermission(l.ctx, l.svcCtx, req.Id); err != nil {
-		return
-	}
-
 	_, err = l.svcCtx.SystemRPC.DeleteNews(l.ctx, &pb.DeleteNewsReq{Id: req.Id})
 	if err != nil {
 		return nil, err

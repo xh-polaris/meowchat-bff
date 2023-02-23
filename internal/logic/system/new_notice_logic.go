@@ -28,9 +28,6 @@ func (l *NewNoticeLogic) NewNotice(req *types.NewNoticeReq) (resp *types.NewNoti
 	resp = new(types.NewNoticeResp)
 
 	if req.Id == "" {
-		if err = checkCommunityPermission(l.ctx, l.svcCtx, req.CommunityId); err != nil {
-			return
-		}
 		data, err := l.svcCtx.SystemRPC.CreateNotice(l.ctx, &pb.CreateNoticeReq{
 			Text:        req.Text,
 			CommunityId: req.CommunityId,
@@ -41,9 +38,6 @@ func (l *NewNoticeLogic) NewNotice(req *types.NewNoticeReq) (resp *types.NewNoti
 		resp.Id = data.Id
 	} else {
 		resp.Id = req.Id
-		if err = checkNoticePermission(l.ctx, l.svcCtx, req.Id); err != nil {
-			return
-		}
 		_, err := l.svcCtx.SystemRPC.UpdateNotice(l.ctx, &pb.UpdateNoticeReq{
 			Id:   req.Id,
 			Text: req.Text,

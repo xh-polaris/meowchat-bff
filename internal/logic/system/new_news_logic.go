@@ -28,9 +28,6 @@ func (l *NewNewsLogic) NewNews(req *types.NewNewsReq) (resp *types.NewNewsResp, 
 	resp = new(types.NewNewsResp)
 
 	if req.Id == "" {
-		if err = checkCommunityPermission(l.ctx, l.svcCtx, req.CommunityId); err != nil {
-			return
-		}
 		data, err := l.svcCtx.SystemRPC.CreateNews(l.ctx, &pb.CreateNewsReq{
 			CommunityId: req.CommunityId,
 			ImageUrl:    req.ImageUrl,
@@ -43,9 +40,6 @@ func (l *NewNewsLogic) NewNews(req *types.NewNewsReq) (resp *types.NewNewsResp, 
 		resp.Id = data.Id
 	} else {
 		resp.Id = req.Id
-		if err = checkNewsPermission(l.ctx, l.svcCtx, req.Id); err != nil {
-			return
-		}
 		_, err = l.svcCtx.SystemRPC.UpdateNews(l.ctx, &pb.UpdateNewsReq{
 			Id:       req.Id,
 			ImageUrl: req.ImageUrl,

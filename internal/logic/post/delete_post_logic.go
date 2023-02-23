@@ -2,12 +2,9 @@ package post
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-bff/internal/errorx"
-	"github.com/xh-polaris/meowchat-post-rpc/pb"
-	"net/http"
-
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
+	"github.com/xh-polaris/meowchat-post-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -28,17 +25,6 @@ func NewDeletePostLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Delete
 
 func (l *DeletePostLogic) DeletePost(req *types.DeletePostReq) (resp *types.DeletePostResp, err error) {
 	resp = new(types.DeletePostResp)
-	userId := l.ctx.Value("userId").(string)
-
-	post, err := l.svcCtx.PostRPC.RetrievePost(l.ctx, &pb.RetrievePostReq{
-		PostId: req.Id,
-	})
-	if err != nil {
-		return nil, err
-	}
-	if post.Post.UserId != userId {
-		return nil, errorx.NewCodeError(http.StatusForbidden, "无权删除该帖子")
-	}
 
 	_, err = l.svcCtx.PostRPC.DeletePost(l.ctx, &pb.DeletePostReq{
 		Id: req.Id,

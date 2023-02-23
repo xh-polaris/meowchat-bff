@@ -27,10 +27,6 @@ func NewDeleteNoticeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Dele
 func (l *DeleteNoticeLogic) DeleteNotice(req *types.DeleteNoticeReq) (resp *types.DeleteNoticeResp, err error) {
 	resp = new(types.DeleteNoticeResp)
 
-	if err = checkNoticePermission(l.ctx, l.svcCtx, req.Id); err != nil {
-		return
-	}
-
 	_, err = l.svcCtx.SystemRPC.DeleteNotice(l.ctx, &pb.DeleteNoticeReq{Id: req.Id})
 	if err != nil {
 		return nil, err
