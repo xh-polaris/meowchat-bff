@@ -36,20 +36,18 @@ func main() {
 	handler.RegisterHandlers(server, ctx)
 	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(b3.New(), propagation.Baggage{}, propagation.TraceContext{}))
 	httpx.SetErrorHandler(func(err error) (int, interface{}) {
-		s, ok := status.FromError(err)
-		if ok {
-			return http.StatusBadRequest, types.Status{
+		if s, ok := status.FromError(err); ok {
+			return http.StatusBadRequest, &types.Status{
 				Code: int(s.Code()),
 				Msg:  s.Message(),
 			}
-		} else {
-			switch e := err.(type) {
-			case *errorx.CodeError:
-				return e.Code, e.Data()
-			default:
-				logx.Error(err.Error())
-				return http.StatusInternalServerError, err.Error()
-			}
+		}
+		switch err.(type) {
+		case *errorx.CodeError:
+			return http.StatusBadRequest, err
+		default:
+			logx.Error(err.Error())
+			return http.StatusInternalServerError, err.Error()
 		}
 	})
 
