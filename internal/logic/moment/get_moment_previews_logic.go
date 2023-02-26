@@ -32,7 +32,7 @@ func NewGetMomentPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) 
 func (l *GetMomentPreviewsLogic) GetMomentPreviews(req *types.GetMomentPreviewsReq) (resp *types.GetMomentPreviewsResp, err error) {
 	resp = new(types.GetMomentPreviewsResp)
 	var data *pb.ListMomentResp
-	if req.IsParent {
+	if !req.IsParent {
 		data, err = l.svcCtx.MomentRPC.ListMomentByCommunityId(l.ctx, &pb.ListMomentByCommunityIdReq{
 			CommunityId: req.CommunityId,
 			Count:       pageSize,

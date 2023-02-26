@@ -273,7 +273,7 @@ type NewMomentResp struct {
 
 type SearchMomentReq struct {
 	CommunityId string `form:"communityId"`
-	IsParent    bool   `form:"isParent,dufault=false"`
+	IsParent    bool   `form:"isParent,optional"`
 	Keyword     string `form:"keyword"`
 	Page        int64  `form:"page"`
 }

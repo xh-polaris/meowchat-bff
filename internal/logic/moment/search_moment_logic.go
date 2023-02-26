@@ -30,7 +30,7 @@ func NewSearchMomentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Sear
 func (l *SearchMomentLogic) SearchMoment(req *types.SearchMomentReq) (resp *types.SearchMomentResp, err error) {
 	resp = new(types.SearchMomentResp)
 	var data *pb.ListMomentResp
-	if req.IsParent {
+	if !req.IsParent {
 		data, err = l.svcCtx.MomentRPC.SearchMomentByCommunityId(l.ctx, &pb.SearchMomentByCommunityIdReq{
 			CommunityId: req.CommunityId,
 			Count:       pageSize,
