@@ -1,3 +1,2 @@
 .idea/
-/etc/*
-!/etc/meowchat.yaml
+etc
