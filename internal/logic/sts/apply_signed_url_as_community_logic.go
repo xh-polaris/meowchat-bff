@@ -28,7 +28,7 @@ func NewApplySignedUrlAsCommunityLogic(ctx context.Context, svcCtx *svc.ServiceC
 
 func (l *ApplySignedUrlAsCommunityLogic) ApplySignedUrlAsCommunity(req *types.ApplySignedUrlAsCommunityReq) (resp *types.ApplySignedUrlAsCommunityResp, err error) {
 	resp = new(types.ApplySignedUrlAsCommunityResp)
-	data, err := l.svcCtx.StsRPC.GenCosSts(l.ctx, &pb.GenCosStsReq{Path: req.CommunityId + "/*"})
+	data, err := l.svcCtx.StsRPC.GenCosSts(l.ctx, &pb.GenCosStsReq{Path: "communities/" + req.CommunityId + "/*"})
 	if err != nil {
 		return nil, err
 	}

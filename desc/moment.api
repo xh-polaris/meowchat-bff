@@ -20,6 +20,7 @@ type (
 
     GetMomentPreviewsReq {
         communityId string `form:"communityId"`
+        isParent bool `form:"isParent,default=false"`
         page int64 `form:"page"`
     }
 
@@ -72,6 +73,7 @@ type (
 
     SearchMomentReq {
         communityId string `form:"communityId"`
+        isParent bool `form:"isParent,optional"`
         keyword string `form:"keyword"`
         page int64 `form:"page"`
     }

@@ -254,6 +254,7 @@ type Moment struct {
 
 type GetMomentPreviewsReq struct {
 	CommunityId string `form:"communityId"`
+	IsParent    bool   `form:"isParent,default=false"`
 	Page        int64  `form:"page"`
 }
 
@@ -306,6 +307,7 @@ type NewMomentResp struct {
 
 type SearchMomentReq struct {
 	CommunityId string `form:"communityId"`
+	IsParent    bool   `form:"isParent,optional"`
 	Keyword     string `form:"keyword"`
 	Page        int64  `form:"page"`
 }

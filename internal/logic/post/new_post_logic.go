@@ -5,6 +5,7 @@ import (
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/xh-polaris/meowchat-post-rpc/pb"
+	"net/url"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -26,6 +27,14 @@ func NewNewPostLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewPostLo
 func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, err error) {
 	resp = new(types.NewPostResp)
 	userId := l.ctx.Value("userId").(string)
+
+	var u *url.URL
+	u, err = url.Parse(req.CoverUrl)
+	if err != nil {
+		return
+	}
+	u.Host = l.svcCtx.Config.CdnHost
+	req.CoverUrl = u.String()
 
 	if req.Id == "" {
 		res, err := l.svcCtx.PostRPC.CreatePost(l.ctx, &pb.CreatePostReq{

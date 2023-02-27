@@ -3,11 +3,11 @@ package moment
 import (
 	"context"
 	"github.com/jinzhu/copier"
-	"github.com/zeromicro/go-zero/core/logx"
-
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/xh-polaris/meowchat-moment-rpc/pb"
+	"github.com/zeromicro/go-zero/core/logx"
+	"net/url"
 )
 
 type NewMomentLogic struct {
@@ -27,6 +27,17 @@ func NewNewMomentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewMome
 func (l *NewMomentLogic) NewMoment(req *types.NewMomentReq) (resp *types.NewMomentResp, err error) {
 	resp = new(types.NewMomentResp)
 	m := new(pb.Moment)
+
+	for i := 0; i < len(req.Photos); i++ {
+		var u *url.URL
+		u, err = url.Parse(req.Photos[i])
+		if err != nil {
+			return
+		}
+		u.Host = l.svcCtx.Config.CdnHost
+		req.Photos[i] = u.String()
+	}
+
 	err = copier.Copy(m, req)
 	if err != nil {
 		return nil, err

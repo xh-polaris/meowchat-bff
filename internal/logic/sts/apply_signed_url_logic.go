@@ -29,7 +29,7 @@ func NewApplySignedUrlLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Ap
 func (l *ApplySignedUrlLogic) ApplySignedUrl(req *types.ApplySignedUrlReq) (resp *types.ApplySignedUrlResp, err error) {
 	resp = new(types.ApplySignedUrlResp)
 	userId := l.ctx.Value("userId").(string)
-	data, err := l.svcCtx.StsRPC.GenCosSts(l.ctx, &pb.GenCosStsReq{Path: userId + "/*"})
+	data, err := l.svcCtx.StsRPC.GenCosSts(l.ctx, &pb.GenCosStsReq{Path: "users/" + userId + "/*"})
 	if err != nil {
 		return nil, err
 	}
