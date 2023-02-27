@@ -24,10 +24,10 @@ func NewCreateImageLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Creat
 	}
 }
 
-func toPb(image []types.Image) []*pb.Image {
-	ret := make([]*pb.Image, len(image))
+func toPb(image []types.CreateImageElement) []*pb.CreateImageElement {
+	ret := make([]*pb.CreateImageElement, len(image))
 	for i := 0; i < len(ret); i++ {
-		ret[i] = &pb.Image{
+		ret[i] = &pb.CreateImageElement{
 			CatId: image[i].CatId,
 			Url:   image[i].Url,
 		}
@@ -38,15 +38,15 @@ func toPb(image []types.Image) []*pb.Image {
 func (l *CreateImageLogic) CreateImage(req *types.CreateImageReq) (resp *types.CreateImageResp, err error) {
 	resp = new(types.CreateImageResp)
 	data := pb.CreateImageReq{
-		Image: toPb(req.Images),
+		Images: toPb(req.Images),
 	}
 	res, err := l.svcCtx.CollectionRPC.CreateImage(l.ctx, &data)
 	if err != nil {
 		return
 	}
 	// 规避错误
-	if len(res.ImageId) > 0 {
-		resp.Id = res.ImageId
+	if len(res.ImageIds) > 0 {
+		resp.Id = res.ImageIds
 	}
 	return
 }

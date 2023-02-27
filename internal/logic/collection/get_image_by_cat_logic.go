@@ -26,21 +26,25 @@ func NewGetImageByCatLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Get
 
 func (l *GetImageByCatLogic) GetImageByCat(req *types.GetImageByCatReq) (resp *types.GetImageByCatResp, err error) {
 	resp = new(types.GetImageByCatResp)
-	data := pb.GetImageByCatReq{
+	data := pb.ListImageReq{
 		CatId: req.CatId,
 		Limit: req.Limit,
 	}
 	if req.PrevId != "" {
 		data.PrevId = &req.PrevId
 	}
-	res, err := l.svcCtx.CollectionRPC.GetImageByCat(l.ctx, &data)
+	res, err := l.svcCtx.CollectionRPC.ListImage(l.ctx, &data)
 	if err != nil {
 		return nil, err
 	}
-	resp.LastId = res.LastId
-	// 规避错误
-	if len(res.ImageUrl) > 0 {
-		resp.ImageUrl = res.ImageUrl
+
+	resp.Images = make([]types.Image, len(res.Images))
+	for i, image := range res.Images {
+		resp.Images[i] = types.Image{
+			Id:    image.Id,
+			Url:   image.Url,
+			CatId: image.CatId,
+		}
 	}
 	return
 }

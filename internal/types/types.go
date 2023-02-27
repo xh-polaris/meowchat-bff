@@ -207,13 +207,13 @@ type SearchCatResp struct {
 	Total int64        `json:"total"`
 }
 
-type Image struct {
+type CreateImageElement struct {
 	CatId string `json:"catId"`
 	Url   string `json:"url"`
 }
 
 type CreateImageReq struct {
-	Images []Image `json:"images"`
+	Images []CreateImageElement `json:"images"`
 }
 
 type CreateImageResp struct {
@@ -233,12 +233,18 @@ type GetImageByCatReq struct {
 	CatId  string `form:"catId"`
 	PrevId string `form:"prevId,optional"`
 	Limit  int64  `form:"limit,default=10"`
+	Offset int64  `form:"offset,optional"`
+}
+
+type Image struct {
+	Id    string `json:"id"`
+	Url   string `json:"url"`
+	CatId string `json:"catId"`
 }
 
 type GetImageByCatResp struct {
 	Status
-	LastId   string   `json:"lastId"`
-	ImageUrl []string `json:"imageUrl"`
+	Images []Image `json:"images"`
 }
 
 type Moment struct {
