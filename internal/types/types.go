@@ -222,7 +222,7 @@ type CreateImageResp struct {
 }
 
 type DeleteImageReq struct {
-	Id string `form:"id"`
+	Id string `json:"id"`
 }
 
 type DeleteImageResp struct {
@@ -232,13 +232,13 @@ type DeleteImageResp struct {
 type GetImageByCatReq struct {
 	CatId  string `form:"catId"`
 	PrevId string `form:"prevId,optional"`
-	Limit  int64  `form:"limit"`
+	Limit  int64  `form:"limit,default=10"`
 }
 
 type GetImageByCatResp struct {
 	Status
 	LastId   string   `json:"lastId"`
-	ImageUrl []string `json:"images"`
+	ImageUrl []string `json:"imageUrl"`
 }
 
 type Moment struct {

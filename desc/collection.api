@@ -103,7 +103,7 @@ type (
         id []string `json:"id"`
     }
     DeleteImageReq {
-        id string `form:"id"`
+        id string `json:"id"`
     }
     DeleteImageResp {
         Status
@@ -111,11 +111,11 @@ type (
     GetImageByCatReq {
         catId  string `form:"catId"`
         prevId string `form:"prevId,optional"`
-        limit  int64  `form:"limit"`
+        limit  int64  `form:"limit,default=10"`
     }
     GetImageByCatResp {
         Status
         lastId  string `json:"lastId"`
-        imageUrl []string `json:"images"`
+        imageUrl []string `json:"imageUrl"`
     }
 )

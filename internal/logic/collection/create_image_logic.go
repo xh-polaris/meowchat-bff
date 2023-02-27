@@ -36,7 +36,7 @@ func toPb(image []types.Image) []*pb.Image {
 }
 
 func (l *CreateImageLogic) CreateImage(req *types.CreateImageReq) (resp *types.CreateImageResp, err error) {
-
+	resp = new(types.CreateImageResp)
 	data := pb.CreateImageReq{
 		Image: toPb(req.Images),
 	}
@@ -44,6 +44,9 @@ func (l *CreateImageLogic) CreateImage(req *types.CreateImageReq) (resp *types.C
 	if err != nil {
 		return
 	}
-	resp = &types.CreateImageResp{Id: res.ImageId}
+	// 规避错误
+	if len(res.ImageId) > 0 {
+		resp.Id = res.ImageId
+	}
 	return
 }
