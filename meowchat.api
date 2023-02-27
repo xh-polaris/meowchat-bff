@@ -139,6 +139,12 @@ service meowchat {
 	post /delete_cat (DeleteCatReq) returns (DeleteCatResp)
 	@handler SearchCat
 	get /search_cat (SearchCatReq) returns (SearchCatResp)
+	@handler CreateImage
+	post /create_image(CreateImageReq) returns (CreateImageResp)
+	@handler DeleteImage
+	post /delete_image(DeleteImageReq) returns (DeleteImageResp)
+	@handler GetImageByCat
+	get /get_image_by_cat(GetImageByCatReq) returns (GetImageByCatResp)
 }
 
 @server(

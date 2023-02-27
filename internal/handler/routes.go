@@ -214,6 +214,21 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/search_cat",
 				Handler: collection.SearchCatHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/create_image",
+				Handler: collection.CreateImageHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/delete_image",
+				Handler: collection.DeleteImageHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/get_image_by_cat",
+				Handler: collection.GetImageByCatHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/collection"),

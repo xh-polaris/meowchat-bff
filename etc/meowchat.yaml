@@ -1,37 +1,36 @@
 Name: meowchat.api
-Host: 0.0.0.0
+Host: 127.0.0.1
 Port: 8888
 Mode: dev
 Log:
   Encoding: plain
-  Level: debug
 Auth:
-  AccessSecret: $JWT_SECRET
+  AccessSecret: wa489awd65as49waw
   AccessExpire: 86400
 AuthRPC:
   Endpoints:
-    - $AUTH_RPC_HOST
-CollectionRPC:
-  Endpoints:
-    - $COLLECTION_RPC_HOST
-MomentRPC:
-  Endpoints:
-    - $MOMENT_RPC_HOST
-SystemRPC:
-  Endpoints:
-    - $NOTICE_RPC_HOST
-LikeRPC:
-  Endpoints:
-    - $LIKE_RPC_HOST
-UserRPC:
-  Endpoints:
-    - $USER_RPC_HOST
+    - auth-rpc:8080
 StsRPC:
   Endpoints:
-    - $STS_RPC_HOST
+    - sts-rpc:8080
+CollectionRPC:
+  Endpoints:
+    - 127.0.0.1:8080
+MomentRPC:
+  Endpoints:
+    - meowchat-moment-rpc:8080
+SystemRPC:
+  Endpoints:
+    - meowchat-system-rpc:8080
+LikeRPC:
+  Endpoints:
+    - meowchat-like-rpc:8080
+UserRPC:
+  Endpoints:
+    - meowchat-user-rpc:8080
 CommentRPC:
   Endpoints:
-    - $COMMENT_RPC_HOST
+    - meowchat-comment-rpc:8080
 PostRPC:
   Endpoints:
-    - $POST_RPC_HOST
+    - meowchat-post-rpc:8080

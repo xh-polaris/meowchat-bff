@@ -91,4 +91,30 @@ type (
         cats []CatPreview `json:"cats"`
         total int64 `json:"total"`
     }
+    Image {
+        catId string `json:"catId"`
+        url string `json:"url"`
+    }
+    CreateImageReq {
+        images []Image `json:"images"`
+    }
+    CreateImageResp {
+        Status
+        id []string `json:"id"`
+    }
+    DeleteImageReq {
+        id string `form:"id"`
+    }
+    DeleteImageResp {
+        Status
+    }
+    GetImageByCatReq {
+        catId  string `form:"catId"`
+        prevId string `form:"prevId,optional"`
+        limit  int64  `form:"limit"`
+    }
+    GetImageByCatResp {
+        lastId  string `json:"lastId"`
+        imageUrl []string `json:"images"`
+    }
 )
