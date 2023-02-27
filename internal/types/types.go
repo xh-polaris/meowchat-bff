@@ -236,6 +236,7 @@ type GetImageByCatReq struct {
 }
 
 type GetImageByCatResp struct {
+	Status
 	LastId   string   `json:"lastId"`
 	ImageUrl []string `json:"images"`
 }

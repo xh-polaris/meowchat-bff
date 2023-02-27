@@ -114,6 +114,7 @@ type (
         limit  int64  `form:"limit"`
     }
     GetImageByCatResp {
+        Status
         lastId  string `json:"lastId"`
         imageUrl []string `json:"images"`
     }

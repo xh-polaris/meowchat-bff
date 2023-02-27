@@ -1,7 +1,6 @@
 module github.com/xh-polaris/meowchat-bff
 
 go 1.18
-replace github.com/xh-polaris/meowchat-collection-rpc => C:\Users\GreyKa\Desktop\meowchat-collection-rpc
 require (
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/google/uuid v1.3.0
