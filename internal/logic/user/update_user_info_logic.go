@@ -2,11 +2,10 @@ package user
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-user-rpc/pb"
-	"net/url"
-
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
+	"github.com/xh-polaris/meowchat-user-rpc/pb"
+	"net/url"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -29,13 +28,15 @@ func (l *UpdateUserInfoLogic) UpdateUserInfo(req *types.UpdateUserInfoReq) (resp
 	resp = new(types.UpdateUserInfoResp)
 	userId := l.ctx.Value("userId").(string)
 
-	var u *url.URL
-	u, err = url.Parse(req.AvatarUrl)
-	if err != nil {
-		return
+	if req.AvatarUrl != "" {
+		var u *url.URL
+		u, err = url.Parse(req.AvatarUrl)
+		if err != nil {
+			return
+		}
+		u.Host = l.svcCtx.Config.CdnHost
+		req.AvatarUrl = u.String()
 	}
-	u.Host = l.svcCtx.Config.CdnHost
-	req.AvatarUrl = u.String()
 
 	_, err = l.svcCtx.UserRPC.UpdateUser(l.ctx, &pb.UpdateUserReq{
 		UserId:    userId,
