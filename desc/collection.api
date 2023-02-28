@@ -113,6 +113,7 @@ type (
         prevId string `form:"prevId,optional"`
         limit  int64  `form:"limit,default=10"`
         offset int64 `form:"offset,optional"`
+        backward bool `form:"backward,optional"`
     }
     Image {
         id string `json:"id"`

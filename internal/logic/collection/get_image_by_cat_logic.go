@@ -27,8 +27,9 @@ func NewGetImageByCatLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Get
 func (l *GetImageByCatLogic) GetImageByCat(req *types.GetImageByCatReq) (resp *types.GetImageByCatResp, err error) {
 	resp = new(types.GetImageByCatResp)
 	data := pb.ListImageReq{
-		CatId: req.CatId,
-		Limit: req.Limit,
+		CatId:    req.CatId,
+		Limit:    req.Limit,
+		Backward: req.Backward,
 	}
 	if req.PrevId != "" {
 		data.PrevId = &req.PrevId

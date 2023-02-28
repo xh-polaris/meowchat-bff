@@ -230,10 +230,11 @@ type DeleteImageResp struct {
 }
 
 type GetImageByCatReq struct {
-	CatId  string `form:"catId"`
-	PrevId string `form:"prevId,optional"`
-	Limit  int64  `form:"limit,default=10"`
-	Offset int64  `form:"offset,optional"`
+	CatId    string `form:"catId"`
+	PrevId   string `form:"prevId,optional"`
+	Limit    int64  `form:"limit,default=10"`
+	Offset   int64  `form:"offset,optional"`
+	Backward bool   `form:"backward,optional"`
 }
 
 type Image struct {
