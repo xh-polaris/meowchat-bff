@@ -39,6 +39,7 @@ func (l *GetImageByCatLogic) GetImageByCat(req *types.GetImageByCatReq) (resp *t
 		return nil, err
 	}
 
+	resp.Total = res.Total
 	resp.Images = make([]types.Image, len(res.Images))
 	for i, image := range res.Images {
 		resp.Images[i] = types.Image{

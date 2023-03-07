@@ -123,5 +123,6 @@ type (
     GetImageByCatResp {
         Status
         images []Image `json:"images"`
+        total int64 `json:"total"`
     }
 )

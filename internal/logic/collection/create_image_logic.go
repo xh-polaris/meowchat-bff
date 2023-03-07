@@ -2,10 +2,11 @@ package collection
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-collection-rpc/pb"
+	"net/url"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
+	"github.com/xh-polaris/meowchat-collection-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -37,6 +38,17 @@ func toPb(image []types.CreateImageElement) []*pb.CreateImageElement {
 
 func (l *CreateImageLogic) CreateImage(req *types.CreateImageReq) (resp *types.CreateImageResp, err error) {
 	resp = new(types.CreateImageResp)
+
+	for i := 0; i < len(req.Images); i++ {
+		var u *url.URL
+		u, err = url.Parse(req.Images[i].Url)
+		if err != nil {
+			return
+		}
+		u.Host = l.svcCtx.Config.CdnHost
+		req.Images[i].Url = u.String()
+	}
+
 	data := pb.CreateImageReq{
 		Images: toPb(req.Images),
 	}

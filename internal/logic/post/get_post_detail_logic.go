@@ -58,15 +58,12 @@ func toRespPost(ctx context.Context, svcCtx *svc.ServiceContext, post *pb.Post) 
 	}
 
 	// comments
-	// TODO count
-	comments, err := svcCtx.CommentRPC.ListCommentByParent(ctx, &commentpb.ListCommentByParentRequest{
+	data, err := svcCtx.CommentRPC.CountCommentByParent(ctx, &commentpb.CountCommentByParentRequest{
 		Type:     "post",
 		ParentId: post.Id,
-		Skip:     0,
-		Limit:    9999,
 	})
-	if comments != nil && err == nil {
-		resp.Comments = int64(len(comments.Comments))
+	if err == nil {
+		resp.Comments = data.Total
 	}
 
 	return

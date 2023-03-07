@@ -321,10 +321,10 @@ github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o
 github.com/stretchr/testify v1.8.2 h1:+h33VjcLVPDHtOdpUCuF+7gSuG3yGIftsP1YvFihtJ8=
 github.com/xh-polaris/auth-rpc v1.4.6 h1:cv2GAe6FzujCW94ptF8gtSHLLBweuaTdrsfGKpI7/m4=
 github.com/xh-polaris/auth-rpc v1.4.6/go.mod h1:DS5rBiMAfT6q6yMOGNt2CLdFWuAbzN3ogT1UtBMTqLg=
-github.com/xh-polaris/meowchat-collection-rpc v1.1.1 h1:OXZGQR8jxM6MpHEx2JUUju8pO/0P1Itkwf2Z7VsqPDw=
-github.com/xh-polaris/meowchat-collection-rpc v1.1.1/go.mod h1:54J8o/zxwuJjWPUXacNPkUf9m8VlKy76Wq3dBZyrwSY=
-github.com/xh-polaris/meowchat-comment-rpc v1.0.2 h1:4wHTffmozfVYAUqsIROdPGwREixT+HbjLSl3NEYBGhI=
-github.com/xh-polaris/meowchat-comment-rpc v1.0.2/go.mod h1:/RIzULkz4Q8cqTihNwv4ivY/yRb2AeCuC6kqFKQ9HLc=
+github.com/xh-polaris/meowchat-collection-rpc v1.1.3 h1:cv38HoloJ0BRfMQHoYnqp/ceCJxD7uHlL6NNUwZTWb8=
+github.com/xh-polaris/meowchat-collection-rpc v1.1.3/go.mod h1:54J8o/zxwuJjWPUXacNPkUf9m8VlKy76Wq3dBZyrwSY=
+github.com/xh-polaris/meowchat-comment-rpc v1.0.3 h1:7z3swkAfn7NBRhzi3vTdWU1758pv15I2741arzG44IE=
+github.com/xh-polaris/meowchat-comment-rpc v1.0.3/go.mod h1:/RIzULkz4Q8cqTihNwv4ivY/yRb2AeCuC6kqFKQ9HLc=
 github.com/xh-polaris/meowchat-like-rpc v1.1.4 h1:VCnaFXe3wMIHOYRRT6+GijRMuFKJXUp2P0KxpUoWmy0=
 github.com/xh-polaris/meowchat-like-rpc v1.1.4/go.mod h1:1AVOoAh4kIV9JzNVI/jGXUyxGzMimNSnao1mK0ZdH0w=
 github.com/xh-polaris/meowchat-moment-rpc v1.1.3 h1:MNaF/0iKjYebibL1MMVL/l5ax/1NFnxG48guJOExR2Y=

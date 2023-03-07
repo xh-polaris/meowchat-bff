@@ -251,6 +251,7 @@ type Image struct {
 type GetImageByCatResp struct {
 	Status
 	Images []Image `json:"images"`
+	Total  int64   `json:"total"`
 }
 
 type Moment struct {
