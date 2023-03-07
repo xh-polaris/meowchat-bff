@@ -161,11 +161,6 @@ type (
     GetUserRolesReq {
     }
 
-    Role {
-        roleType string `json:"roleType"`
-        communityId string `json:"communityId,omitempty"`
-    }
-
     GetUserRolesResp {
         roles []Role `json:"roles"`
         Status

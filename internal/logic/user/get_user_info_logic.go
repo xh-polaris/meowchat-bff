@@ -32,9 +32,9 @@ func (l *GetUserInfoLogic) GetUserInfo(*types.GetUserInfoReq) (resp *types.GetUs
 		return nil, err
 	}
 	resp.User = types.UserPreview{
-		Id:        data.UserId,
-		Nickname:  data.Nickname,
-		AvatarUrl: data.AvatarUrl,
+		Id:        data.User.Id,
+		Nickname:  data.User.Nickname,
+		AvatarUrl: data.User.AvatarUrl,
 	}
 	return
 }

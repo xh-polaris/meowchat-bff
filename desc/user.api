@@ -7,6 +7,11 @@ info(
 import "desc/common.api"
 
 type (
+    UserWithRole {
+        UserPreview
+        roles []Role `json:"roles"`
+    }
+
     GetUserInfoReq {
     }
 
@@ -22,5 +27,27 @@ type (
 
     UpdateUserInfoResp {
         Status
+    }
+
+    SearchUserReq {
+        keyword string `form:"keyword"`
+        page int64 `form:"page"`
+    }
+
+    SearchUserResp {
+        Status
+        users []UserPreview `json:"users"`
+        total int64 `json:"total"`
+    }
+
+    SearchUserForAdminReq {
+        keyword string `form:"keyword"`
+        page int64 `form:"page"`
+    }
+
+    SearchUserForAdminResp {
+        Status
+        users []UserWithRole `json:"users"`
+        total int64 `json:"total"`
     }
 )

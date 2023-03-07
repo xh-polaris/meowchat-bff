@@ -14,3 +14,8 @@ type UserPreview {
     nickname string `json:"nickname"`
     avatarUrl string `json:"avatarUrl"`
 }
+
+type Role {
+    roleType string `json:"roleType"`
+    communityId string `json:"communityId,omitempty"`
+}

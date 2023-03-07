@@ -49,6 +49,11 @@ type UserPreview struct {
 	AvatarUrl string `json:"avatarUrl"`
 }
 
+type Role struct {
+	RoleType    string `json:"roleType"`
+	CommunityId string `json:"communityId,omitempty"`
+}
+
 type Post struct {
 	Id       string      `json:"id"`
 	CreateAt int64       `json:"createAt"`
@@ -508,11 +513,6 @@ type DeleteCommunityResp struct {
 type GetUserRolesReq struct {
 }
 
-type Role struct {
-	RoleType    string `json:"roleType"`
-	CommunityId string `json:"communityId,omitempty"`
-}
-
 type GetUserRolesResp struct {
 	Roles []Role `json:"roles"`
 	Status
@@ -566,6 +566,11 @@ type GetLikedCountResp struct {
 	Count int64 `json:"count"`
 }
 
+type UserWithRole struct {
+	UserPreview
+	Roles []Role `json:"roles"`
+}
+
 type GetUserInfoReq struct {
 }
 
@@ -581,6 +586,28 @@ type UpdateUserInfoReq struct {
 
 type UpdateUserInfoResp struct {
 	Status
+}
+
+type SearchUserReq struct {
+	Keyword string `form:"keyword"`
+	Page    int64  `form:"page"`
+}
+
+type SearchUserResp struct {
+	Status
+	Users []UserPreview `json:"users"`
+	Total int64         `json:"total"`
+}
+
+type SearchUserForAdminReq struct {
+	Keyword string `form:"keyword"`
+	Page    int64  `form:"page"`
+}
+
+type SearchUserForAdminResp struct {
+	Status
+	Users []UserWithRole `json:"users"`
+	Total int64          `json:"total"`
 }
 
 type ApplySignedUrlReq struct {

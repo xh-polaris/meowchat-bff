@@ -195,6 +195,10 @@ service meowchat {
 	get /get_user_info (GetUserInfoReq) returns (GetUserInfoResp)
 	@handler UpdateUserInfo
 	post /update_user_info (UpdateUserInfoReq) returns (UpdateUserInfoResp)
+	@handler SearchUser
+	get /search_user (SearchUserReq) returns (SearchUserResp)
+	@handler SearchUserForAdmin
+	get /search_user_for_admin(SearchUserForAdminReq) returns (SearchUserForAdminResp)
 }
 
 @server(

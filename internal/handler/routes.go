@@ -300,6 +300,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/update_user_info",
 				Handler: user.UpdateUserInfoHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/search_user",
+				Handler: user.SearchUserHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/search_user_for_admin",
+				Handler: user.SearchUserForAdminHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/user"),

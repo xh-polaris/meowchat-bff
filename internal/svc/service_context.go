@@ -9,7 +9,7 @@ import (
 	"github.com/xh-polaris/meowchat-moment-rpc/momentrpc"
 	"github.com/xh-polaris/meowchat-post-rpc/postrpc"
 	"github.com/xh-polaris/meowchat-system-rpc/systemrpc"
-	"github.com/xh-polaris/meowchat-user-rpc/user"
+	"github.com/xh-polaris/meowchat-user-rpc/userrpc"
 	"github.com/xh-polaris/sts-rpc/stsrpc"
 
 	"github.com/zeromicro/go-zero/zrpc"
@@ -22,7 +22,7 @@ type ServiceContext struct {
 	MomentRPC     momentrpc.MomentRpc
 	SystemRPC     systemrpc.SystemRpc
 	LikeRPC       like.Like
-	UserRPC       user.User
+	UserRPC       userrpc.UserRpc
 	StsRPC        stsrpc.StsRpc
 	CommentRPC    commentrpc.CommentRpc
 	PostRPC       postrpc.PostRpc
@@ -36,7 +36,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		MomentRPC:     momentrpc.NewMomentRpc(zrpc.MustNewClient(c.MomentRPC)),
 		SystemRPC:     systemrpc.NewSystemRpc(zrpc.MustNewClient(c.SystemRPC)),
 		LikeRPC:       like.NewLike(zrpc.MustNewClient(c.LikeRPC)),
-		UserRPC:       user.NewUser(zrpc.MustNewClient(c.UserRPC)),
+		UserRPC:       userrpc.NewUserRpc(zrpc.MustNewClient(c.UserRPC)),
 		StsRPC:        stsrpc.NewStsRpc(zrpc.MustNewClient(c.StsRPC)),
 		CommentRPC:    commentrpc.NewCommentRpc(zrpc.MustNewClient(c.CommentRPC)),
 		PostRPC:       postrpc.NewPostRpc(zrpc.MustNewClient(c.PostRPC)),
