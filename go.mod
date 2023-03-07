@@ -9,7 +9,7 @@ require (
 	github.com/xh-polaris/auth-rpc v1.4.5
 	github.com/xh-polaris/meowchat-collection-rpc v1.1.1
 	github.com/xh-polaris/meowchat-comment-rpc v1.0.2
-	github.com/xh-polaris/meowchat-like-rpc v1.1.2
+	github.com/xh-polaris/meowchat-like-rpc v1.1.4
 	github.com/xh-polaris/meowchat-moment-rpc v1.1.1
 	github.com/xh-polaris/meowchat-post-rpc v1.1.1
 	github.com/xh-polaris/meowchat-system-rpc v1.2.1
