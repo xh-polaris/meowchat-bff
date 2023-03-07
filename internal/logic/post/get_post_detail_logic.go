@@ -43,8 +43,8 @@ func toRespPost(ctx context.Context, svcCtx *svc.ServiceContext, post *pb.Post) 
 	if user != nil && err == nil {
 		resp.User = types.UserPreview{
 			Id:        post.UserId,
-			Nickname:  user.Nickname,
-			AvatarUrl: user.AvatarUrl,
+			Nickname:  user.User.Nickname,
+			AvatarUrl: user.User.AvatarUrl,
 		}
 	}
 

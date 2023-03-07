@@ -53,8 +53,8 @@ func (l *GetCommentsLogic) GetComments(req *types.GetCommentsReq) (resp *types.G
 			return nil, err
 		}
 		if user != nil && err == nil {
-			author.Nickname = user.Nickname
-			author.AvatarUrl = user.AvatarUrl
+			author.Nickname = user.User.Nickname
+			author.AvatarUrl = user.User.AvatarUrl
 		}
 
 		// 回复对象用户名
@@ -64,7 +64,7 @@ func (l *GetCommentsLogic) GetComments(req *types.GetCommentsReq) (resp *types.G
 				UserId: comment.ReplyTo,
 			})
 			if replyToUser != nil && err == nil {
-				replyName = replyToUser.Nickname
+				replyName = replyToUser.User.Nickname
 			}
 		}
 

@@ -76,9 +76,9 @@ func (l *SearchMomentLogic) SearchMoment(req *types.SearchMomentReq) (resp *type
 		user, err := l.svcCtx.UserRPC.GetUser(l.ctx, &pb2.GetUserReq{UserId: data.Moments[i].UserId})
 		if err == nil {
 			resp.Moments[i].User = types.UserPreview{
-				Id:        user.UserId,
-				Nickname:  user.Nickname,
-				AvatarUrl: user.AvatarUrl,
+				Id:        user.User.Id,
+				Nickname:  user.User.Nickname,
+				AvatarUrl: user.User.AvatarUrl,
 			}
 		}
 	}
