@@ -306,9 +306,9 @@ type DeleteMomentResp struct {
 
 type NewMomentReq struct {
 	Id          string   `json:"id,optional"`
-	Title       string   `json:"title"`
+	Title       string   `json:"title,optional"`
 	CatId       string   `json:"catId,optional"`
-	Text        string   `json:"text"`
+	Text        string   `json:"text,optional"`
 	Photos      []string `json:"photos"`
 	CommunityId string   `json:"communityId"`
 }

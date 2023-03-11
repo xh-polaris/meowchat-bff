@@ -59,9 +59,9 @@ type (
 
     NewMomentReq {
         id string `json:"id,optional"`
-        title string `json:"title"`
+        title string `json:"title,optional"`
         catId string `json:"catId,optional"`
-        text string `json:"text"`
+        text string `json:"text,optional"`
         photos []string `json:"photos"`
         communityId string `json:"communityId"`
     }
