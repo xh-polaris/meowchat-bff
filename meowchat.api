@@ -108,7 +108,7 @@ service meowchat {
 service meowchat {
 	// post
 	@handler GetPostPreviews
-	get /get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
+	post /get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
 	@handler GetPostDetail
 	get /get_post_detail (GetPostDetailReq) returns (GetPostDetailResp)
 	@handler NewPost

@@ -31,7 +31,7 @@ type (
         offset *int64 `json:"offset,optional"`
         lastToken *string `json:"lastToken,optional"`
         backward *bool `json:"backward,optional"`
-        onlyOfficial *bool `json:"onlyOfficial,optinal"`
+        onlyOfficial *bool `json:"onlyOfficial,optional"`
         onlyUserId *string `json:"onlyUserId,optional"`
         searchOptions *SearchOptions `json:"searchOptions,optional"`
     }

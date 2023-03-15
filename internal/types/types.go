@@ -79,7 +79,7 @@ type GetPostPreviewsReq struct {
 	Offset        *int64         `json:"offset,optional"`
 	LastToken     *string        `json:"lastToken,optional"`
 	Backward      *bool          `json:"backward,optional"`
-	OnlyOfficial  *bool          `json:"onlyOfficial,optinal"`
+	OnlyOfficial  *bool          `json:"onlyOfficial,optional"`
 	OnlyUserId    *string        `json:"onlyUserId,optional"`
 	SearchOptions *SearchOptions `json:"searchOptions,optional"`
 }
