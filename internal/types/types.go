@@ -55,35 +55,40 @@ type Role struct {
 }
 
 type Post struct {
-	Id       string      `json:"id"`
-	CreateAt int64       `json:"createAt"`
-	Title    string      `json:"title"`
-	Text     string      `json:"text"`
-	CoverUrl string      `json:"coverUrl"`
-	Tags     []string    `json:"tags"`
-	Likes    int64       `json:"likes"`
-	Comments int64       `json:"comments"`
-	User     UserPreview `json:"user"`
+	Id         string      `json:"id"`
+	CreateAt   int64       `json:"createAt"`
+	Title      string      `json:"title"`
+	Text       string      `json:"text"`
+	CoverUrl   string      `json:"coverUrl"`
+	Tags       []string    `json:"tags"`
+	Likes      int64       `json:"likes"`
+	Comments   int64       `json:"comments"`
+	User       UserPreview `json:"user"`
+	IsOfficial bool        `json:"isOfficial"`
+}
+
+type SearchOptions struct {
+	Key   *string `json:"key,optional"`
+	Title *string `json:"title,optional"`
+	Text  *string `json:"text,optional"`
+	Tag   *string `json:"tag,optional"`
 }
 
 type GetPostPreviewsReq struct {
-	Page int64 `form:"page"`
+	Limit         *int64         `json:"limit,optional"`
+	Offset        *int64         `json:"offset,optional"`
+	LastToken     *string        `json:"lastToken,optional"`
+	Backward      *bool          `json:"backward,optional"`
+	OnlyOfficial  *bool          `json:"onlyOfficial,optinal"`
+	OnlyUserId    *string        `json:"onlyUserId,optional"`
+	SearchOptions *SearchOptions `json:"searchOptions,optional"`
 }
 
 type GetPostPreviewsResp struct {
 	Status
 	Posts []Post `json:"posts"`
 	Total int64  `json:"total"`
-}
-
-type GetOwnPostPreviewsReq struct {
-	Page int64 `form:"page"`
-}
-
-type GetOwnPostPreviewsResp struct {
-	Status
-	Posts []Post `json:"posts"`
-	Total int64  `json:"total"`
+	Token string `json:"token"`
 }
 
 type GetPostDetailReq struct {
@@ -116,15 +121,13 @@ type DeletePostResp struct {
 	Status
 }
 
-type SearchPostReq struct {
-	Keyword string `form:"keyword"`
-	Page    int64  `form:"page"`
+type SetOfficialReq struct {
+	PostId   string `json:"postId"`
+	IsRemove bool   `json:"isRemove,optional"`
 }
 
-type SearchPostResp struct {
+type SetOfficialResp struct {
 	Status
-	Posts []Post `json:"posts"`
-	Total int64  `json:"total"`
 }
 
 type Cat struct {

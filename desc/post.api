@@ -13,26 +13,34 @@ type (
         likes int64 `json:"likes"`
         comments int64 `json:"comments"`
         user UserPreview `json:"user"`
+        isOfficial bool `json:"isOfficial"`
+    }
+
+    // 多选一
+    SearchOptions {
+        // 查询全部字段
+        key *string `json:"key,optional"`
+        // 各自匹配对应字段
+        title *string `json:"title,optional"`
+        text *string `json:"text,optional"`
+        tag *string `json:"tag,optional"`
     }
 
     GetPostPreviewsReq {
-        page int64 `form:"page"`
+        limit *int64 `json:"limit,optional"`
+        offset *int64 `json:"offset,optional"`
+        lastToken *string `json:"lastToken,optional"`
+        backward *bool `json:"backward,optional"`
+        onlyOfficial *bool `json:"onlyOfficial,optinal"`
+        onlyUserId *string `json:"onlyUserId,optional"`
+        searchOptions *SearchOptions `json:"searchOptions,optional"`
     }
 
     GetPostPreviewsResp {
         Status
         posts []Post `json:"posts"`
         total int64 `json:"total"`
-    }
-
-    GetOwnPostPreviewsReq {
-        page int64 `form:"page"`
-    }
-
-    GetOwnPostPreviewsResp {
-        Status
-        posts []Post `json:"posts"`
-        total int64 `json:"total"`
+        token string `json:"token"`
     }
 
     GetPostDetailReq {
@@ -65,14 +73,12 @@ type (
         Status
     }
 
-    SearchPostReq {
-        keyword string `form:"keyword"`
-        page int64 `form:"page"`
+    SetOfficialReq {
+        postId string `json:"postId"`
+        isRemove bool `json:"isRemove,optional"`
     }
 
-    SearchPostResp {
+    SetOfficialResp {
         Status
-        posts []Post `json:"posts"`
-        total int64 `json:"total"`
     }
 )

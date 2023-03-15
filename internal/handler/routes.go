@@ -159,11 +159,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/get_own_post_previews",
-				Handler: post.GetOwnPostPreviewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
 				Path:    "/get_post_detail",
 				Handler: post.GetPostDetailHandler(serverCtx),
 			},
@@ -178,9 +173,9 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: post.DeletePostHandler(serverCtx),
 			},
 			{
-				Method:  http.MethodGet,
-				Path:    "/search_post",
-				Handler: post.SearchPostHandler(serverCtx),
+				Method:  http.MethodPost,
+				Path:    "/set_official",
+				Handler: post.SetOfficialHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

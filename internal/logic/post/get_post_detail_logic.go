@@ -2,7 +2,6 @@ package post
 
 import (
 	"context"
-	"github.com/jinzhu/copier"
 	commentpb "github.com/xh-polaris/meowchat-comment-rpc/pb"
 	"github.com/xh-polaris/meowchat-like-rpc/like"
 	likepb "github.com/xh-polaris/meowchat-like-rpc/pb"
@@ -30,13 +29,15 @@ func NewGetPostDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Get
 }
 
 func toRespPost(ctx context.Context, svcCtx *svc.ServiceContext, post *pb.Post) (resp types.Post, err error) {
-	err = copier.Copy(&resp, post)
-	if err != nil {
-		return types.Post{}, err
+	resp = types.Post{
+		Id:         post.Id,
+		CreateAt:   post.CreateAt,
+		Title:      post.Title,
+		Text:       post.Text,
+		CoverUrl:   post.CoverUrl,
+		Tags:       post.Tags,
+		IsOfficial: post.IsOfficial,
 	}
-
-	// Tag
-	resp.Tags = post.Tags
 
 	// user preview
 	user, err := svcCtx.UserRPC.GetUser(ctx, &userpb.GetUserReq{UserId: post.UserId})

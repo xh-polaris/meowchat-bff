@@ -109,16 +109,14 @@ service meowchat {
 	// post
 	@handler GetPostPreviews
 	get /get_post_previews (GetPostPreviewsReq) returns (GetPostPreviewsResp)
-	@handler GetOwnPostPreviews
-	get /get_own_post_previews (GetOwnPostPreviewsReq) returns (GetOwnPostPreviewsResp)
 	@handler GetPostDetail
 	get /get_post_detail (GetPostDetailReq) returns (GetPostDetailResp)
 	@handler NewPost
 	post /new_post (NewPostReq) returns (NewPostResp)
 	@handler DeletePost
 	post /delete_post (DeletePostReq) returns (DeletePostResp)
-	@handler SearchPost
-	get /search_post (SearchPostReq) returns (SearchPostResp)
+	@handler SetOfficial
+	post /set_official (SetOfficialReq) returns (SetOfficialResp)
 }
 
 @server(
