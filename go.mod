@@ -13,7 +13,7 @@ require (
 	github.com/xh-polaris/meowchat-moment-rpc v1.1.3
 	github.com/xh-polaris/meowchat-post-rpc v1.2.0
 	github.com/xh-polaris/meowchat-system-rpc v1.2.1
-	github.com/xh-polaris/meowchat-user-rpc v1.0.4
+	github.com/xh-polaris/meowchat-user-rpc v1.0.5
 	github.com/xh-polaris/sts-rpc v1.3.1
 	github.com/zeromicro/go-zero v1.5.0
 	go.opentelemetry.io/contrib/propagators/b3 v1.15.0
