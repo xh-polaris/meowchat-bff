@@ -365,6 +365,14 @@ type GetCommentsResp struct {
 	Total    int64     `json:"total"`
 }
 
+type DeleteCommentReq struct {
+	CommentId string `json:"commentId"`
+}
+
+type DeleteCommentResp struct {
+	Status
+}
+
 type News struct {
 	Id          string `json:"id"`
 	CreateAt    int64  `json:"createAt"`

@@ -278,6 +278,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/new_comment",
 				Handler: comment.NewCommentHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/delete_comment",
+				Handler: comment.DeleteCommentHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/comment"),

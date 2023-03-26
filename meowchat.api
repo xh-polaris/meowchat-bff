@@ -179,6 +179,8 @@ service meowchat {
 	get /get_comments (GetCommentsReq) returns (GetCommentsResp)
 	@handler NewComment
 	post /new_comment (NewCommentReq) returns (NewCommentResp)
+	@handler DeleteComment
+	post /delete_comment (DeleteCommentReq) returns (DeleteCommentResp)
 }
 
 @server(

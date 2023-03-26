@@ -37,4 +37,12 @@ type (
         comments []Comment `json:"comments"`
         total int64 `json:"total"`
     }
+
+    DeleteCommentReq {
+        commentId string `json:"commentId"`
+    }
+
+    DeleteCommentResp {
+        Status
+    }
 )
