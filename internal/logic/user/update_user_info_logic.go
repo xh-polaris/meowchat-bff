@@ -39,10 +39,11 @@ func (l *UpdateUserInfoLogic) UpdateUserInfo(req *types.UpdateUserInfoReq) (resp
 	}
 
 	_, err = l.svcCtx.UserRPC.UpdateUser(l.ctx, &pb.UpdateUserReq{
-		User: &pb.User{
+		User: &pb.UserDetail{
 			Id:        userId,
 			AvatarUrl: req.AvatarUrl,
 			Nickname:  req.Nickname,
+			Motto:     req.Motto,
 		},
 	})
 	if err != nil {

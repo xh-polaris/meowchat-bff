@@ -7,7 +7,14 @@ info(
 import "desc/common.api"
 
 type (
-    UserWithRole {
+    User {
+        id string `json:"id"`
+        nickname string `json:"nickname"`
+        avatarUrl string `json:"avatarUrl"`
+        motto string `json:"motto"`
+    }
+
+    UserPreviewWithRole {
         UserPreview
         roles []Role `json:"roles"`
     }
@@ -17,12 +24,13 @@ type (
 
     GetUserInfoResp {
         Status
-        user UserPreview `json:"user"`
+        user User `json:"user"`
     }
 
     UpdateUserInfoReq {
         avatarUrl string `json:"avatarUrl,optional"`
         nickname string `json:"nickname,optional"`
+        motto string `json:"motto,optional"`
     }
 
     UpdateUserInfoResp {
@@ -32,22 +40,28 @@ type (
     SearchUserReq {
         keyword string `form:"keyword"`
         page int64 `form:"page"`
+        limit int64 `form:"limit,optional"`
+        lastToken string `form:"lastToken,optional"`
     }
 
     SearchUserResp {
         Status
         users []UserPreview `json:"users"`
         total int64 `json:"total"`
+        token string `json:"token"`
     }
 
     SearchUserForAdminReq {
         keyword string `form:"keyword"`
         page int64 `form:"page"`
+        limit int64 `form:"limit,optional"`
+        lastToken string `form:"lastToken,optional"`
     }
 
     SearchUserForAdminResp {
         Status
-        users []UserWithRole `json:"users"`
+        users []UserPreviewWithRole `json:"users"`
         total int64 `json:"total"`
+        token string `json:"token"`
     }
 )

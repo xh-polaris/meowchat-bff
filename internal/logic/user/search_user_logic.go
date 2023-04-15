@@ -26,16 +26,26 @@ func NewSearchUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Search
 
 func (l *SearchUserLogic) SearchUser(req *types.SearchUserReq) (resp *types.SearchUserResp, err error) {
 	resp = new(types.SearchUserResp)
-	const pageSize = 10
-	data, err := l.svcCtx.UserRPC.SearchUser(l.ctx, &pb.SearchUserReq{
+	var pageSize int64 = 10
+	if req.Limit != 0 {
+		pageSize = req.Limit
+	}
+	request := &pb.SearchUserReq{
 		Nickname: req.Keyword,
-		Skip:     req.Page * pageSize,
-		Count:    pageSize,
-	})
+		Offset:   new(int64),
+		Limit:    new(int64),
+	}
+	if req.LastToken != "" {
+		request.LastToken = &req.LastToken
+	}
+	*request.Offset = req.Page * pageSize
+	*request.Limit = pageSize
+	data, err := l.svcCtx.UserRPC.SearchUser(l.ctx, request)
 	if err != nil {
 		return nil, err
 	}
 	resp.Total = data.Total
+	resp.Token = data.Token
 	resp.Users = make([]types.UserPreview, 0, len(data.Users))
 	for _, user := range data.Users {
 		resp.Users = append(resp.Users, types.UserPreview{

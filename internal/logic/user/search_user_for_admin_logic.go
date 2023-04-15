@@ -27,19 +27,29 @@ func NewSearchUserForAdminLogic(ctx context.Context, svcCtx *svc.ServiceContext)
 
 func (l *SearchUserForAdminLogic) SearchUserForAdmin(req *types.SearchUserForAdminReq) (resp *types.SearchUserForAdminResp, err error) {
 	resp = new(types.SearchUserForAdminResp)
-	const pageSize = 10
-	data, err := l.svcCtx.UserRPC.SearchUser(l.ctx, &pb.SearchUserReq{
+	var pageSize int64 = 10
+	if req.Limit != 0 {
+		pageSize = req.Limit
+	}
+	request := &pb.SearchUserReq{
 		Nickname: req.Keyword,
-		Skip:     req.Page * pageSize,
-		Count:    pageSize,
-	})
+		Offset:   new(int64),
+		Limit:    new(int64),
+	}
+	if req.LastToken != "" {
+		request.LastToken = &req.LastToken
+	}
+	*request.Offset = req.Page * pageSize
+	*request.Limit = pageSize
+	data, err := l.svcCtx.UserRPC.SearchUser(l.ctx, request)
 	if err != nil {
 		return nil, err
 	}
 	resp.Total = data.Total
-	resp.Users = make([]types.UserWithRole, 0, len(data.Users))
+	resp.Token = data.Token
+	resp.Users = make([]types.UserPreviewWithRole, 0, len(data.Users))
 	for _, user := range data.Users {
-		u := types.UserWithRole{
+		u := types.UserPreviewWithRole{
 			UserPreview: types.UserPreview{
 				Id:        user.Id,
 				Nickname:  user.Nickname,
