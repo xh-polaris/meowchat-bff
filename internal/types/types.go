@@ -577,6 +577,10 @@ type User struct {
 	Nickname  string `json:"nickname"`
 	AvatarUrl string `json:"avatarUrl"`
 	Motto     string `json:"motto"`
+	Follower  int64  `json:"follower"`
+	Following int64  `json:"following"`
+	Article   int64  `json:"article"`
+	Like      int64  `json:"like"`
 }
 
 type UserPreviewWithRole struct {
@@ -585,6 +589,7 @@ type UserPreviewWithRole struct {
 }
 
 type GetUserInfoReq struct {
+	UserId *string `form:"userId,optional"`
 }
 
 type GetUserInfoResp struct {

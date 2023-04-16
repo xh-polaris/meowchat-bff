@@ -4,7 +4,7 @@ info(
     title: "user api"
 )
 
-import "desc/common.api"
+import "idl/common.api"
 
 type (
     User {
@@ -12,6 +12,10 @@ type (
         nickname string `json:"nickname"`
         avatarUrl string `json:"avatarUrl"`
         motto string `json:"motto"`
+        follower int64 `json:"follower"`
+        following int64 `json:"following"`
+        article int64 `json:"article"`
+        like int64 `json:"like"`
     }
 
     UserPreviewWithRole {
@@ -20,6 +24,7 @@ type (
     }
 
     GetUserInfoReq {
+        userId *string `form:"userId,optional"`
     }
 
     GetUserInfoResp {

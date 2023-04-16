@@ -4,15 +4,15 @@ info(
 	title: "cat community api"
 )
 
-import "desc/auth.api"
-import "desc/post.api"
-import "desc/collection.api"
-import "desc/moment.api"
-import "desc/comment.api"
-import "desc/system.api"
-import "desc/like.api"
-import "desc/user.api"
-import "desc/sts.api"
+import "idl/auth.api"
+import "idl/post.api"
+import "idl/collection.api"
+import "idl/moment.api"
+import "idl/comment.api"
+import "idl/system.api"
+import "idl/like.api"
+import "idl/user.api"
+import "idl/sts.api"
 
 @server(
 	group: auth

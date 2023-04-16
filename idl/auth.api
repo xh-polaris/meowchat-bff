@@ -1,6 +1,6 @@
 syntax = "v1"
 
-import "desc/common.api"
+import "idl/common.api"
 
 type SignInReq {
     authType  string   `json:"authType,options=phone|email|wechat"`

@@ -4,7 +4,7 @@ info(
     title: "moment api"
 )
 
-import "desc/common.api"
+import "idl/common.api"
 
 type (
     Moment {
@@ -21,7 +21,10 @@ type (
     GetMomentPreviewsReq {
         communityId string `form:"communityId"`
         isParent bool `form:"isParent,default=false"`
+        onlyUserId string `form:"onlyUserId,optional"`
         page int64 `form:"page"`
+        limit *int64 `form:"limit,optional"`
+        lastToken *string `form:"lastToken,optional"`
     }
 
     GetMomentPreviewsResp {

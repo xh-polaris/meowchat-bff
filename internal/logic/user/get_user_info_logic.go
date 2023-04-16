@@ -24,9 +24,16 @@ func NewGetUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 	}
 }
 
-func (l *GetUserInfoLogic) GetUserInfo(*types.GetUserInfoReq) (resp *types.GetUserInfoResp, err error) {
+func (l *GetUserInfoLogic) GetUserInfo(req *types.GetUserInfoReq) (resp *types.GetUserInfoResp, err error) {
 	resp = new(types.GetUserInfoResp)
-	userId := l.ctx.Value("userId").(string)
+
+	var userId string
+	if req.UserId != nil {
+		userId = *req.UserId
+	} else {
+		userId = l.ctx.Value("userId").(string)
+	}
+
 	data, err := l.svcCtx.UserRPC.GetUserDetail(l.ctx, &pb.GetUserDetailReq{UserId: userId})
 	if err != nil {
 		return nil, err
