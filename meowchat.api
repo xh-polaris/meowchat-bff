@@ -155,8 +155,6 @@ service meowchat {
 	// moment
 	@handler GetMomentPreviews
 	get /get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
-	@handler GetOwnMomentPreviews
-	get /get_own_moment_previews (GetOwnMomentPreviewsReq) returns (GetOwnMomentPreviewsResp)
 	@handler GetMomentDetail
 	get /get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
 	@handler NewMoment

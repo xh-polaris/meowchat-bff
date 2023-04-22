@@ -238,11 +238,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/get_own_moment_previews",
-				Handler: moment.GetOwnMomentPreviewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
 				Path:    "/get_moment_detail",
 				Handler: moment.GetMomentDetailHandler(serverCtx),
 			},

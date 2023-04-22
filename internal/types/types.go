@@ -263,22 +263,16 @@ type Moment struct {
 }
 
 type GetMomentPreviewsReq struct {
-	CommunityId string `form:"communityId"`
-	IsParent    bool   `form:"isParent,default=false"`
-	Page        int64  `form:"page"`
+	CommunityId *string `form:"communityId,optional"`
+	IsParent    bool    `form:"isParent,default=false"`
+	OnlyUserId  *string `form:"onlyUserId,optional"`
+	Page        int64   `form:"page"`
+	Limit       *int64  `form:"limit,optional"`
+	LastToken   *string `form:"lastToken,optional"`
+	Backward    *bool   `form:"backward,optional"`
 }
 
 type GetMomentPreviewsResp struct {
-	Status
-	Moments []Moment `json:"moments"`
-	Total   int64    `json:"total"`
-}
-
-type GetOwnMomentPreviewsReq struct {
-	Page int64 `form:"page"`
-}
-
-type GetOwnMomentPreviewsResp struct {
 	Status
 	Moments []Moment `json:"moments"`
 	Total   int64    `json:"total"`
@@ -316,10 +310,14 @@ type NewMomentResp struct {
 }
 
 type SearchMomentReq struct {
-	CommunityId string `form:"communityId"`
-	IsParent    bool   `form:"isParent,optional"`
-	Keyword     string `form:"keyword"`
-	Page        int64  `form:"page"`
+	CommunityId *string `form:"communityId,optional"`
+	IsParent    bool    `form:"isParent,default=false"`
+	OnlyUserId  *string `form:"onlyUserId,optional"`
+	Keyword     string  `form:"keyword,optional"`
+	Page        int64   `form:"page"`
+	Limit       *int64  `form:"limit,optional"`
+	LastToken   *string `form:"lastToken,optional"`
+	Backward    *bool   `form:"backward,optional"`
 }
 
 type SearchMomentResp struct {

@@ -19,25 +19,16 @@ type (
     }
 
     GetMomentPreviewsReq {
-        communityId string `form:"communityId"`
+        communityId *string `form:"communityId,optional"`
         isParent bool `form:"isParent,default=false"`
-        onlyUserId string `form:"onlyUserId,optional"`
+        onlyUserId *string `form:"onlyUserId,optional"`
         page int64 `form:"page"`
         limit *int64 `form:"limit,optional"`
         lastToken *string `form:"lastToken,optional"`
+        backward *bool `form:"backward,optional"`
     }
 
     GetMomentPreviewsResp {
-        Status
-        moments []Moment `json:"moments"`
-        total int64 `json:"total"`
-    }
-
-    GetOwnMomentPreviewsReq {
-        page int64 `form:"page"`
-    }
-
-    GetOwnMomentPreviewsResp {
         Status
         moments []Moment `json:"moments"`
         total int64 `json:"total"`
@@ -75,10 +66,14 @@ type (
     }
 
     SearchMomentReq {
-        communityId string `form:"communityId"`
-        isParent bool `form:"isParent,optional"`
-        keyword string `form:"keyword"`
+        communityId *string `form:"communityId,optional"`
+        isParent bool `form:"isParent,default=false"`
+        onlyUserId *string `form:"onlyUserId,optional"`
+        keyword string `form:"keyword,optional"`
         page int64 `form:"page"`
+        limit *int64 `form:"limit,optional"`
+        lastToken *string `form:"lastToken,optional"`
+        backward *bool `form:"backward,optional"`
     }
 
     SearchMomentResp {
