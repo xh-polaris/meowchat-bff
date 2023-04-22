@@ -570,6 +570,31 @@ type GetLikedCountResp struct {
 	Count int64 `json:"count"`
 }
 
+type GetUserLikesReq struct {
+	UserId     string `form:"userId"`
+	TargetType int64  `form:"targetType"`
+}
+
+type Like struct {
+	TargetId     string `json:"targetId"`
+	AssociatedId string `json:"associatedId"`
+}
+
+type GetUserLikesResp struct {
+	Likes []Like `json:"likes"`
+	Status
+}
+
+type GetLikedUsersReq struct {
+	TargetId   string `form:"targetId"`
+	TargetType int64  `form:"targetType"`
+}
+
+type GetLikedUsersResp struct {
+	Status
+	Users []UserPreview `json:"users"`
+}
+
 type User struct {
 	Id        string `json:"id"`
 	Nickname  string `json:"nickname"`

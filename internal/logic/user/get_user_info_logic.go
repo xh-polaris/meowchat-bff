@@ -2,6 +2,8 @@ package user
 
 import (
 	"context"
+	pb2 "github.com/xh-polaris/meowchat-moment-rpc/pb"
+	pb3 "github.com/xh-polaris/meowchat-post-rpc/pb"
 	"github.com/xh-polaris/meowchat-user-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
@@ -24,6 +26,26 @@ func NewGetUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 	}
 }
 
+func (l *GetUserInfoLogic) getLessDependentInfo(user *types.User) {
+	momentCount, err := l.svcCtx.MomentRPC.CountMoment(l.ctx, &pb2.CountMomentReq{
+		FilterOptions: &pb2.FilterOptions{OnlyUserId: &user.Id},
+	})
+	if err != nil {
+		logx.Error(err)
+	}
+	user.Article += momentCount.Total
+
+	postCount, err := l.svcCtx.PostRPC.CountPost(l.ctx, &pb3.CountPostReq{
+		FilterOptions: &pb3.FilterOptions{
+			OnlyUserId: &user.Id,
+		},
+	})
+	if err != nil {
+		logx.Error(err)
+	}
+	user.Article += postCount.Total
+}
+
 func (l *GetUserInfoLogic) GetUserInfo(req *types.GetUserInfoReq) (resp *types.GetUserInfoResp, err error) {
 	resp = new(types.GetUserInfoResp)
 
@@ -44,5 +66,8 @@ func (l *GetUserInfoLogic) GetUserInfo(req *types.GetUserInfoReq) (resp *types.G
 		AvatarUrl: data.User.AvatarUrl,
 		Motto:     data.User.Motto,
 	}
+
+	l.getLessDependentInfo(&resp.User)
+
 	return
 }

@@ -145,6 +145,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/get_count",
 				Handler: like.GetLikedCountHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/get_liked_users",
+				Handler: like.GetLikedUsersHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/get_user_likes",
+				Handler: like.GetUserLikesHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/like"),

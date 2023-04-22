@@ -25,25 +25,34 @@ func NewGetPostPreviewsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *G
 }
 
 func (l *GetPostPreviewsLogic) makeRequest(req *types.GetPostPreviewsReq) *pb.ListPostReq {
-	r := &pb.ListPostReq{
-		Offset:       req.Offset,
-		Limit:        req.Limit,
-		Backward:     req.Backward,
-		LastToken:    req.LastToken,
-		OnlyOfficial: req.OnlyOfficial,
-		OnlyUserId:   req.OnlyUserId,
-	}
+	r := &pb.ListPostReq{}
+
 	if req.SearchOptions != nil {
 		if req.SearchOptions.Key != nil {
-			r.SearchOptions = &pb.ListPostReq_AllFieldsKey{AllFieldsKey: *req.SearchOptions.Key}
+			r.SearchOptions = &pb.SearchOptions{
+				Query: &pb.SearchOptions_AllFieldsKey{
+					AllFieldsKey: *req.SearchOptions.Key,
+				},
+			}
 		} else {
-			r.SearchOptions = &pb.ListPostReq_MultiFieldsKey{MultiFieldsKey: &pb.ListPostReq_SearchField{
-				Text:  req.SearchOptions.Text,
-				Title: req.SearchOptions.Title,
-				Tag:   req.SearchOptions.Tag,
-			}}
+			r.SearchOptions = &pb.SearchOptions{
+				Query: &pb.SearchOptions_MultiFieldsKey{
+					MultiFieldsKey: &pb.SearchField{
+						Text:  req.SearchOptions.Text,
+						Title: req.SearchOptions.Title,
+						Tag:   req.SearchOptions.Tag,
+					},
+				},
+			}
 		}
 	}
+	r.PaginationOptions = &pb.PaginationOptions{
+		Offset:    req.Offset,
+		Limit:     req.Limit,
+		Backward:  req.Backward,
+		LastToken: req.LastToken,
+	}
+
 	return r
 }
 

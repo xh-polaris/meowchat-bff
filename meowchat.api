@@ -96,6 +96,10 @@ service meowchat {
 	get /get_user_liked (GetUserLikedReq) returns (GetUserLikedResp)
 	@handler GetLikedCount
 	get /get_count (GetLikedCountReq) returns (GetLikedCountResp)
+	@handler GetLikedUsers
+	get /get_liked_users (GetLikedUsersReq) returns (GetLikedUsersResp)
+	@handler GetUserLikes
+	get /get_user_likes (GetUserLikesReq) returns (GetUserLikesResp)
 	
 }
 
