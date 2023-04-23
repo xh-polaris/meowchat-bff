@@ -52,6 +52,10 @@ func (l *GetPostPreviewsLogic) makeRequest(req *types.GetPostPreviewsReq) *pb.Li
 		Backward:  req.Backward,
 		LastToken: req.LastToken,
 	}
+	r.FilterOptions = &pb.FilterOptions{
+		OnlyOfficial: req.OnlyOfficial,
+		OnlyUserId:   req.OnlyUserId,
+	}
 
 	return r
 }
