@@ -480,6 +480,29 @@ type DeleteNewsResp struct {
 	Status
 }
 
+type ApplyInfo struct {
+	UserPreview
+	ApplyId string `json:"applyId"`
+}
+
+type ListApplyReq struct {
+	CommunityId string `json:"communityId"`
+}
+
+type ListApplyResp struct {
+	Status
+	ApplyInfo []ApplyInfo `json:"applyInfo"`
+}
+
+type HandleApplyReq struct {
+	ApplyId    string `json:"applyId"`
+	IsRejected bool   `json:"isRejected"`
+}
+
+type HandleApplyResp struct {
+	Status
+}
+
 type Community struct {
 	Id       string `json:"id"`
 	Name     string `json:"name"`
@@ -612,6 +635,14 @@ type SearchUserForAdminResp struct {
 	Status
 	Users []UserWithRole `json:"users"`
 	Total int64          `json:"total"`
+}
+
+type CreateApplyReq struct {
+	CommunityId string `json:"communityId"`
+}
+
+type CreateApplyResp struct {
+	Status
 }
 
 type ApplySignedUrlReq struct {

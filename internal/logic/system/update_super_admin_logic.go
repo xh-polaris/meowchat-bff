@@ -2,7 +2,7 @@ package system
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-system-rpc/constant"
+	"github.com/xh-polaris/meowchat-system-rpc/common/constant"
 	"github.com/xh-polaris/meowchat-system-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"

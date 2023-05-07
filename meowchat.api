@@ -53,6 +53,10 @@ service meowchat {
 	post /notice/new_admin (NewAdminReq) returns (NewAdminResp)
 	@handler DeleteAdmin
 	post /notice/delete_admin (DeleteAdminReq) returns (DeleteAdminResp)
+	@handler ListApply
+	post /notice/list_apply (ListApplyReq) returns (ListApplyResp)
+	@handler HandleApply
+	post /notice/handle_apply (HandleApplyReq) returns (HandleApplyResp)
 	// news
 	@handler GetNews
 	get /notice/get_news (GetNewsReq) returns (GetNewsResp)
@@ -197,6 +201,8 @@ service meowchat {
 	get /search_user (SearchUserReq) returns (SearchUserResp)
 	@handler SearchUserForAdmin
 	get /search_user_for_admin(SearchUserForAdminReq) returns (SearchUserForAdminResp)
+	@handler CreateApply
+	post /create_apply (CreateApplyReq) returns (CreateApplyResp)
 }
 
 @server(

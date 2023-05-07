@@ -50,4 +50,11 @@ type (
         users []UserWithRole `json:"users"`
         total int64 `json:"total"`
     }
+    CreateApplyReq{
+        communityId string `json:"communityId"`
+    }
+    CreateApplyResp{
+        Status
+    }
+
 )

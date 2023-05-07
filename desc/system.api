@@ -121,7 +121,25 @@ type (
     DeleteNewsResp {
         Status
     }
+    ApplyInfo{
+        UserPreview
+        applyId string `json:"applyId"`
 
+    }
+    ListApplyReq{
+        communityId string `json:"communityId"`
+    }
+    ListApplyResp{
+        Status
+        applyInfo []ApplyInfo `json:"applyInfo"`
+    }
+    HandleApplyReq{
+        applyId string `json:"applyId"`
+        isRejected bool `json:"isRejected"`
+    }
+    HandleApplyResp{
+        Status
+    }
     // Community
 
     Community {
