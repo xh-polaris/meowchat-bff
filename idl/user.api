@@ -1,0 +1,72 @@
+syntax = "v1"
+
+info(
+    title: "user api"
+)
+
+import "idl/common.api"
+
+type (
+    User {
+        id string `json:"id"`
+        nickname string `json:"nickname"`
+        avatarUrl string `json:"avatarUrl"`
+        motto string `json:"motto"`
+        follower int64 `json:"follower"`
+        following int64 `json:"following"`
+        article int64 `json:"article"`
+        like int64 `json:"like"`
+    }
+
+    UserPreviewWithRole {
+        UserPreview
+        roles []Role `json:"roles"`
+    }
+
+    GetUserInfoReq {
+        userId *string `form:"userId,optional"`
+    }
+
+    GetUserInfoResp {
+        Status
+        user User `json:"user"`
+    }
+
+    UpdateUserInfoReq {
+        avatarUrl string `json:"avatarUrl,optional"`
+        nickname string `json:"nickname,optional"`
+        motto string `json:"motto,optional"`
+    }
+
+    UpdateUserInfoResp {
+        Status
+    }
+
+    SearchUserReq {
+        keyword string `form:"keyword"`
+        page int64 `form:"page"`
+        limit int64 `form:"limit,optional"`
+        lastToken string `form:"lastToken,optional"`
+    }
+
+    SearchUserResp {
+        Status
+        users []UserPreview `json:"users"`
+        total int64 `json:"total"`
+        token string `json:"token"`
+    }
+
+    SearchUserForAdminReq {
+        keyword string `form:"keyword"`
+        page int64 `form:"page"`
+        limit int64 `form:"limit,optional"`
+        lastToken string `form:"lastToken,optional"`
+    }
+
+    SearchUserForAdminResp {
+        Status
+        users []UserPreviewWithRole `json:"users"`
+        total int64 `json:"total"`
+        token string `json:"token"`
+    }
+)

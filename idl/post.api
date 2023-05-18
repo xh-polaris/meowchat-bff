@@ -1,0 +1,84 @@
+syntax = "v1"
+
+import "idl/common.api"
+
+type (
+    Post {
+        id string `json:"id"`
+        createAt int64 `json:"createAt"`
+        title string `json:"title"`
+        text string `json:"text"`
+        coverUrl string `json:"coverUrl"`
+        tags []string `json:"tags"`
+        likes int64 `json:"likes"`
+        comments int64 `json:"comments"`
+        user UserPreview `json:"user"`
+        isOfficial bool `json:"isOfficial"`
+    }
+
+    // 多选一
+    SearchOptions {
+        // 查询全部字段
+        key *string `json:"key,optional"`
+        // 各自匹配对应字段
+        title *string `json:"title,optional"`
+        text *string `json:"text,optional"`
+        tag *string `json:"tag,optional"`
+    }
+
+    GetPostPreviewsReq {
+        limit *int64 `json:"limit,optional"`
+        offset *int64 `json:"offset,optional"`
+        lastToken *string `json:"lastToken,optional"`
+        backward *bool `json:"backward,optional"`
+        onlyOfficial *bool `json:"onlyOfficial,optional"`
+        onlyUserId *string `json:"onlyUserId,optional"`
+        searchOptions *SearchOptions `json:"searchOptions,optional"`
+    }
+
+    GetPostPreviewsResp {
+        Status
+        posts []Post `json:"posts"`
+        total int64 `json:"total"`
+        token string `json:"token"`
+    }
+
+    GetPostDetailReq {
+        postId string `form:"postId"`
+    }
+
+    GetPostDetailResp {
+        post Post `json:"post"`
+        Status
+    }
+
+    NewPostReq {
+        id string `json:"id,optional"`
+        title string `json:"title"`
+        text string `json:"text"`
+        coverUrl string `json:"coverUrl,optional"`
+        tags []string `json:"tags"`
+    }
+
+    NewPostResp {
+        postId string `json:"postId"`
+        Status
+    }
+
+    DeletePostReq {
+        id string `json:"id"`
+    }
+
+    DeletePostResp {
+        Status
+    }
+
+    SetOfficialReq {
+        postId string `json:"postId"`
+        isRemove bool `json:"isRemove,optional"`
+    }
+
+    SetOfficialResp {
+        Status
+    }
+)

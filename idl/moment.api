@@ -1,0 +1,85 @@
+syntax = "v1"
+
+info(
+    title: "moment api"
+)
+
+import "idl/common.api"
+
+type (
+    Moment {
+        id string `json:"id"`
+        createAt int64 `json:"createAt"`
+        catId string `json:"catId,optional"`
+        photos []string `json:"photos"`
+        title string `json:"title"`
+        text string `json:"text"`
+        user UserPreview `json:"user"`
+        communityId string `json:"communityId"`
+    }
+
+    GetMomentPreviewsReq {
+        communityId *string `form:"communityId,optional"`
+        isParent bool `form:"isParent,default=false"`
+        onlyUserId *string `form:"onlyUserId,optional"`
+        page int64 `form:"page"`
+        limit *int64 `form:"limit,optional"`
+        lastToken *string `form:"lastToken,optional"`
+        backward *bool `form:"backward,optional"`
+    }
+
+    GetMomentPreviewsResp {
+        Status
+        moments []Moment `json:"moments"`
+        total int64 `json:"total"`
+    }
+
+    GetMomentDetailReq {
+        momentId string `form:"momentId"`
+    }
+
+    GetMomentDetailResp {
+        Status
+        moment Moment `json:"moment"`
+    }
+
+    DeleteMomentReq {
+        momentId string `json:"momentId"`
+    }
+
+    DeleteMomentResp {
+        Status
+    }
+
+    NewMomentReq {
+        id string `json:"id,optional"`
+        title string `json:"title,optional"`
+        catId string `json:"catId,optional"`
+        text string `json:"text,optional"`
+        photos []string `json:"photos"`
+        communityId string `json:"communityId"`
+    }
+
+    NewMomentResp {
+        momentId string `json:"momentId"`
+        Status
+    }
+
+    SearchMomentReq {
+        communityId *string `form:"communityId,optional"`
+        isParent bool `form:"isParent,default=false"`
+        onlyUserId *string `form:"onlyUserId,optional"`
+        keyword string `form:"keyword,optional"`
+        page int64 `form:"page"`
+        limit *int64 `form:"limit,optional"`
+        lastToken *string `form:"lastToken,optional"`
+        backward *bool `form:"backward,optional"`
+    }
+
+    SearchMomentResp {
+        Status
+        moments []Moment `json:"moments"`
+        total int64 `json:"total"`
+    }
+)
+

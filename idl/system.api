@@ -1,0 +1,197 @@
+syntax = "v1"
+
+info(
+    title: "system api"
+)
+
+import "idl/common.api"
+
+type (
+    News {
+        id string `json:"id"`
+        createAt int64 `json:"createAt"`
+        communityId string `json:"communityId"`
+        imageUrl string `json:"imageUrl"`
+        linkUrl string `json:"linkUrl"`
+        Type string `json:"type"`
+    }
+
+    Admin {
+        id       string `json:"id"`
+        title string `json:"title"`
+        communityId string `json:"communityId"`
+        name     string `json:"name"`
+        phone    string `json:"phone"`
+        avatarUrl     string `json:"avatarUrl"`
+        wechat   string `json:"wechat"`
+    }
+
+    Notice {
+        id       string `json:"id"`
+        text     string `json:"text"`
+        createAt int64 `json:"createAt"`
+    }
+
+    GetNewsReq {
+        communityId string `form:"communityId"`
+    }
+
+    GetNewsResp {
+        Status
+        news []News `json:"news"`
+    }
+
+    GetAdminsReq {
+        communityId string `form:"communityId"`
+    }
+
+    GetAdminsResp {
+        Status
+        Admins []Admin `json:"admins"`
+    }
+
+    DeleteAdminReq {
+        id string `json:"id"`
+    }
+
+    DeleteAdminResp {
+        Status
+    }
+
+    NewAdminReq {
+        id       string `json:"id,optional"`
+        title string `json:"title"`
+        communityId string `json:"communityId"`
+        name     string `json:"name"`
+        phone    string `json:"phone"`
+        avatarUrl     string `json:"avatarUrl"`
+        wechat   string `json:"wechat"`
+    }
+
+    NewAdminResp {
+        Status
+        id string `json:"id"`
+    }
+
+    GetNoticesReq {
+        communityId string `form:"communityId"`
+    }
+
+    GetNoticesResp {
+        Status
+        notices []Notice `json:"notices"`
+    }
+
+    NewNoticeReq {
+        id   string `json:"id,optional"`
+        communityId string `json:"communityId,optional"`
+        text string `json:"text"`
+    }
+
+    NewNoticeResp {
+        Status
+        id string `json:"id"`
+    }
+
+    NewNewsReq {
+        id       string `json:"id,optional"`
+        communityId string `json:"communityId,optional"`
+        imageUrl string `json:"imageUrl"`
+        linkUrl  string `json:"linkUrl"`
+        Type string `json:"type"`
+    }
+
+    NewNewsResp {
+        Status
+        id string `json:"id"`
+    }
+
+    DeleteNoticeReq {
+        id string `json:"id"`
+    }
+
+    DeleteNoticeResp {
+        Status
+    }
+
+    DeleteNewsReq {
+        id string `json:"id"`
+    }
+
+    DeleteNewsResp {
+        Status
+    }
+
+    // Community
+
+    Community {
+        id string `json:"id"`
+        name string `json:"name"`
+        parentId string `json:"parentId,omitempty"`
+    }
+
+    ListCommunityReq {
+        parentId string `form:"parentId,optional"`
+    }
+
+    ListCommunityResp {
+        communities []Community `json:"communities"`
+        Status
+    }
+
+    NewCommunityReq {
+        id string `json:"id,optional"`
+        name string `json:"name""`
+        parentId string `json:"parentId,optional"`
+    }
+
+    NewCommunityResp {
+        id string `json:"id"`
+        Status
+    }
+
+    DeleteCommunityReq {
+        id string `json:"id"`
+    }
+
+    DeleteCommunityResp {
+        Status
+    }
+
+    GetUserRolesReq {
+    }
+
+    GetUserRolesResp {
+        roles []Role `json:"roles"`
+        Status
+    }
+
+    UpdateCommunityAdminReq {
+        userId string `json:"userId"`
+        communityId string `json:"communityId"`
+        isRemove bool `json:"isRemove,default=false"`
+    }
+
+    UpdateCommunityAdminResp {
+        Status
+    }
+
+    UpdateSuperAdminReq {
+        userId string `json:"userId"`
+        isRemove bool `json:"isRemove,default=false"`
+    }
+
+    UpdateSuperAdminResp {
+        Status
+    }
+
+    RetrieveUserPreviewReq {
+        roleType string `form:"roleType"`
+        communityId string `form:"communityId,optional"`
+    }
+
+    RetrieveUserPreviewResp {
+        users []UserPreview `json:"users"`
+        Status
+    }
+)

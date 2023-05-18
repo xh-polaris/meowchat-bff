@@ -1,0 +1,21 @@
+syntax = "v1"
+
+info(
+    title: "common api struct"
+)
+
+type Status {
+    code int `json:"code"`
+    msg string `json:"msg"`
+}
+
+type UserPreview {
+    id string `json:"id"`
+    nickname string `json:"nickname"`
+    avatarUrl string `json:"avatarUrl"`
+}
+
+type Role {
+    roleType string `json:"roleType"`
+    communityId string `json:"communityId,omitempty"`
+}

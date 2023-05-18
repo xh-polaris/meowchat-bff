@@ -1,0 +1,48 @@
+syntax = "v1"
+
+info(
+    title: "comment api"
+)
+
+import "idl/common.api"
+
+type (
+    Comment {
+        id string `json:"id"`
+        createAt int64 `json:"createAt"`
+        text string `json:"text"`
+        user UserPreview `json:"user"`
+        comments int64 `json:"comments"`
+        ReplyName string `json:"replyName,optional"`
+    }
+
+    NewCommentReq {
+        text string `json:"text"`
+        id string `json:"id,optional"`
+        scope string `json:"scope"`
+    }
+
+    NewCommentResp {
+        Status
+    }
+
+    GetCommentsReq {
+        scope string `form:"scope"`
+        page int64 `form:"page"`
+        id string `form:"id"`
+    }
+
+    GetCommentsResp {
+        Status
+        comments []Comment `json:"comments"`
+        total int64 `json:"total"`
+    }
+
+    DeleteCommentReq {
+        commentId string `json:"commentId"`
+    }
+
+    DeleteCommentResp {
+        Status
+    }
+)

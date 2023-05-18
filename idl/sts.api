@@ -1,0 +1,32 @@
+syntax = "v1"
+
+info(
+    title: "sts api"
+)
+
+import "idl/common.api"
+
+type (
+    ApplySignedUrlReq {
+        prefix string `json:"prefix,optional"`
+        suffix string `json:"suffix,optional"`
+    }
+
+    ApplySignedUrlResp {
+        Status
+        url string `json:"url"`
+        sessionToken string `json:"sessionToken"`
+    }
+
+    ApplySignedUrlAsCommunityReq {
+        communityId string `json:"communityId"`
+        prefix string `json:"prefix,optional"`
+        suffix string `json:"suffix,optional"`
+    }
+
+    ApplySignedUrlAsCommunityResp {
+        Status
+        url string `json:"url"`
+        sessionToken string `json:"sessionToken"`
+    }
+)

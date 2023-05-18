@@ -1,0 +1,128 @@
+syntax = "v1"
+
+info(
+    title: "cat api"
+)
+
+import "idl/common.api"
+
+type (
+    Cat {
+        id string `json:"id"`
+        createAt int64 `json:"createAt"`
+        age string `json:"age"`
+        communityId string `json:"communityId"`
+        color string `json:"color"`
+        details string `json:"details"`
+        name string `json:"name"`
+        popularity int64 `json:"popularity"`
+        sex string `json:"sex"`
+        status int32 `json:"status"`
+        area string `json:"area"`
+        isSnipped bool `json:"isSnipped"`
+        isSterilized bool `json:"isSterilized"`
+        avatars []string `json:"avatars"`
+    }
+
+    CatPreview {
+        id string `json:"id"`
+        name string `json:"name"`
+        area string `json:"area"`
+        color string `json:"color"`
+        avatarUrl string `json:"avatarUrl"`
+        isCollected bool `json:"isCollected"`
+    }
+
+    GetCatPreviewsReq {
+        communityId string `form:"communityId"`
+        page int64 `form:"page"`
+    }
+
+    GetCatPreviewsResp {
+        Status
+        cats []CatPreview `json:"cats"`
+        total int64 `json:"total"`
+    }
+
+    GetCatDetailReq {
+        catId string `form:"catId"`
+    }
+
+    GetCatDetailResp {
+        Status
+        cat Cat `json:"cat"`
+    }
+
+    DeleteCatReq {
+        catId string `json:"catId"`
+    }
+
+    DeleteCatResp {
+        Status
+    }
+
+    NewCatReq {
+        id string `json:"id,optional"`
+        age string `json:"age"`
+        communityId string `json:"communityId"`
+        color string `json:"color"`
+        details string `json:"details"`
+        name string `json:"name"`
+        sex string `json:"sex"`
+        area string `json:"area"`
+        isSnipped bool `json:"isSnipped"`
+        isSterilized bool `json:"isSterilized"`
+        avatars []string `json:"avatars"`
+    }
+
+    NewCatResp {
+        Status
+        catId string `json:"catId"`
+    }
+
+    SearchCatReq {
+        communityId string `form:"communityId"`
+        keyword string `form:"keyword"`
+        page int64 `form:"page"`
+    }
+
+    SearchCatResp {
+        Status
+        cats []CatPreview `json:"cats"`
+        total int64 `json:"total"`
+    }
+    CreateImageElement {
+        catId string `json:"catId"`
+        url string `json:"url"`
+    }
+    CreateImageReq {
+        images []CreateImageElement `json:"images"`
+    }
+    CreateImageResp {
+        Status
+        id []string `json:"id"`
+    }
+    DeleteImageReq {
+        id string `json:"id"`
+    }
+    DeleteImageResp {
+        Status
+    }
+    GetImageByCatReq {
+        catId  string `form:"catId"`
+        prevId string `form:"prevId,optional"`
+        limit  int64  `form:"limit,default=10"`
+        offset int64 `form:"offset,optional"`
+        backward bool `form:"backward,optional"`
+    }
+    Image {
+        id string `json:"id"`
+        url string `json:"url"`
+        catId string  `json:"catId"`
+    }
+    GetImageByCatResp {
+        Status
+        images []Image `json:"images"`
+        total int64 `json:"total"`
+    }
+)
