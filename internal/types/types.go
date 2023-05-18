@@ -329,9 +329,9 @@ type SearchMomentResp struct {
 type Comment struct {
 	Id        string      `json:"id"`
 	CreateAt  int64       `json:"createAt"`
-	Text     string      `json:"text"`
-	User     UserPreview `json:"user"`
-	Comments int64       `json:"comments"`
+	Text      string      `json:"text"`
+	User      UserPreview `json:"user"`
+	Comments  int64       `json:"comments"`
 	ReplyName string      `json:"replyName,optional"`
 }
 
