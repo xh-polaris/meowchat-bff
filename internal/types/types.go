@@ -541,6 +541,16 @@ type UpdateSuperAdminResp struct {
 	Status
 }
 
+type RetrieveUserPreviewReq struct {
+	RoleType    string `form:"roleType"`
+	CommunityId string `form:"communityId,optional"`
+}
+
+type RetrieveUserPreviewResp struct {
+	Users []UserPreview `json:"users"`
+	Status
+}
+
 type DoLikeReq struct {
 	TargetId   string `json:"targetId"`
 	TargetType int64  `json:"targetType"`

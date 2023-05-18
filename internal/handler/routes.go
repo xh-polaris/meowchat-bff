@@ -124,6 +124,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/role/update_super_admin",
 				Handler: system.UpdateSuperAdminHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/role/get_user_by_role",
+				Handler: system.GetUserByRoleHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)

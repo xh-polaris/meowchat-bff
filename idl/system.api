@@ -184,4 +184,14 @@ type (
     UpdateSuperAdminResp {
         Status
     }
+
+    RetrieveUserPreviewReq {
+        roleType string `form:"roleType"`
+        communityId string `form:"communityId,optional"`
+    }
+
+    RetrieveUserPreviewResp {
+        users []UserPreview `json:"users"`
+        Status
+    }
 )

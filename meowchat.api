@@ -81,6 +81,8 @@ service meowchat {
 	post /role/update_community_admin (UpdateCommunityAdminReq) returns (UpdateCommunityAdminResp)
 	@handler UpdateSuperAdmin
 	post /role/update_super_admin (UpdateSuperAdminReq) returns (UpdateSuperAdminResp)
+	@handler GetUserByRole
+	get /role/Get_User_By_Role (RetrieveUserPreviewReq) returns (RetrieveUserPreviewResp)
 }
 
 @server(
