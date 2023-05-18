@@ -270,6 +270,8 @@ github.com/xh-polaris/meowchat-moment-rpc v1.2.0 h1:yWpeQAMqOYido7rH6Du6owU+5tn5
 github.com/xh-polaris/meowchat-moment-rpc v1.2.0/go.mod h1:Qv1Zvoc5N82kHYXCHVEDgkW/nzqzCKUOBW/y1QkHn8s=
 github.com/xh-polaris/meowchat-post-rpc v1.2.5 h1:q41xc8uMt5tUilFdG3M7kpKC6BajtEAJF7fbqSchYiE=
 github.com/xh-polaris/meowchat-post-rpc v1.2.5/go.mod h1:coeGFkWGJI/3LWzOg4ik0TDXSSJFoALILS5iz2e4/NU=
+github.com/xh-polaris/meowchat-system-rpc v1.2.2 h1:/JikblC8iuoeK5uYBVtpUTw9VgKDijrLyPhH12Smcmw=
+github.com/xh-polaris/meowchat-system-rpc v1.2.2/go.mod h1:oga07JMsrJu3pqPDp8PCh5m/1QO7tzJY31/O6QSu6Ac=
 github.com/xh-polaris/meowchat-user-rpc v1.0.7 h1:Kl8zYOdQlL3gqIO0/+m2OTgY6Y7E+5BKMVe5XQK8UoE=
 github.com/xh-polaris/meowchat-user-rpc v1.0.7/go.mod h1:kIDSPIcxVmlD9qdtI97G3PUF0OlqJazDE4y6HbZuVH8=
 github.com/xh-polaris/sts-rpc v1.3.1 h1:8zc7jJp9uaWk1KRt40NeVfDuq9HUVoArxG+sGhNKKuM=
