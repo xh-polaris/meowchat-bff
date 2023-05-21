@@ -15,6 +15,8 @@ linters:
     - stylecheck
     - unused
     - revive
+    - govet
+    - gosimple
 
 linters-settings: # please keep this alphabetized
   staticcheck:
@@ -29,4 +31,3 @@ linters-settings: # please keep this alphabetized
     rules:
       - name: var-naming
         disabled: true
-        arguments: [["ID", "URL", "RPC"]]
