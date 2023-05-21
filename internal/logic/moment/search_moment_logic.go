@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/jinzhu/copier"
 	"github.com/xh-polaris/meowchat-moment-rpc/pb"
-	pb3 "github.com/xh-polaris/meowchat-system-rpc/pb"
 	pb2 "github.com/xh-polaris/meowchat-user-rpc/pb"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
@@ -30,39 +29,27 @@ func NewSearchMomentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Sear
 func (l *SearchMomentLogic) SearchMoment(req *types.SearchMomentReq) (resp *types.SearchMomentResp, err error) {
 	resp = new(types.SearchMomentResp)
 	var data *pb.ListMomentResp
-	if !req.IsParent {
-		data, err = l.svcCtx.MomentRPC.SearchMomentByCommunityId(l.ctx, &pb.SearchMomentByCommunityIdReq{
-			CommunityId: req.CommunityId,
-			Count:       pageSize,
-			Skip:        req.Page * pageSize,
-			Keyword:     req.Keyword,
-		})
-		if err != nil {
-			return nil, err
-		}
-	} else {
-		data1, err := l.svcCtx.SystemRPC.ListCommunity(l.ctx, &pb3.ListCommunityReq{
-			ParentId: req.CommunityId,
-			Size:     -1,
-		})
-		if err != nil {
-			return nil, err
-		}
 
-		communityIds := make([]string, 0, len(data1.Communities))
-		for i, community := range data1.Communities {
-			communityIds[i] = community.Id
-		}
-
-		data, err = l.svcCtx.MomentRPC.SearchMomentByMultiCommunityId(l.ctx, &pb.SearchMomentByMultiCommunityIdReq{
-			CommunityIds: communityIds,
-			Count:        pageSize,
-			Skip:         req.Page * pageSize,
-			Keyword:      req.Keyword,
-		})
-		if err != nil {
-			return nil, err
-		}
+	if req.Limit == nil {
+		req.Limit = &pageSize
+	}
+	request := &pb.ListMomentReq{
+		SearchOptions: &pb.SearchOptions{Type: &pb.SearchOptions_AllFieldsKey{AllFieldsKey: req.Keyword}},
+		FilterOptions: &pb.FilterOptions{
+			OnlyUserId:      req.OnlyUserId,
+			OnlyCommunityId: req.CommunityId,
+		},
+		PaginationOptions: &pb.PaginationOptions{
+			Offset:    new(int64),
+			Limit:     req.Limit,
+			Backward:  req.Backward,
+			LastToken: req.LastToken,
+		},
+	}
+	*request.PaginationOptions.Offset = *req.Limit * req.Page
+	data, err = l.svcCtx.MomentRPC.ListMoment(l.ctx, request)
+	if err != nil {
+		return nil, err
 	}
 
 	resp.Total = data.Total

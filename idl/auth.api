@@ -1,12 +1,6 @@
 syntax = "v1"
 
-import "desc/common.api"
-
-type User {
-    id             string `json:"id"`
-    name           string `json:"name"`
-    avatarUrl      string `json:"avatarUrl"`
-}
+import "idl/common.api"
 
 type SignInReq {
     authType  string   `json:"authType,options=phone|email|wechat"`

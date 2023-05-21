@@ -4,15 +4,15 @@ info(
 	title: "cat community api"
 )
 
-import "desc/auth.api"
-import "desc/post.api"
-import "desc/collection.api"
-import "desc/moment.api"
-import "desc/comment.api"
-import "desc/system.api"
-import "desc/like.api"
-import "desc/user.api"
-import "desc/sts.api"
+import "idl/auth.api"
+import "idl/post.api"
+import "idl/collection.api"
+import "idl/moment.api"
+import "idl/comment.api"
+import "idl/system.api"
+import "idl/like.api"
+import "idl/user.api"
+import "idl/sts.api"
 
 @server(
 	group: auth
@@ -85,6 +85,8 @@ service meowchat {
 	post /role/update_community_admin (UpdateCommunityAdminReq) returns (UpdateCommunityAdminResp)
 	@handler UpdateSuperAdmin
 	post /role/update_super_admin (UpdateSuperAdminReq) returns (UpdateSuperAdminResp)
+	@handler GetUserByRole
+	get /role/Get_User_By_Role (RetrieveUserPreviewReq) returns (RetrieveUserPreviewResp)
 }
 
 @server(
@@ -100,6 +102,10 @@ service meowchat {
 	get /get_user_liked (GetUserLikedReq) returns (GetUserLikedResp)
 	@handler GetLikedCount
 	get /get_count (GetLikedCountReq) returns (GetLikedCountResp)
+	@handler GetLikedUsers
+	get /get_liked_users (GetLikedUsersReq) returns (GetLikedUsersResp)
+	@handler GetUserLikes
+	get /get_user_likes (GetUserLikesReq) returns (GetUserLikesResp)
 	
 }
 
@@ -159,8 +165,6 @@ service meowchat {
 	// moment
 	@handler GetMomentPreviews
 	get /get_moment_previews (GetMomentPreviewsReq) returns (GetMomentPreviewsResp)
-	@handler GetOwnMomentPreviews
-	get /get_own_moment_previews (GetOwnMomentPreviewsReq) returns (GetOwnMomentPreviewsResp)
 	@handler GetMomentDetail
 	get /get_moment_detail (GetMomentDetailReq) returns (GetMomentDetailResp)
 	@handler NewMoment
@@ -183,6 +187,8 @@ service meowchat {
 	get /get_comments (GetCommentsReq) returns (GetCommentsResp)
 	@handler NewComment
 	post /new_comment (NewCommentReq) returns (NewCommentResp)
+	@handler DeleteComment
+	post /delete_comment (DeleteCommentReq) returns (DeleteCommentResp)
 }
 
 @server(

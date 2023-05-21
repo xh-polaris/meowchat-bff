@@ -4,7 +4,7 @@ info(
     title: "like api"
 )
 
-import "desc/common.api"
+import "idl/common.api"
 
 type (
 
@@ -35,5 +35,30 @@ type (
     GetLikedCountResp {
         Status
         count int64 `json:"count"`
+    }
+
+    GetUserLikesReq {
+        userId string `form:"userId"`
+        targetType int64 `form:"targetType"`
+    }
+
+    Like {
+        targetId string `json:"targetId"`
+        associatedId string `json:"associatedId"`
+    }
+
+    GetUserLikesResp {
+        likes []Like `json:"likes"`
+        Status
+    }
+
+    GetLikedUsersReq {
+        targetId string `form:"targetId"`
+        targetType int64 `form:"targetType"`
+    }
+
+    GetLikedUsersResp {
+        Status
+        users []UserPreview `json:"users"`
     }
 )

@@ -4,7 +4,7 @@ info(
     title: "system api"
 )
 
-import "desc/common.api"
+import "idl/common.api"
 
 type (
     News {
@@ -200,6 +200,16 @@ type (
     }
 
     UpdateSuperAdminResp {
+        Status
+    }
+
+    RetrieveUserPreviewReq {
+        roleType string `form:"roleType"`
+        communityId string `form:"communityId,optional"`
+    }
+
+    RetrieveUserPreviewResp {
+        users []UserPreview `json:"users"`
         Status
     }
 )

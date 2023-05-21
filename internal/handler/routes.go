@@ -134,6 +134,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/role/update_super_admin",
 				Handler: system.UpdateSuperAdminHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/role/get_user_by_role",
+				Handler: system.GetUserByRoleHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
@@ -154,6 +159,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodGet,
 				Path:    "/get_count",
 				Handler: like.GetLikedCountHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/get_liked_users",
+				Handler: like.GetLikedUsersHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/get_user_likes",
+				Handler: like.GetUserLikesHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
@@ -248,11 +263,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/get_own_moment_previews",
-				Handler: moment.GetOwnMomentPreviewsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
 				Path:    "/get_moment_detail",
 				Handler: moment.GetMomentDetailHandler(serverCtx),
 			},
@@ -287,6 +297,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/new_comment",
 				Handler: comment.NewCommentHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/delete_comment",
+				Handler: comment.DeleteCommentHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

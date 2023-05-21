@@ -3,7 +3,7 @@ package post
 import (
 	"context"
 	commentpb "github.com/xh-polaris/meowchat-comment-rpc/pb"
-	"github.com/xh-polaris/meowchat-like-rpc/like"
+	"github.com/xh-polaris/meowchat-like-rpc/likerpc"
 	likepb "github.com/xh-polaris/meowchat-like-rpc/pb"
 	"github.com/xh-polaris/meowchat-post-rpc/pb"
 	userpb "github.com/xh-polaris/meowchat-user-rpc/pb"
@@ -52,7 +52,7 @@ func toRespPost(ctx context.Context, svcCtx *svc.ServiceContext, post *pb.Post) 
 	// likes
 	likes, err := svcCtx.LikeRPC.GetTargetLikes(ctx, &likepb.GetTargetLikesReq{
 		TargetId: post.Id,
-		Type:     like.TargetTypePost,
+		Type:     likerpc.TargetTypePost,
 	})
 	if likes != nil && err == nil {
 		resp.Likes = likes.Count
