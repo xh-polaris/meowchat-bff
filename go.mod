@@ -22,10 +22,6 @@ require (
 	google.golang.org/grpc v1.54.0
 )
 
-replace github.com/xh-polaris/auth-rpc v1.4.6 => ../auth-rpc-main
-
-replace github.com/xh-polaris/sts-rpc v1.3.1 => ../sts-rpc-main
-
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.0 // indirect
