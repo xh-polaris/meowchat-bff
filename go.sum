@@ -291,6 +291,8 @@ github.com/stretchr/testify v1.8.2 h1:+h33VjcLVPDHtOdpUCuF+7gSuG3yGIftsP1YvFihtJ
 github.com/tidwall/gjson v1.14.1/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/match v1.1.1/go.mod h1:eRSPERbgtNPcGhD8UCthc6PmLEQXEWd3PRB5JTxsfmM=
 github.com/tidwall/pretty v1.2.0/go.mod h1:ITEVvHYasfjBbM0u2Pg8T2nJnzm8xPwvNhhsoaGGjNU=
+github.com/xh-polaris/auth-rpc v1.4.6 h1:cv2GAe6FzujCW94ptF8gtSHLLBweuaTdrsfGKpI7/m4=
+github.com/xh-polaris/auth-rpc v1.4.6/go.mod h1:DS5rBiMAfT6q6yMOGNt2CLdFWuAbzN3ogT1UtBMTqLg=
 github.com/xh-polaris/meowchat-collection-rpc v1.1.3 h1:cv38HoloJ0BRfMQHoYnqp/ceCJxD7uHlL6NNUwZTWb8=
 github.com/xh-polaris/meowchat-collection-rpc v1.1.3/go.mod h1:54J8o/zxwuJjWPUXacNPkUf9m8VlKy76Wq3dBZyrwSY=
 github.com/xh-polaris/meowchat-comment-rpc v1.0.3 h1:7z3swkAfn7NBRhzi3vTdWU1758pv15I2741arzG44IE=
@@ -305,6 +307,8 @@ github.com/xh-polaris/meowchat-system-rpc v1.2.2 h1:/JikblC8iuoeK5uYBVtpUTw9VgKD
 github.com/xh-polaris/meowchat-system-rpc v1.2.2/go.mod h1:oga07JMsrJu3pqPDp8PCh5m/1QO7tzJY31/O6QSu6Ac=
 github.com/xh-polaris/meowchat-user-rpc v1.0.7 h1:Kl8zYOdQlL3gqIO0/+m2OTgY6Y7E+5BKMVe5XQK8UoE=
 github.com/xh-polaris/meowchat-user-rpc v1.0.7/go.mod h1:kIDSPIcxVmlD9qdtI97G3PUF0OlqJazDE4y6HbZuVH8=
+github.com/xh-polaris/sts-rpc v1.3.1 h1:8zc7jJp9uaWk1KRt40NeVfDuq9HUVoArxG+sGhNKKuM=
+github.com/xh-polaris/sts-rpc v1.3.1/go.mod h1:aRJAZnDnggQDmTKYJqJa0WwsDVDkuo3Zup9JbZ+DloU=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
