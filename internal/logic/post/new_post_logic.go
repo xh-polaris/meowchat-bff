@@ -2,6 +2,7 @@ package post
 
 import (
 	"context"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/util"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/xh-polaris/meowchat-post-rpc/pb"
@@ -27,6 +28,9 @@ func NewNewPostLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewPostLo
 func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, err error) {
 	resp = new(types.NewPostResp)
 	userId := l.ctx.Value("userId").(string)
+	openId := l.ctx.Value("openId").(string)
+
+	util.MsgSecCheck(l.ctx, l.svcCtx, req.Title+"\n"+req.Text, openId, 3)
 
 	var u *url.URL
 	u, err = url.Parse(req.CoverUrl)

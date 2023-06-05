@@ -3,6 +3,7 @@ package moment
 import (
 	"context"
 	"github.com/jinzhu/copier"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/util"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/xh-polaris/meowchat-moment-rpc/pb"
@@ -27,6 +28,9 @@ func NewNewMomentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewMome
 func (l *NewMomentLogic) NewMoment(req *types.NewMomentReq) (resp *types.NewMomentResp, err error) {
 	resp = new(types.NewMomentResp)
 	m := new(pb.Moment)
+	openId := l.ctx.Value("openId").(string)
+
+	util.MsgSecCheck(l.ctx, l.svcCtx, req.Title+"\n"+req.Text, openId, 3)
 
 	for i := 0; i < len(req.Photos); i++ {
 		var u *url.URL
