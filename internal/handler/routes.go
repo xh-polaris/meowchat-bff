@@ -65,6 +65,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: system.DeleteAdminHandler(serverCtx),
 			},
 			{
+				Method:  http.MethodPost,
+				Path:    "/notice/list_apply",
+				Handler: system.ListApplyHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/notice/handle_apply",
+				Handler: system.HandleApplyHandler(serverCtx),
+			},
+			{
 				Method:  http.MethodGet,
 				Path:    "/notice/get_news",
 				Handler: system.GetNewsHandler(serverCtx),
@@ -319,6 +329,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodGet,
 				Path:    "/search_user_for_admin",
 				Handler: user.SearchUserForAdminHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/create_apply",
+				Handler: user.CreateApplyHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
