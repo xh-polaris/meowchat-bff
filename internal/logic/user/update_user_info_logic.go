@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/util"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/xh-polaris/meowchat-user-rpc/pb"
@@ -27,6 +28,9 @@ func NewUpdateUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Up
 func (l *UpdateUserInfoLogic) UpdateUserInfo(req *types.UpdateUserInfoReq) (resp *types.UpdateUserInfoResp, err error) {
 	resp = new(types.UpdateUserInfoResp)
 	userId := l.ctx.Value("userId").(string)
+	openId := l.ctx.Value("openId").(string)
+
+	util.MsgSecCheck(l.ctx, l.svcCtx, req.Nickname, openId, 1)
 
 	if req.AvatarUrl != "" {
 		var u *url.URL

@@ -39,18 +39,21 @@ func (l *SignInLogic) SignIn(req *types.SignInReq) (resp *types.SignInResp, err 
 	}
 
 	auth := l.svcCtx.Config.Auth
-	resp.AccessToken, resp.AccessExpire, err = generateJwtToken(rpcResp.UserId, auth.AccessSecret, auth.AccessExpire)
-	resp.UserId = rpcResp.UserId
+	resp.AccessToken, resp.AccessExpire, err = generateJwtToken(rpcResp.User, auth.AccessSecret, auth.AccessExpire)
+	resp.UserId = rpcResp.User.UserId
 	return
 }
 
-func generateJwtToken(userId string, secret string, expire int64) (string, int64, error) {
+func generateJwtToken(user *pb.User, secret string, expire int64) (string, int64, error) {
 	iat := time.Now().Unix()
 	exp := iat + expire
 	claims := make(jwt.MapClaims)
 	claims["exp"] = exp
 	claims["iat"] = iat
-	claims["userId"] = userId
+	claims["userId"] = user.UserId
+	claims["unionId"] = user.UnionId
+	claims["openId"] = user.OpenId
+	claims["appId"] = user.AppId
 	token := jwt.New(jwt.SigningMethodHS256)
 	token.Claims = claims
 	tokenString, err := token.SignedString([]byte(secret))

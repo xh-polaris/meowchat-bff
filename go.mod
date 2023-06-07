@@ -6,7 +6,8 @@ require (
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/google/uuid v1.3.0
 	github.com/jinzhu/copier v0.3.5
-	github.com/xh-polaris/auth-rpc v1.4.6
+	github.com/silenceper/wechat/v2 v2.1.5
+	github.com/xh-polaris/auth-rpc v1.4.10
 	github.com/xh-polaris/meowchat-collection-rpc v1.1.3
 	github.com/xh-polaris/meowchat-comment-rpc v1.0.3
 	github.com/xh-polaris/meowchat-like-rpc v1.1.7
@@ -14,7 +15,7 @@ require (
 	github.com/xh-polaris/meowchat-post-rpc v1.2.5
 	github.com/xh-polaris/meowchat-system-rpc v1.2.2
 	github.com/xh-polaris/meowchat-user-rpc v1.0.7
-	github.com/xh-polaris/sts-rpc v1.3.1
+	github.com/xh-polaris/sts-rpc v1.3.2
 	github.com/zeromicro/go-zero v1.5.1
 	go.opentelemetry.io/contrib/propagators/b3 v1.15.0
 	go.opentelemetry.io/otel v1.14.0
@@ -78,6 +79,7 @@ require (
 	go.uber.org/automaxprocs v1.5.2 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
+	golang.org/x/crypto v0.6.0 // indirect
 	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/oauth2 v0.5.0 // indirect
 	golang.org/x/sys v0.7.0 // indirect

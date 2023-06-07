@@ -2,12 +2,15 @@ package comment
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-comment-rpc/pb"
-
+	"github.com/xh-polaris/meowchat-bff/internal/logic/util"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
-
+	"github.com/xh-polaris/meowchat-comment-rpc/pb"
 	"github.com/zeromicro/go-zero/core/logx"
+)
+
+const (
+	WechatSecUrl = "https://api.weixin.qq.com/wxa/msg_sec_check?access_token=%s"
 )
 
 type NewCommentLogic struct {
@@ -27,7 +30,12 @@ func NewNewCommentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *NewCom
 func (l *NewCommentLogic) NewComment(req *types.NewCommentReq) (resp *types.NewCommentResp, err error) {
 	resp = new(types.NewCommentResp)
 	userId := l.ctx.Value("userId").(string)
+	openId := l.ctx.Value("openId").(string)
 
+	err = util.MsgSecCheck(l.ctx, l.svcCtx, req.Text, openId, 2)
+	if err != nil {
+		return nil, err
+	}
 	// 获取回复用户id
 	replyToId := ""
 	if req.Scope == "comment" {
