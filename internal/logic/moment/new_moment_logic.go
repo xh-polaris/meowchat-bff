@@ -3,7 +3,6 @@ package moment
 import (
 	"context"
 	"github.com/jinzhu/copier"
-	"github.com/xh-polaris/meowchat-bff/internal/logic/util"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/xh-polaris/meowchat-moment-rpc/pb"
