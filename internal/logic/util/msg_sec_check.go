@@ -53,10 +53,7 @@ func MsgSecCheck(ctx context.Context, svc *svc.ServiceContext, content string, o
 	result := i["result"].(map[string]any)
 	suggest := result["suggest"].(string)
 	if suggest != "pass" {
-		return &errorx.CodeError{
-			Code: 10001,
-			Msg:  "审核未通过,suggest为" + suggest,
-		}
+		return errorx.ErrMsgNotSec
 	}
 	return nil
 }

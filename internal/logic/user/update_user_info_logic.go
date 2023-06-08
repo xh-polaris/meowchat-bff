@@ -30,7 +30,10 @@ func (l *UpdateUserInfoLogic) UpdateUserInfo(req *types.UpdateUserInfoReq) (resp
 	userId := l.ctx.Value("userId").(string)
 	openId := l.ctx.Value("openId").(string)
 
-	util.MsgSecCheck(l.ctx, l.svcCtx, req.Nickname, openId, 1)
+	err = util.MsgSecCheck(l.ctx, l.svcCtx, req.Nickname, openId, 1)
+	if err != nil {
+		return nil, err
+	}
 
 	if req.AvatarUrl != "" {
 		var u *url.URL

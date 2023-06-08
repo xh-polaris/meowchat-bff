@@ -30,7 +30,10 @@ func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, 
 	userId := l.ctx.Value("userId").(string)
 	openId := l.ctx.Value("openId").(string)
 
-	util.MsgSecCheck(l.ctx, l.svcCtx, req.Title+"\n"+req.Text, openId, 3)
+	err = util.MsgSecCheck(l.ctx, l.svcCtx, req.Title+"\n"+req.Text, openId, 3)
+	if err != nil {
+		return nil, err
+	}
 
 	var u *url.URL
 	u, err = url.Parse(req.CoverUrl)
