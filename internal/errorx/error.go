@@ -13,5 +13,5 @@ func (e *CodeError) Error() string {
 
 var (
 	ErrMsgNotSec      = status.Error(10001, "Failed in Wechat MsgSecCheck")
-	ErrWechatApiWrong = status.Error(10001, "Call Wechat Api Incorrectly")
+	ErrWechatApiWrong = status.Error(10002, "Call Wechat Api Incorrectly")
 )
