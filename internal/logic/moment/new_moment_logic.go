@@ -30,7 +30,10 @@ func (l *NewMomentLogic) NewMoment(req *types.NewMomentReq) (resp *types.NewMome
 	m := new(pb.Moment)
 	openId := l.ctx.Value("openId").(string)
 
-	util.MsgSecCheck(l.ctx, l.svcCtx, req.Title+"\n"+req.Text, openId, 3)
+	err = util.MsgSecCheck(l.ctx, l.svcCtx, req.Title+"\n"+req.Text, openId, 3)
+	if err != nil {
+		return nil, err
+	}
 
 	for i := 0; i < len(req.Photos); i++ {
 		var u *url.URL
