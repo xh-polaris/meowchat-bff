@@ -1,9 +1,9 @@
-package user
+package system
 
 import (
 	"net/http"
 
-	"github.com/xh-polaris/meowchat-bff/internal/logic/user"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/system"
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
 	"github.com/xh-polaris/meowchat-bff/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -17,7 +17,7 @@ func CreateApplyHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := user.NewCreateApplyLogic(r.Context(), svcCtx)
+		l := system.NewCreateApplyLogic(r.Context(), svcCtx)
 		resp, err := l.CreateApply(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)

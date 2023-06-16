@@ -126,6 +126,12 @@ type (
         applyId string `json:"applyId"`
 
     }
+    CreateApplyReq{
+        communityId string `json:"communityId"`
+    }
+    CreateApplyResp{
+        Status
+    }
     ListApplyReq{
         communityId string `json:"communityId"`
     }
