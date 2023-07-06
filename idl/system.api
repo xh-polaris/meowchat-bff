@@ -14,6 +14,7 @@ type (
         imageUrl string `json:"imageUrl"`
         linkUrl string `json:"linkUrl"`
         Type string `json:"type"`
+        isPublic int64 `json:"isPublic"`
     }
 
     Admin {
@@ -99,6 +100,7 @@ type (
         imageUrl string `json:"imageUrl"`
         linkUrl  string `json:"linkUrl"`
         Type string `json:"type"`
+        isPublic int64 `json:"isPublic,optional"`
     }
 
     NewNewsResp {

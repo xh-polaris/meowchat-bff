@@ -372,6 +372,7 @@ type News struct {
 	ImageUrl    string `json:"imageUrl"`
 	LinkUrl     string `json:"linkUrl"`
 	Type        string `json:"type"`
+	IsPublic    int64  `json:"isPublic"`
 }
 
 type Admin struct {
@@ -457,6 +458,7 @@ type NewNewsReq struct {
 	ImageUrl    string `json:"imageUrl"`
 	LinkUrl     string `json:"linkUrl"`
 	Type        string `json:"type"`
+	IsPublic    int64  `json:"isPublic,optional"`
 }
 
 type NewNewsResp struct {

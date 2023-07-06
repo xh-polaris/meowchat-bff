@@ -33,6 +33,7 @@ func (l *NewNewsLogic) NewNews(req *types.NewNewsReq) (resp *types.NewNewsResp, 
 			ImageUrl:    req.ImageUrl,
 			LinkUrl:     req.LinkUrl,
 			Type:        req.Type,
+			IsPublic:    req.IsPublic,
 		})
 		if err != nil {
 			return nil, err
@@ -45,6 +46,7 @@ func (l *NewNewsLogic) NewNews(req *types.NewNewsReq) (resp *types.NewNewsResp, 
 			ImageUrl: req.ImageUrl,
 			LinkUrl:  req.LinkUrl,
 			Type:     req.Type,
+			IsPublic: req.IsPublic,
 		})
 		if err != nil {
 			return nil, err
