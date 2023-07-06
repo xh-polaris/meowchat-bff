@@ -37,7 +37,7 @@ github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAE
 github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a h1:HbKu58rmZpUGpz5+4FfNmIU+FmZg2P3Xaj2v2bfNWmk=
 github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a/go.mod h1:SGnFV6hVsYE877CKEZ6tDNTjaSXYUk6QqoIK6PrAtcc=
 github.com/alicebob/miniredis/v2 v2.30.0/go.mod h1:84TWKZlxYkfgMucPBf5SOQBYJceZeQRFIaQgNMiCX6Q=
-github.com/alicebob/miniredis/v2 v2.30.1 h1:HM1rlQjq1bm9yQcsawJqSZBJ9AYgxvjkMsNtddh90+g=
+github.com/alicebob/miniredis/v2 v2.30.2 h1:lc1UAUT9ZA7h4srlfBmBt2aorm5Yftk9nBjxz7EyY9I=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
@@ -303,8 +303,8 @@ github.com/xh-polaris/meowchat-moment-rpc v1.2.0 h1:yWpeQAMqOYido7rH6Du6owU+5tn5
 github.com/xh-polaris/meowchat-moment-rpc v1.2.0/go.mod h1:Qv1Zvoc5N82kHYXCHVEDgkW/nzqzCKUOBW/y1QkHn8s=
 github.com/xh-polaris/meowchat-post-rpc v1.2.5 h1:q41xc8uMt5tUilFdG3M7kpKC6BajtEAJF7fbqSchYiE=
 github.com/xh-polaris/meowchat-post-rpc v1.2.5/go.mod h1:coeGFkWGJI/3LWzOg4ik0TDXSSJFoALILS5iz2e4/NU=
-github.com/xh-polaris/meowchat-system-rpc v1.2.2 h1:/JikblC8iuoeK5uYBVtpUTw9VgKDijrLyPhH12Smcmw=
-github.com/xh-polaris/meowchat-system-rpc v1.2.2/go.mod h1:oga07JMsrJu3pqPDp8PCh5m/1QO7tzJY31/O6QSu6Ac=
+github.com/xh-polaris/meowchat-system-rpc v1.2.3 h1:mH46RomW9MAnbWCiEMt+cKPh1qErFIYGKu4/NEGDXbA=
+github.com/xh-polaris/meowchat-system-rpc v1.2.3/go.mod h1:ZRORnuqcdfTPMBIDjb2d2DzmHlZzQOvO3tbg+4zVaHo=
 github.com/xh-polaris/meowchat-user-rpc v1.0.7 h1:Kl8zYOdQlL3gqIO0/+m2OTgY6Y7E+5BKMVe5XQK8UoE=
 github.com/xh-polaris/meowchat-user-rpc v1.0.7/go.mod h1:kIDSPIcxVmlD9qdtI97G3PUF0OlqJazDE4y6HbZuVH8=
 github.com/xh-polaris/sts-rpc v1.3.2 h1:d2NogOLm14YxtVjzbvcKxyCpAQ9W+RcPWHI490GtTTU=
@@ -316,8 +316,8 @@ github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9dec
 github.com/yuin/goldmark v1.3.5/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
 github.com/yuin/gopher-lua v0.0.0-20220504180219-658193537a64/go.mod h1:GBR0iDaNXjAgGg9zfCvksxSRnQx76gclCIb7kdAd1Pw=
 github.com/yuin/gopher-lua v1.1.0 h1:BojcDhfyDWgU2f2TOzYK/g5p2gxMrku8oupLDqlnSqE=
-github.com/zeromicro/go-zero v1.5.1 h1:UibsnkENBfeRSRczZ0qZiaLA03Isj1SmPRz3n7q4R3M=
-github.com/zeromicro/go-zero v1.5.1/go.mod h1:bGYm4XWsGN9GhDsO2O2BngpVoWjf3Eog2a5hUOMhlXs=
+github.com/zeromicro/go-zero v1.5.2 h1:vpMlZacCMtgdtYzKI3OMyhS6mZ9UQctiAh0J7gIq31I=
+github.com/zeromicro/go-zero v1.5.2/go.mod h1:ndCd1nMMAdEMZgPfdm1fpavHUdBW0ykB6ckCRaSG10w=
 go.etcd.io/etcd/api/v3 v3.5.8 h1:Zf44zJszoU7zRV0X/nStPenegNXoFDWcB/MwrJbA+L4=
 go.etcd.io/etcd/api/v3 v3.5.8/go.mod h1:uyAal843mC8uUVSLWz6eHa/d971iDGnCRpmKd2Z+X8k=
 go.etcd.io/etcd/client/pkg/v3 v3.5.8 h1:tPp9YRn/UBFAHdhOQUII9eUs7aOK35eulpMhX4YBd+M=

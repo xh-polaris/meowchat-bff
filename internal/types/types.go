@@ -372,6 +372,7 @@ type News struct {
 	ImageUrl    string `json:"imageUrl"`
 	LinkUrl     string `json:"linkUrl"`
 	Type        string `json:"type"`
+	IsPublic    int64  `json:"isPublic"`
 }
 
 type Admin struct {
@@ -457,6 +458,7 @@ type NewNewsReq struct {
 	ImageUrl    string `json:"imageUrl"`
 	LinkUrl     string `json:"linkUrl"`
 	Type        string `json:"type"`
+	IsPublic    int64  `json:"isPublic,optional"`
 }
 
 type NewNewsResp struct {
@@ -483,6 +485,14 @@ type DeleteNewsResp struct {
 type ApplyInfo struct {
 	UserPreview
 	ApplyId string `json:"applyId"`
+}
+
+type CreateApplyReq struct {
+	CommunityId string `json:"communityId"`
+}
+
+type CreateApplyResp struct {
+	Status
 }
 
 type ListApplyReq struct {
@@ -689,14 +699,6 @@ type SearchUserForAdminResp struct {
 	Users []UserPreviewWithRole `json:"users"`
 	Total int64                 `json:"total"`
 	Token string                `json:"token"`
-}
-
-type CreateApplyReq struct {
-	CommunityId string `json:"communityId"`
-}
-
-type CreateApplyResp struct {
-	Status
 }
 
 type ApplySignedUrlReq struct {
