@@ -487,14 +487,6 @@ type ApplyInfo struct {
 	ApplyId string `json:"applyId"`
 }
 
-type CreateApplyReq struct {
-	CommunityId string `json:"communityId"`
-}
-
-type CreateApplyResp struct {
-	Status
-}
-
 type ListApplyReq struct {
 	CommunityId string `json:"communityId"`
 }
@@ -699,6 +691,14 @@ type SearchUserForAdminResp struct {
 	Users []UserPreviewWithRole `json:"users"`
 	Total int64                 `json:"total"`
 	Token string                `json:"token"`
+}
+
+type CreateApplyReq struct {
+	CommunityId string `json:"communityId"`
+}
+
+type CreateApplyResp struct {
+	Status
 }
 
 type ApplySignedUrlReq struct {
