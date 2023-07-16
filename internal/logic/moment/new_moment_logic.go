@@ -44,6 +44,10 @@ func (l *NewMomentLogic) NewMoment(req *types.NewMomentReq) (resp *types.NewMome
 		u.Host = l.svcCtx.Config.CdnHost
 		req.Photos[i] = u.String()
 	}
+	err = util.PhotoCheck(l.ctx, l.svcCtx, req.Photos)
+	if err != nil {
+		return nil, err
+	}
 
 	err = copier.Copy(m, req)
 	if err != nil {

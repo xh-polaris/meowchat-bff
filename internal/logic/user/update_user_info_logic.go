@@ -43,6 +43,11 @@ func (l *UpdateUserInfoLogic) UpdateUserInfo(req *types.UpdateUserInfoReq) (resp
 		}
 		u.Host = l.svcCtx.Config.CdnHost
 		req.AvatarUrl = u.String()
+		var r = []string{req.AvatarUrl}
+		err = util.PhotoCheck(l.ctx, l.svcCtx, r)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	_, err = l.svcCtx.UserRPC.UpdateUser(l.ctx, &pb.UpdateUserReq{

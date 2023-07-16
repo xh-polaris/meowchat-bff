@@ -43,6 +43,15 @@ func (l *NewPostLogic) NewPost(req *types.NewPostReq) (resp *types.NewPostResp, 
 	u.Host = l.svcCtx.Config.CdnHost
 	req.CoverUrl = u.String()
 
+	if req.CoverUrl != "" {
+		r := []string{req.CoverUrl}
+		err = util.PhotoCheck(l.ctx, l.svcCtx, r)
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
 	if req.Id == "" {
 		res, err := l.svcCtx.PostRPC.CreatePost(l.ctx, &pb.CreatePostReq{
 			Title:    req.Title,

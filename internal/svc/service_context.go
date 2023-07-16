@@ -1,6 +1,7 @@
 package svc
 
 import (
+	"github.com/tencentyun/cos-go-sdk-v5"
 	"github.com/xh-polaris/auth-rpc/auth"
 	"github.com/xh-polaris/meowchat-bff/internal/config"
 	"github.com/xh-polaris/meowchat-collection-rpc/collectionrpc"
@@ -11,6 +12,8 @@ import (
 	"github.com/xh-polaris/meowchat-system-rpc/systemrpc"
 	"github.com/xh-polaris/meowchat-user-rpc/userrpc"
 	"github.com/xh-polaris/sts-rpc/stsrpc"
+	"net/http"
+	"net/url"
 
 	"github.com/zeromicro/go-zero/zrpc"
 )
@@ -26,9 +29,16 @@ type ServiceContext struct {
 	StsRPC        stsrpc.StsRpc
 	CommentRPC    commentrpc.CommentRpc
 	PostRPC       postrpc.PostRpc
+	CiClient      cos.Client
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
+	bu, _ := url.Parse("https://" + c.CdnHost)
+	cu, _ := url.Parse("https://" + c.CIHost)
+	b := &cos.BaseURL{
+		BucketURL: bu,
+		CIURL:     cu,
+	}
 	return &ServiceContext{
 		Config:        c,
 		AuthRPC:       auth.NewAuth(zrpc.MustNewClient(c.AuthRPC)),
@@ -40,5 +50,11 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		StsRPC:        stsrpc.NewStsRpc(zrpc.MustNewClient(c.StsRPC)),
 		CommentRPC:    commentrpc.NewCommentRpc(zrpc.MustNewClient(c.CommentRPC)),
 		PostRPC:       postrpc.NewPostRpc(zrpc.MustNewClient(c.PostRPC)),
+		CiClient: *cos.NewClient(b, &http.Client{
+			Transport: &cos.AuthorizationTransport{
+				SecretID:  c.CosApi.SecretId,
+				SecretKey: c.CosApi.SecretKey,
+			},
+		}),
 	}
 }

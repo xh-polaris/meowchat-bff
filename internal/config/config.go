@@ -11,7 +11,12 @@ type Config struct {
 		AccessSecret string
 		AccessExpire int64
 	}
-	CdnHost       string
+	CdnHost string
+	CIHost  string
+	CosApi  struct {
+		SecretId  string
+		SecretKey string
+	}
 	AuthRPC       zrpc.RpcClientConf
 	CollectionRPC zrpc.RpcClientConf
 	MomentRPC     zrpc.RpcClientConf

@@ -2,6 +2,7 @@ package collection
 
 import (
 	"context"
+	"github.com/xh-polaris/meowchat-bff/internal/logic/util"
 	"net/url"
 
 	"github.com/xh-polaris/meowchat-bff/internal/svc"
@@ -47,6 +48,14 @@ func (l *CreateImageLogic) CreateImage(req *types.CreateImageReq) (resp *types.C
 		}
 		u.Host = l.svcCtx.Config.CdnHost
 		req.Images[i].Url = u.String()
+	}
+	r := make([]string, len(req.Images))
+	for key, image := range req.Images {
+		r[key] = image.Url
+	}
+	err = util.PhotoCheck(l.ctx, l.svcCtx, r)
+	if err != nil {
+		return nil, err
 	}
 
 	data := pb.CreateImageReq{
