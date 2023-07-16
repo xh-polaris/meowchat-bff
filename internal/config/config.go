@@ -11,6 +11,7 @@ type Config struct {
 		AccessSecret string
 		AccessExpire int64
 	}
+	CosHost string
 	CdnHost string
 	CIHost  string
 	CosApi  struct {

@@ -30,7 +30,10 @@ func PhotoCheck(ctx context.Context, svc *svc.ServiceContext, urls []string) (er
 			host := "https://" + svc.Config.CdnHost
 			for _, url := range urls {
 				name := url[len(host)+1:]
-				svc.CiClient.Object.Delete(ctx, name)
+				_, err = svc.CiClient.Object.Delete(ctx, name)
+				if err != nil {
+					return err
+				}
 			}
 			return errorx.ErrPhotoNotSec
 		}

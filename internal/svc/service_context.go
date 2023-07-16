@@ -33,7 +33,7 @@ type ServiceContext struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	bu, _ := url.Parse("https://" + c.CdnHost)
+	bu, _ := url.Parse("https://" + c.CosHost)
 	cu, _ := url.Parse("https://" + c.CIHost)
 	b := &cos.BaseURL{
 		BucketURL: bu,
