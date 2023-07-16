@@ -27,6 +27,11 @@ func PhotoCheck(ctx context.Context, svc *svc.ServiceContext, urls []string) (er
 
 	for key := range urls {
 		if res.JobsDetail[key].Result != 0 {
+			host := "https://" + svc.Config.CdnHost
+			for _, url := range urls {
+				name := url[len(host)+1:]
+				svc.CiClient.Object.Delete(ctx, name)
+			}
 			return errorx.ErrPhotoNotSec
 		}
 	}
